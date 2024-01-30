@@ -13,6 +13,12 @@ namespace API_ArtworkSharingPlatforms
             services.AddScoped<IArtworkRepository, ArtworkRepository>();
             services.AddScoped<IArtworkService,ArtworkService>();
 
+            services.AddScoped<IReportRepository,ReportRepository>();
+            services.AddScoped<IReportService,ReportService>();
+
+            services.AddScoped<IPersonRepository,PersonRepository>();
+            services.AddScoped<IPersonService,PersonService>();
+
             return services;
         }
     }

@@ -6,7 +6,7 @@ namespace API_ArtworkSharingPlatform.Repository.Models
     public partial class RateStar
     {
         public int RateId { get; set; }
-        public int? UserId { get; set; }
+        public string? UserId { get; set; }
         public int? ArtworkPId { get; set; }
         public int? Rate { get; set; }
 

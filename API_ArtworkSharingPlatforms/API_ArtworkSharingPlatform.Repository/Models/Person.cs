@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 
 namespace API_ArtworkSharingPlatform.Repository.Models
 {
-    public partial class Person
+    public partial class Person :IdentityUser
     {
         public Person()
         {
@@ -17,20 +18,15 @@ namespace API_ArtworkSharingPlatform.Repository.Models
             Requests = new HashSet<Request>();
         }
 
-        public int UserId { get; set; }
         public string? FullName { get; set; }
         public bool? Gender { get; set; }
         public DateTime? Dob { get; set; }
         public string? Address { get; set; }
-        public string? Phone { get; set; }
         public DateTime? DateUserRe { get; set; }
-        public string? Username { get; set; }
-        public string? Password { get; set; }
-        public int? Role { get; set; }
-        public string Avatar { get; set; } = null!;
-        public string? Email { get; set; }
+        public string? Avatar { get; set; }
+        public string? RefreshToken { get; set; }
+        public bool? Status { get; set; }
 
-        public virtual Permission? RoleNavigation { get; set; }
         public virtual ICollection<Artwork> Artworks { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Follow> Follows { get; set; }

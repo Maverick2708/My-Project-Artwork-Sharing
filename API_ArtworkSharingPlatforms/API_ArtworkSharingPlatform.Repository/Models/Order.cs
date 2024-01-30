@@ -11,7 +11,7 @@ namespace API_ArtworkSharingPlatform.Repository.Models
         }
 
         public int BillOrderId { get; set; }
-        public int? UserId { get; set; }
+        public string? UserId { get; set; }
         public double? TotalBill { get; set; }
 
         public virtual Person? User { get; set; }

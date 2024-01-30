@@ -19,7 +19,7 @@ namespace API_ArtworkSharingPlatform.Repository.Models
         public DateTime? DatePost { get; set; }
         public string? PictureArtwork { get; set; }
         public int? GenreId { get; set; }
-        public int? UserId { get; set; }
+        public string? UserId { get; set; }
         public int? Quanity { get; set; }
         public bool? Status { get; set; }
 

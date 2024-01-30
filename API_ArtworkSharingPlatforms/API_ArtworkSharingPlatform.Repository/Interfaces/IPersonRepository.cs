@@ -11,6 +11,8 @@ namespace API_ArtworkSharingPlatform.Repository.Interfaces
 {
     public interface IPersonRepository
     {
-        
+      //  public Task<AuthenticationResponseModel> SignInAccountAsync();
+
+        public Task<ResponeModel> SignUpAccountAsync(SignUpModel signUpModel);
     }
 }
