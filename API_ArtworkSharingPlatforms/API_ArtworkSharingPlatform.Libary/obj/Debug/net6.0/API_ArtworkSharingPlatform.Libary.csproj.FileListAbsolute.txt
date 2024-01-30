@@ -1,0 +1,12 @@
+D:\ArtworkSharingPlatform\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\bin\Debug\net6.0\API_ArtworkSharingPlatform.Libary.deps.json
+D:\ArtworkSharingPlatform\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\bin\Debug\net6.0\API_ArtworkSharingPlatform.Libary.dll
+D:\ArtworkSharingPlatform\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\bin\Debug\net6.0\API_ArtworkSharingPlatform.Libary.pdb
+D:\ArtworkSharingPlatform\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\API_ArtworkSharingPlatform.Libary.csproj.AssemblyReference.cache
+D:\ArtworkSharingPlatform\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\API_ArtworkSharingPlatform.Libary.GeneratedMSBuildEditorConfig.editorconfig
+D:\ArtworkSharingPlatform\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\API_ArtworkSharingPlatform.Libary.AssemblyInfoInputs.cache
+D:\ArtworkSharingPlatform\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\API_ArtworkSharingPlatform.Libary.AssemblyInfo.cs
+D:\ArtworkSharingPlatform\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\API_ArtworkSharingPlatform.Libary.csproj.CoreCompileInputs.cache
+D:\ArtworkSharingPlatform\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\API_ArtworkSharingPlatform.Libary.dll
+D:\ArtworkSharingPlatform\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\refint\API_ArtworkSharingPlatform.Libary.dll
+D:\ArtworkSharingPlatform\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\API_ArtworkSharingPlatform.Libary.pdb
+D:\ArtworkSharingPlatform\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\ref\API_ArtworkSharingPlatform.Libary.dll

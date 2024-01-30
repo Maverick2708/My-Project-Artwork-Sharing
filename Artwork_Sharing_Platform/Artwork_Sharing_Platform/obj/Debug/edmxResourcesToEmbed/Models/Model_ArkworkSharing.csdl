@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Artwork_SharingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BillOrder">
+    <Key>
+      <PropertyRef Name="Id_BillOrder" />
+    </Key>
+    <Property Name="Id_BillOrder" Type="Int32" Nullable="false" />
+    <Property Name="Date_BillOrder" Type="DateTime" Precision="0" />
+    <Property Name="Id_User" Type="Int32" />
+    <Property Name="Total_Bill" Type="Double" />
+    <NavigationProperty Name="User_Platform" Relationship="Self.FK__BillOrder__Id_Us__4316F928" FromRole="BillOrder" ToRole="User_Platform" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Id_Bi__45F365D3" FromRole="BillOrder" ToRole="OrderDetail" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="Id_Comment" />
+    </Key>
+    <Property Name="Id_Comment" Type="Int32" Nullable="false" />
+    <Property Name="Content_Co" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Sub" Type="DateTime" Precision="0" />
+    <Property Name="Id_User" Type="Int32" />
+    <Property Name="Id_ArtworkP" Type="Int32" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Post" Relationship="Self.FK__Comment__Id_Artw__59063A47" FromRole="Comment" ToRole="Post" />
+    <NavigationProperty Name="User_Platform" Relationship="Self.FK__Comment__Id_User__5812160E" FromRole="Comment" ToRole="User_Platform" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="Id_Event" />
+    </Key>
+    <Property Name="Id_Event" Type="Int32" Nullable="false" />
+    <Property Name="Name_Event" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Start" Type="DateTime" Precision="0" />
+    <Property Name="Date_End" Type="DateTime" Precision="0" />
+    <Property Name="Address_Event" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Participations" Relationship="Self.FK__Participa__Id_Ev__5EBF139D" FromRole="Event" ToRole="Participation" />
+  </EntityType>
+  <EntityType Name="Follow">
+    <Key>
+      <PropertyRef Name="Id_Follow" />
+    </Key>
+    <Property Name="Id_Follow" Type="Int32" Nullable="false" />
+    <Property Name="Id_User" Type="Int32" />
+    <Property Name="Date_Follow" Type="DateTime" Precision="0" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="User_Platform" Relationship="Self.FK__Follow__Id_User__4F7CD00D" FromRole="Follow" ToRole="User_Platform" />
+  </EntityType>
+  <EntityType Name="Genre">
+    <Key>
+      <PropertyRef Name="Id_Genre" />
+    </Key>
+    <Property Name="Id_Genre" Type="Int32" Nullable="false" />
+    <Property Name="Genre_Artwork" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Posts" Relationship="Self.FK__Post__Id_Genre__398D8EEE" FromRole="Genre" ToRole="Post" />
+  </EntityType>
+  <EntityType Name="Interact">
+    <Key>
+      <PropertyRef Name="Id_Interact" />
+    </Key>
+    <Property Name="Id_Interact" Type="Int32" Nullable="false" />
+    <Property Name="Like_Interact" Type="Int64" />
+    <Property Name="Id_User" Type="Int32" />
+    <NavigationProperty Name="User_Platform" Relationship="Self.FK__Interact__Id_Use__35BCFE0A" FromRole="Interact" ToRole="User_Platform" />
+    <NavigationProperty Name="Posts" Relationship="Self.FK__Post__Id_Interac__3B75D760" FromRole="Interact" ToRole="Post" />
+  </EntityType>
+  <EntityType Name="MoMo">
+    <Key>
+      <PropertyRef Name="Id_MoMo" />
+    </Key>
+    <Property Name="Id_MoMo" Type="Int32" Nullable="false" />
+    <Property Name="Phone_MoMo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Name_MoMo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="Id_Notification" />
+    </Key>
+    <Property Name="Id_Notification" Type="Int32" Nullable="false" />
+    <Property Name="Id_User" Type="Int32" />
+    <Property Name="Content_Noti" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Noti" Type="DateTime" Precision="0" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="User_Platform" Relationship="Self.FK__Notificat__Id_Us__5535A963" FromRole="Notification" ToRole="User_Platform" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="Id_OrderDetail" />
+    </Key>
+    <Property Name="Id_OrderDetail" Type="Int32" Nullable="false" />
+    <Property Name="Date_Order" Type="DateTime" Precision="0" />
+    <Property Name="Id_BillOrder" Type="Int32" />
+    <Property Name="Price_Order" Type="Double" />
+    <Property Name="Id_ArtworkP" Type="Int32" />
+    <Property Name="Quanity" Type="Int32" />
+    <NavigationProperty Name="BillOrder" Relationship="Self.FK__OrderDeta__Id_Bi__45F365D3" FromRole="OrderDetail" ToRole="BillOrder" />
+    <NavigationProperty Name="Post" Relationship="Self.FK__OrderDeta__Id_Ar__46E78A0C" FromRole="OrderDetail" ToRole="Post" />
+  </EntityType>
+  <EntityType Name="Participation">
+    <Key>
+      <PropertyRef Name="Id_Participation" />
+    </Key>
+    <Property Name="Id_Participation" Type="Int32" Nullable="false" />
+    <Property Name="Id_User" Type="Int32" />
+    <Property Name="Id_Event" Type="Int32" />
+    <Property Name="Registration_Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Event" Relationship="Self.FK__Participa__Id_Ev__5EBF139D" FromRole="Participation" ToRole="Event" />
+    <NavigationProperty Name="User_Platform" Relationship="Self.FK__Participa__Id_Us__5DCAEF64" FromRole="Participation" ToRole="User_Platform" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="Role" />
+    </Key>
+    <Property Name="Role" Type="Int32" Nullable="false" />
+    <Property Name="Permission1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Permission_Detail" Relationship="Self.FK__Permission__Role__267ABA7A" FromRole="Permission" ToRole="Permission_Detail" />
+    <NavigationProperty Name="User_Platform" Relationship="Self.FK__User_Platf__Role__2C3393D0" FromRole="Permission" ToRole="User_Platform" />
+  </EntityType>
+  <EntityType Name="Permission_Detail">
+    <Key>
+      <PropertyRef Name="Id_PerDetail" />
+    </Key>
+    <Property Name="Id_PerDetail" Type="Int32" Nullable="false" />
+    <Property Name="Role" Type="Int32" />
+    <Property Name="Action_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Action_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Check_Action" Type="Boolean" />
+    <NavigationProperty Name="Permission" Relationship="Self.FK__Permission__Role__267ABA7A" FromRole="Permission_Detail" ToRole="Permission" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="Id_ArtworkP" />
+    </Key>
+    <Property Name="Id_ArtworkP" Type="Int32" Nullable="false" />
+    <Property Name="Content_Artwork" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Price_Artwork" Type="Double" />
+    <Property Name="Id_Rate" Type="Int32" />
+    <Property Name="Date_Post" Type="DateTime" Precision="0" />
+    <Property Name="Picture_Artwork" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Id_Genre" Type="Int32" />
+    <Property Name="Id_User" Type="Int32" />
+    <Property Name="Id_Interact" Type="Int32" />
+    <Property Name="Quanity" Type="Int32" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK__Comment__Id_Artw__59063A47" FromRole="Post" ToRole="Comment" />
+    <NavigationProperty Name="Genre" Relationship="Self.FK__Post__Id_Genre__398D8EEE" FromRole="Post" ToRole="Genre" />
+    <NavigationProperty Name="Interact" Relationship="Self.FK__Post__Id_Interac__3B75D760" FromRole="Post" ToRole="Interact" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Id_Ar__46E78A0C" FromRole="Post" ToRole="OrderDetail" />
+    <NavigationProperty Name="RateStar" Relationship="Self.FK__Post__Id_Rate__38996AB5" FromRole="Post" ToRole="RateStar" />
+    <NavigationProperty Name="User_Platform" Relationship="Self.FK__Post__Id_User__3A81B327" FromRole="Post" ToRole="User_Platform" />
+    <NavigationProperty Name="Reports" Relationship="Self.FK__Report__Id_Artwo__403A8C7D" FromRole="Post" ToRole="Report" />
+  </EntityType>
+  <EntityType Name="RateStar">
+    <Key>
+      <PropertyRef Name="Id_Rate" />
+    </Key>
+    <Property Name="Id_Rate" Type="Int32" Nullable="false" />
+    <Property Name="Rate_Star" Type="Int32" />
+    <NavigationProperty Name="Posts" Relationship="Self.FK__Post__Id_Rate__38996AB5" FromRole="RateStar" ToRole="Post" />
+    <NavigationProperty Name="User_Platform" Relationship="Self.FK__User_Plat__Id_Ra__2D27B809" FromRole="RateStar" ToRole="User_Platform" />
+  </EntityType>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="Id_Report" />
+    </Key>
+    <Property Name="Id_Report" Type="Int32" Nullable="false" />
+    <Property Name="Id_ReportDetail" Type="Int32" />
+    <Property Name="Id_User" Type="Int32" />
+    <Property Name="Id_ArtworkP" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Post" Relationship="Self.FK__Report__Id_Artwo__403A8C7D" FromRole="Report" ToRole="Post" />
+    <NavigationProperty Name="ReportDetail" Relationship="Self.FK__Report__Id_Repor__3E52440B" FromRole="Report" ToRole="ReportDetail" />
+    <NavigationProperty Name="User_Platform" Relationship="Self.FK__Report__Id_User__3F466844" FromRole="Report" ToRole="User_Platform" />
+  </EntityType>
+  <EntityType Name="ReportDetail">
+    <Key>
+      <PropertyRef Name="Id_ReportDetail" />
+    </Key>
+    <Property Name="Id_ReportDetail" Type="Int32" Nullable="false" />
+    <Property Name="TotalReport" Type="Int32" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Reports" Relationship="Self.FK__Report__Id_Repor__3E52440B" FromRole="ReportDetail" ToRole="Report" />
+  </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="Id_Request" />
+    </Key>
+    <Property Name="Id_Request" Type="Int32" Nullable="false" />
+    <Property Name="Id_User" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="User_Platform" Relationship="Self.FK__Request__Id_User__52593CB8" FromRole="Request" ToRole="User_Platform" />
+  </EntityType>
+  <EntityType Name="Reward">
+    <Key>
+      <PropertyRef Name="Id_Reward" />
+    </Key>
+    <Property Name="Id_Reward" Type="Int32" Nullable="false" />
+    <Property Name="Name_Reward" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserRewards" Relationship="Self.FK__UserRewar__Id_Re__4CA06362" FromRole="Reward" ToRole="UserReward" />
+  </EntityType>
+  <EntityType Name="User_Platform">
+    <Key>
+      <PropertyRef Name="Id_User" />
+    </Key>
+    <Property Name="Id_User" Type="Int32" Nullable="false" />
+    <Property Name="FullName_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="Boolean" />
+    <Property Name="Dob" Type="DateTime" Precision="0" />
+    <Property Name="CCCD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address_User" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Phone_User" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Date_UserRe" Type="DateTime" Precision="0" />
+    <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="Int32" />
+    <Property Name="Picture_User" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Rate" Type="Int32" />
+    <Property Name="User_Premium" Type="Boolean" />
+    <NavigationProperty Name="BillOrders" Relationship="Self.FK__BillOrder__Id_Us__4316F928" FromRole="User_Platform" ToRole="BillOrder" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK__Comment__Id_User__5812160E" FromRole="User_Platform" ToRole="Comment" />
+    <NavigationProperty Name="Follows" Relationship="Self.FK__Follow__Id_User__4F7CD00D" FromRole="User_Platform" ToRole="Follow" />
+    <NavigationProperty Name="Interacts" Relationship="Self.FK__Interact__Id_Use__35BCFE0A" FromRole="User_Platform" ToRole="Interact" />
+    <NavigationProperty Name="Notifications" Relationship="Self.FK__Notificat__Id_Us__5535A963" FromRole="User_Platform" ToRole="Notification" />
+    <NavigationProperty Name="Participations" Relationship="Self.FK__Participa__Id_Us__5DCAEF64" FromRole="User_Platform" ToRole="Participation" />
+    <NavigationProperty Name="Permission" Relationship="Self.FK__User_Platf__Role__2C3393D0" FromRole="User_Platform" ToRole="Permission" />
+    <NavigationProperty Name="Posts" Relationship="Self.FK__Post__Id_User__3A81B327" FromRole="User_Platform" ToRole="Post" />
+    <NavigationProperty Name="RateStar" Relationship="Self.FK__User_Plat__Id_Ra__2D27B809" FromRole="User_Platform" ToRole="RateStar" />
+    <NavigationProperty Name="Reports" Relationship="Self.FK__Report__Id_User__3F466844" FromRole="User_Platform" ToRole="Report" />
+    <NavigationProperty Name="Requests" Relationship="Self.FK__Request__Id_User__52593CB8" FromRole="User_Platform" ToRole="Request" />
+    <NavigationProperty Name="UserRewards" Relationship="Self.FK__UserRewar__Id_Us__4BAC3F29" FromRole="User_Platform" ToRole="UserReward" />
+  </EntityType>
+  <EntityType Name="UserReward">
+    <Key>
+      <PropertyRef Name="Id_UserReward" />
+    </Key>
+    <Property Name="Id_UserReward" Type="Int32" Nullable="false" />
+    <Property Name="Id_User" Type="Int32" />
+    <Property Name="Id_Reward" Type="Int32" />
+    <Property Name="Date_UserReward" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Reward" Relationship="Self.FK__UserRewar__Id_Re__4CA06362" FromRole="UserReward" ToRole="Reward" />
+    <NavigationProperty Name="User_Platform" Relationship="Self.FK__UserRewar__Id_Us__4BAC3F29" FromRole="UserReward" ToRole="User_Platform" />
+  </EntityType>
+  <Association Name="FK__BillOrder__Id_Us__4316F928">
+    <End Role="User_Platform" Type="Self.User_Platform" Multiplicity="0..1" />
+    <End Role="BillOrder" Type="Self.BillOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Platform">
+        <PropertyRef Name="Id_User" />
+      </Principal>
+      <Dependent Role="BillOrder">
+        <PropertyRef Name="Id_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Id_Bi__45F365D3">
+    <End Role="BillOrder" Type="Self.BillOrder" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BillOrder">
+        <PropertyRef Name="Id_BillOrder" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="Id_BillOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comment__Id_Artw__59063A47">
+    <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="Id_ArtworkP" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="Id_ArtworkP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comment__Id_User__5812160E">
+    <End Role="User_Platform" Type="Self.User_Platform" Multiplicity="0..1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Platform">
+        <PropertyRef Name="Id_User" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="Id_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Participa__Id_Ev__5EBF139D">
+    <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
+    <End Role="Participation" Type="Self.Participation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id_Event" />
+      </Principal>
+      <Dependent Role="Participation">
+        <PropertyRef Name="Id_Event" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Follow__Id_User__4F7CD00D">
+    <End Role="User_Platform" Type="Self.User_Platform" Multiplicity="0..1" />
+    <End Role="Follow" Type="Self.Follow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Platform">
+        <PropertyRef Name="Id_User" />
+      </Principal>
+      <Dependent Role="Follow">
+        <PropertyRef Name="Id_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Post__Id_Genre__398D8EEE">
+    <End Role="Genre" Type="Self.Genre" Multiplicity="0..1" />
+    <End Role="Post" Type="Self.Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genre">
+        <PropertyRef Name="Id_Genre" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="Id_Genre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Interact__Id_Use__35BCFE0A">
+    <End Role="User_Platform" Type="Self.User_Platform" Multiplicity="0..1" />
+    <End Role="Interact" Type="Self.Interact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Platform">
+        <PropertyRef Name="Id_User" />
+      </Principal>
+      <Dependent Role="Interact">
+        <PropertyRef Name="Id_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Post__Id_Interac__3B75D760">
+    <End Role="Interact" Type="Self.Interact" Multiplicity="0..1" />
+    <End Role="Post" Type="Self.Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Interact">
+        <PropertyRef Name="Id_Interact" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="Id_Interact" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__Id_Us__5535A963">
+    <End Role="User_Platform" Type="Self.User_Platform" Multiplicity="0..1" />
+    <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Platform">
+        <PropertyRef Name="Id_User" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="Id_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Id_Ar__46E78A0C">
+    <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="Id_ArtworkP" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="Id_ArtworkP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Participa__Id_Us__5DCAEF64">
+    <End Role="User_Platform" Type="Self.User_Platform" Multiplicity="0..1" />
+    <End Role="Participation" Type="Self.Participation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Platform">
+        <PropertyRef Name="Id_User" />
+      </Principal>
+      <Dependent Role="Participation">
+        <PropertyRef Name="Id_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Permission__Role__267ABA7A">
+    <End Role="Permission" Type="Self.Permission" Multiplicity="0..1" />
+    <End Role="Permission_Detail" Type="Self.Permission_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permission">
+        <PropertyRef Name="Role" />
+      </Principal>
+      <Dependent Role="Permission_Detail">
+        <PropertyRef Name="Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User_Platf__Role__2C3393D0">
+    <End Role="Permission" Type="Self.Permission" Multiplicity="0..1" />
+    <End Role="User_Platform" Type="Self.User_Platform" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permission">
+        <PropertyRef Name="Role" />
+      </Principal>
+      <Dependent Role="User_Platform">
+        <PropertyRef Name="Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Post__Id_Rate__38996AB5">
+    <End Role="RateStar" Type="Self.RateStar" Multiplicity="0..1" />
+    <End Role="Post" Type="Self.Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RateStar">
+        <PropertyRef Name="Id_Rate" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="Id_Rate" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Post__Id_User__3A81B327">
+    <End Role="User_Platform" Type="Self.User_Platform" Multiplicity="0..1" />
+    <End Role="Post" Type="Self.Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Platform">
+        <PropertyRef Name="Id_User" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="Id_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Report__Id_Artwo__403A8C7D">
+    <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+    <End Role="Report" Type="Self.Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="Id_ArtworkP" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="Id_ArtworkP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User_Plat__Id_Ra__2D27B809">
+    <End Role="RateStar" Type="Self.RateStar" Multiplicity="0..1" />
+    <End Role="User_Platform" Type="Self.User_Platform" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RateStar">
+        <PropertyRef Name="Id_Rate" />
+      </Principal>
+      <Dependent Role="User_Platform">
+        <PropertyRef Name="Id_Rate" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Report__Id_Repor__3E52440B">
+    <End Role="ReportDetail" Type="Self.ReportDetail" Multiplicity="0..1" />
+    <End Role="Report" Type="Self.Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReportDetail">
+        <PropertyRef Name="Id_ReportDetail" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="Id_ReportDetail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Report__Id_User__3F466844">
+    <End Role="User_Platform" Type="Self.User_Platform" Multiplicity="0..1" />
+    <End Role="Report" Type="Self.Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Platform">
+        <PropertyRef Name="Id_User" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="Id_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Request__Id_User__52593CB8">
+    <End Role="User_Platform" Type="Self.User_Platform" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Platform">
+        <PropertyRef Name="Id_User" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="Id_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRewar__Id_Re__4CA06362">
+    <End Role="Reward" Type="Self.Reward" Multiplicity="0..1" />
+    <End Role="UserReward" Type="Self.UserReward" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reward">
+        <PropertyRef Name="Id_Reward" />
+      </Principal>
+      <Dependent Role="UserReward">
+        <PropertyRef Name="Id_Reward" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRewar__Id_Us__4BAC3F29">
+    <End Role="User_Platform" Type="Self.User_Platform" Multiplicity="0..1" />
+    <End Role="UserReward" Type="Self.UserReward" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Platform">
+        <PropertyRef Name="Id_User" />
+      </Principal>
+      <Dependent Role="UserReward">
+        <PropertyRef Name="Id_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Artwork_SharingEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BillOrders" EntityType="Self.BillOrder" />
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <EntitySet Name="Events" EntityType="Self.Event" />
+    <EntitySet Name="Follows" EntityType="Self.Follow" />
+    <EntitySet Name="Genres" EntityType="Self.Genre" />
+    <EntitySet Name="Interacts" EntityType="Self.Interact" />
+    <EntitySet Name="MoMoes" EntityType="Self.MoMo" />
+    <EntitySet Name="Notifications" EntityType="Self.Notification" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="Participations" EntityType="Self.Participation" />
+    <EntitySet Name="Permissions" EntityType="Self.Permission" />
+    <EntitySet Name="Permission_Detail" EntityType="Self.Permission_Detail" />
+    <EntitySet Name="Posts" EntityType="Self.Post" />
+    <EntitySet Name="RateStars" EntityType="Self.RateStar" />
+    <EntitySet Name="Reports" EntityType="Self.Report" />
+    <EntitySet Name="ReportDetails" EntityType="Self.ReportDetail" />
+    <EntitySet Name="Requests" EntityType="Self.Request" />
+    <EntitySet Name="Rewards" EntityType="Self.Reward" />
+    <EntitySet Name="User_Platform" EntityType="Self.User_Platform" />
+    <EntitySet Name="UserRewards" EntityType="Self.UserReward" />
+    <AssociationSet Name="FK__BillOrder__Id_Us__4316F928" Association="Self.FK__BillOrder__Id_Us__4316F928">
+      <End Role="User_Platform" EntitySet="User_Platform" />
+      <End Role="BillOrder" EntitySet="BillOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Id_Bi__45F365D3" Association="Self.FK__OrderDeta__Id_Bi__45F365D3">
+      <End Role="BillOrder" EntitySet="BillOrders" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comment__Id_Artw__59063A47" Association="Self.FK__Comment__Id_Artw__59063A47">
+      <End Role="Post" EntitySet="Posts" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comment__Id_User__5812160E" Association="Self.FK__Comment__Id_User__5812160E">
+      <End Role="User_Platform" EntitySet="User_Platform" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Participa__Id_Ev__5EBF139D" Association="Self.FK__Participa__Id_Ev__5EBF139D">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Participation" EntitySet="Participations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Follow__Id_User__4F7CD00D" Association="Self.FK__Follow__Id_User__4F7CD00D">
+      <End Role="User_Platform" EntitySet="User_Platform" />
+      <End Role="Follow" EntitySet="Follows" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Post__Id_Genre__398D8EEE" Association="Self.FK__Post__Id_Genre__398D8EEE">
+      <End Role="Genre" EntitySet="Genres" />
+      <End Role="Post" EntitySet="Posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Interact__Id_Use__35BCFE0A" Association="Self.FK__Interact__Id_Use__35BCFE0A">
+      <End Role="User_Platform" EntitySet="User_Platform" />
+      <End Role="Interact" EntitySet="Interacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Post__Id_Interac__3B75D760" Association="Self.FK__Post__Id_Interac__3B75D760">
+      <End Role="Interact" EntitySet="Interacts" />
+      <End Role="Post" EntitySet="Posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__Id_Us__5535A963" Association="Self.FK__Notificat__Id_Us__5535A963">
+      <End Role="User_Platform" EntitySet="User_Platform" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Id_Ar__46E78A0C" Association="Self.FK__OrderDeta__Id_Ar__46E78A0C">
+      <End Role="Post" EntitySet="Posts" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Participa__Id_Us__5DCAEF64" Association="Self.FK__Participa__Id_Us__5DCAEF64">
+      <End Role="User_Platform" EntitySet="User_Platform" />
+      <End Role="Participation" EntitySet="Participations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Permission__Role__267ABA7A" Association="Self.FK__Permission__Role__267ABA7A">
+      <End Role="Permission" EntitySet="Permissions" />
+      <End Role="Permission_Detail" EntitySet="Permission_Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User_Platf__Role__2C3393D0" Association="Self.FK__User_Platf__Role__2C3393D0">
+      <End Role="Permission" EntitySet="Permissions" />
+      <End Role="User_Platform" EntitySet="User_Platform" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Post__Id_Rate__38996AB5" Association="Self.FK__Post__Id_Rate__38996AB5">
+      <End Role="RateStar" EntitySet="RateStars" />
+      <End Role="Post" EntitySet="Posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Post__Id_User__3A81B327" Association="Self.FK__Post__Id_User__3A81B327">
+      <End Role="User_Platform" EntitySet="User_Platform" />
+      <End Role="Post" EntitySet="Posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Report__Id_Artwo__403A8C7D" Association="Self.FK__Report__Id_Artwo__403A8C7D">
+      <End Role="Post" EntitySet="Posts" />
+      <End Role="Report" EntitySet="Reports" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User_Plat__Id_Ra__2D27B809" Association="Self.FK__User_Plat__Id_Ra__2D27B809">
+      <End Role="RateStar" EntitySet="RateStars" />
+      <End Role="User_Platform" EntitySet="User_Platform" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Report__Id_Repor__3E52440B" Association="Self.FK__Report__Id_Repor__3E52440B">
+      <End Role="ReportDetail" EntitySet="ReportDetails" />
+      <End Role="Report" EntitySet="Reports" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Report__Id_User__3F466844" Association="Self.FK__Report__Id_User__3F466844">
+      <End Role="User_Platform" EntitySet="User_Platform" />
+      <End Role="Report" EntitySet="Reports" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Request__Id_User__52593CB8" Association="Self.FK__Request__Id_User__52593CB8">
+      <End Role="User_Platform" EntitySet="User_Platform" />
+      <End Role="Request" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRewar__Id_Re__4CA06362" Association="Self.FK__UserRewar__Id_Re__4CA06362">
+      <End Role="Reward" EntitySet="Rewards" />
+      <End Role="UserReward" EntitySet="UserRewards" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRewar__Id_Us__4BAC3F29" Association="Self.FK__UserRewar__Id_Us__4BAC3F29">
+      <End Role="User_Platform" EntitySet="User_Platform" />
+      <End Role="UserReward" EntitySet="UserRewards" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

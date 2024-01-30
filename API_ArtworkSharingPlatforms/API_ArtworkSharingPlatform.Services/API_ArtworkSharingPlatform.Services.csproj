@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\API_ArtworkSharingPlatform.Libary\API_ArtworkSharingPlatform.Libary.csproj" />
+    <ProjectReference Include="..\API_ArtworkSharingPlatform.Repository\API_ArtworkSharingPlatform.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
