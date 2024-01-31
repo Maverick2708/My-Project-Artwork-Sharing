@@ -2,6 +2,7 @@
 using API_ArtworkSharingPlatform.Repository.Models;
 using API_ArtworkSharingPlatform.Services.Interfaces;
 using API_ArtworkSharingPlatform.Services.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +10,7 @@ namespace API_ArtworkSharingPlatforms.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
     public class ReportController : Controller
     {
         private readonly IReportService _reportService;

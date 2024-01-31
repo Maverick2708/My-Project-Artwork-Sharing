@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace Artwork_Sharing_Platform.Areas.SuperAdmin.Controllers
+namespace Artwork_Sharing_Platform.Areas.Audience.Controllers
 {
     public class ManageController : Controller
     {
@@ -14,7 +14,7 @@ namespace Artwork_Sharing_Platform.Areas.SuperAdmin.Controllers
         {
             return View();
         }
-       public ActionResult Profile_Admin()
+       public ActionResult Profile()
         {
             return View();
         }

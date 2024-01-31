@@ -11550,6 +11550,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "API_ArtworkSharingPlatform.Services >= 1.0.0",
+      "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.26",
       "Microsoft.AspNetCore.Cors >= 2.2.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.26",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.26",
@@ -11606,6 +11607,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "target": "Package",
+            "version": "[6.0.26, )"
+          },
           "Microsoft.AspNetCore.Cors": {
             "target": "Package",
             "version": "[2.2.0, )"

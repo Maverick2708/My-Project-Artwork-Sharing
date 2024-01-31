@@ -46,10 +46,12 @@ builder.Services.AddSwaggerGen(opt =>
                     Id="Bearer"
                 }
             },
-            Array.Empty<string>()
+            new string[]{}
+           // Array.Empty<string>()
         }
     });
 });
+
 
 builder.Services
     .AddIdentity<Person, IdentityRole>()
@@ -76,6 +78,8 @@ builder.Services.AddCors(options =>
         });
 });
 
+
+
 // Add Authentication and JwtBearer
 builder.Services
     .AddAuthentication(options =>
@@ -88,7 +92,7 @@ builder.Services
     {
         options.SaveToken = true;
         options.RequireHttpsMetadata = false;
-        options.TokenValidationParameters = new TokenValidationParameters()
+        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
         {
             ValidateIssuer = true,
             ValidateAudience = true,
@@ -97,6 +101,7 @@ builder.Services
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:SecretKey"]))
         };
     });
+
 
 // add automapper
 builder.Services.AddAutoMapper(typeof(AutomapperProfile).Assembly);
@@ -112,7 +117,7 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "LM Online Information System");
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", " Information System");
 });
 
 
@@ -120,7 +125,7 @@ app.UseSwaggerUI(c =>
 app.UseCors("app-cors");
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

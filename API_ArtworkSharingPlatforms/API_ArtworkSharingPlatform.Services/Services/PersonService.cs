@@ -20,5 +20,24 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _personRepository.SignUpAccountAsync(signUpModel);
         }
+        public async Task<AuthenticationResponseModel> SignInAccountAsync(SignInModel signInModel)
+        {
+            var result = await _personRepository.GetPersonByEmail(signInModel.AccountEmail);
+            if (result != null)
+            {
+                return await _personRepository.SignInAccountAsync(signInModel);
+            }
+            return new AuthenticationResponseModel
+            {
+                Status = false,
+                Message = "Your Account not valid! Please Sign Up to Connect",
+                JwtToken = null,
+                Expired = null
+            };
+        }
+        public async Task<PersonModel> GetPersonByEmail(string email)
+        {
+            return await _personRepository.GetPersonByEmail(email);
+        }
     }
 }

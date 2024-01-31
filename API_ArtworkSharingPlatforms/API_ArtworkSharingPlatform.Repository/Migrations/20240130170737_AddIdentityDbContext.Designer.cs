@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_ArtworkSharingPlatform.Repository.Migrations
 {
     [DbContext(typeof(Artwork_SharingContext))]
-    [Migration("20240130093023_AddIdentityDBContext")]
-    partial class AddIdentityDBContext
+    [Migration("20240130170737_AddIdentityDbContext")]
+    partial class AddIdentityDbContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -349,6 +349,9 @@ namespace API_ArtworkSharingPlatform.Repository.Migrations
 
                     b.Property<string>("RefreshToken")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RefreshTokenExpiryTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");

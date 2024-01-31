@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API_ArtworkSharingPlatform.Repository.Migrations
 {
-    public partial class AddIdentityDBContext : Migration
+    public partial class AddIdentityDbContext : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,6 +64,7 @@ namespace API_ArtworkSharingPlatform.Repository.Migrations
                     DateUserRe = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Avatar = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RefreshTokenExpiryTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),

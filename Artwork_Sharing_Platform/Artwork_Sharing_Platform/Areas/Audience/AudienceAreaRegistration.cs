@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace Artwork_Sharing_Platform.Areas.SuperAdmin
+namespace Artwork_Sharing_Platform.Areas.Audience
 {
-    public class SuperAdminAreaRegistration : AreaRegistration 
+    public class AudienceAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "SuperAdmin";
+                return "Audience";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "SuperAdmin_default",
-                "SuperAdmin/{controller}/{action}/{id}",
+                "Audience_default",
+                "Audience/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

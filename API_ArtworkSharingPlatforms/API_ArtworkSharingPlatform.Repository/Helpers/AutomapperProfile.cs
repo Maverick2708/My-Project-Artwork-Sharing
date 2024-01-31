@@ -14,7 +14,7 @@ namespace API_ArtworkSharingPlatform.Repository.Helpers
         public AutomapperProfile() 
         {
           CreateMap<AddArtwork,Artwork>().ReverseMap();
-          
+          CreateMap<PersonModel,Person>().ReverseMap();
         }
     }
 }
