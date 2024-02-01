@@ -25,9 +25,9 @@ Tìm kiếm và duyệt qua danh sách các bức tranh được cung cấp, ch�
 
 ## 4. Thành viên
 
-- Phạm Quang Khải - SE161804:
-- Lê Uyên Trâm - SE161815: 
-- Hứa Thượng Hảo - SE161840: 
-- Đoàn Ngọc Phi - SE161797: 
-- Phạm Võ Minh Tâm - SE161816: 
-- Vũ Thái Anh - SE161164: 
+- Phạm Quang Khải - SE161804: BE
+- Lê Uyên Trâm - SE161815: BE
+- Hứa Thượng Hảo - SE161840: FE
+- Đoàn Ngọc Phi - SE161797: FE
+- Phạm Võ Minh Tâm - SE161816: BE 
+- Vũ Thái Anh - SE161164: FE
