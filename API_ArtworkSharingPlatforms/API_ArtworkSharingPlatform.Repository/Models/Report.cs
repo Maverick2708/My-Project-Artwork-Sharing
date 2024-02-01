@@ -7,7 +7,7 @@ namespace API_ArtworkSharingPlatform.Repository.Models
     {
         public int ReportId { get; set; }
         public int? ArtworkPId { get; set; }
-        public int? UserId { get; set; }
+        public string? UserId { get; set; }
         public string? Description { get; set; }
         public bool? Status { get; set; }
 

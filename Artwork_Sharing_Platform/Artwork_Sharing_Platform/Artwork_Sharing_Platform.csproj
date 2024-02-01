@@ -130,7 +130,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APIController\LoginController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -163,90 +162,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Areas\SuperAdmin\Controllers\ManageController.cs" />
-    <Compile Include="Areas\SuperAdmin\SuperAdminAreaRegistration.cs" />
+    <Compile Include="Areas\Audience\Controllers\ManageController.cs" />
+    <Compile Include="Areas\Audience\AudienceAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BillOrder.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Comment.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Event.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Follow.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Genre.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Interact.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model_ArkworkSharing.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model_ArkworkSharing.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model_ArkworkSharing.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model_ArkworkSharing.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model_ArkworkSharing.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MoMo.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Notification.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OrderDetail.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Participation.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Permission.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Permission_Detail.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Post.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RateStar.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Report.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ReportDetail.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Request.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Reward.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UserPlatform.cs" />
-    <Compile Include="Models\UserReward.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\User_Platform.cs">
-      <DependentUpon>Model_ArkworkSharing.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\YourDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -339,16 +261,6 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Models\Model_ArkworkSharing.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model_ArkworkSharing.Context.cs</LastGenOutput>
-      <DependentUpon>Model_ArkworkSharing.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\Model_ArkworkSharing.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model_ArkworkSharing.edmx</DependentUpon>
-      <LastGenOutput>Model_ArkworkSharing.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -374,7 +286,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="Areas\SuperAdmin\Views\web.config" />
+    <Content Include="Areas\Audience\Views\web.config" />
     <Content Include="Assets\Login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
     <Content Include="Assets\Login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
     <Content Include="Assets\Login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
@@ -443,16 +355,9 @@
     <Content Include="Assets\template-pintereso-bootstrap-html-master\src\assets\scss\theme.scss" />
     <Content Include="Assets\template-pintereso-bootstrap-html-master\src\assets\scss\_bootstrap.scss" />
     <Content Include="Assets\template-pintereso-bootstrap-html-master\src\assets\scss\_custom.scss" />
-    <EntityDeploy Include="Models\Model_ArkworkSharing.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model_ArkworkSharing.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model_ArkworkSharing.edmx.diagram">
-      <DependentUpon>Model_ArkworkSharing.edmx</DependentUpon>
-    </Content>
-    <Content Include="Areas\SuperAdmin\Views\Manage\Manage.cshtml" />
-    <Content Include="Areas\SuperAdmin\Views\Manage\Profile_Admin.cshtml" />
-    <Content Include="Areas\SuperAdmin\Views\Manage\Manage_Post.cshtml" />
+    <Content Include="Areas\Audience\Views\Manage\Manage.cshtml" />
+    <Content Include="Areas\Audience\Views\Manage\Profile.cshtml" />
+    <Content Include="Areas\Audience\Views\Manage\Manage_Post.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -474,15 +379,15 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\Login2.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\Navigation.cshtml" />
     <Content Include="Views\Shared\defaultAuthor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\SuperAdmin\Data\" />
-    <Folder Include="Areas\SuperAdmin\Views\Shared\" />
+    <Folder Include="Areas\Audience\Data\" />
+    <Folder Include="Areas\Audience\Views\Shared\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\bootstrap.min.js.map" />

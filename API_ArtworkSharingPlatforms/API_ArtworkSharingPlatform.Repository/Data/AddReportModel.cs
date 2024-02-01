@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace API_ArtworkSharingPlatform.Repository.Data
 {
-    internal class AddReportModel
+    public class AddReportModel
     {
+        public int ReportId { get; set; }
+        public int? ArtworkPId { get; set; }
+        public int? UserId { get; set; }
+        public string? Description { get; set; }
     }
 }

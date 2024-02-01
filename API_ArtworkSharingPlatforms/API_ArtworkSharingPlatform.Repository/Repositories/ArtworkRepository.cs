@@ -2,6 +2,7 @@
 using API_ArtworkSharingPlatform.Repository.Interfaces;
 using API_ArtworkSharingPlatform.Repository.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,41 +17,44 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
     public class ArtworkRepository : IArtworkRepository
     {
         private readonly Artwork_SharingContext _context;
-       
-       // private readonly IMapper _mapper;
+        private readonly UserManager<Person> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public ArtworkRepository(Artwork_SharingContext context)
+        // private readonly IMapper _mapper;
+
+        public ArtworkRepository(Artwork_SharingContext context, UserManager<Person> userManager, RoleManager<IdentityRole> roleManager)
         {
-           _context = context;
-          
+            this._context = context;
+            this._userManager = userManager;
+            this._roleManager = roleManager;
+
         }
         public async Task<ResponeModel> AddArtwork(AddArtwork addArtwork)
         {
-            // throw new NotImplementedException();
-            try
-            {
+            //try
+            //{
                 var artwork = new Artwork
                 {
                     ArtworkPId = addArtwork.ArtworkPId,
                     ContentArtwork = addArtwork.ContentArtwork,
                     PriceArtwork = addArtwork.PriceArtwork,
-                    DatePost = addArtwork.DatePost,
+                    DatePost = DateTime.Now,
                     PictureArtwork = addArtwork.PictureArtwork,
                     UserId = addArtwork.UserId,
                     GenreId = addArtwork.GenreId,
                     Quanity = addArtwork.Quanity,
-                    Status = addArtwork.Status,
+                    Status = true
                 };
                 _context.Artworks.Add(artwork);
                 await _context.SaveChangesAsync();
-                
+
                 return new ResponeModel { Status = "Success", Message = "Added artwork successfully", DataObject = artwork };
 
-            }catch (Exception ex)
-            {
-                Console.WriteLine($"Exception: {ex.Message}");
-                return new ResponeModel {Status ="Error",Message= "An error occurred while adding the artwork" };
-            }
+            //}catch (Exception ex)
+            //{
+            //    Console.WriteLine($"Exception: {ex.Message}");
+            //    return new ResponeModel{ Status ="Error",Message= "An error occurred while adding the artwork" };
+            //}
         }
         public async Task<IEnumerable<Artwork>> GetAllArtwork()
         {
@@ -60,10 +64,10 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
         {
             var Artist = await _context.People
                   .Where(c=>c.FullName.Trim().ToLower().IndexOf(artist.Trim().ToLower()) != -1)
-                  .Select(u=> u.UserId).FirstOrDefaultAsync();
+                  .Select(u=> u.Id).FirstOrDefaultAsync();
 
              var artworkByArtis = await _context.Artworks
-                       .Where(c =>c.UserId==Artist).ToListAsync();
+                       .Where(c =>c.UserId == Artist.ToString()).ToListAsync();
 
              return artworkByArtis;
             

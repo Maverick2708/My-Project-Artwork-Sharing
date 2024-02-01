@@ -15,7 +15,7 @@
         </ul>
         <ul class="navbar-nav ml-auto align-items-center">
 
-            <li class="nav-item" @(ViewBag.Permission == true ? "" : "style='display:none;'") > 
+            <li class="nav-item"  > 
                 <a class="nav-link" href="~/SuperAdmin/Manage/Manage">
                 Home</a>
             </li>
@@ -30,15 +30,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="~/SuperAdmin/Manage/Profile_Admin"><img class="rounded-circle mr-2" src="~/Assets/template-pintereso-bootstrap-html-master/docs/assets/img/av.png" width="30">
-                <span class="align-middle">@{ 
-
-                    var user = HttpContext.Current.Session["username"] as string;
-                    if(string.IsNullOrEmpty(user))
-                    {
-                        Response.Redirect("~/home/Login");
-                        return;
-                    }
-                } @user</span></a>
+                <span class="align-middle"> user</span></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

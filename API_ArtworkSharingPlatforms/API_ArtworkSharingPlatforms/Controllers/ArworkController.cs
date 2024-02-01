@@ -3,11 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using API_ArtworkSharingPlatform.Services.Interfaces;
 using API_ArtworkSharingPlatform.Repository.Data;
 using API_ArtworkSharingPlatform.Repository.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace API_ArtworkSharingPlatforms.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
     public class ArworkController : Controller
     {
         private readonly IArtworkService _artworkservice;

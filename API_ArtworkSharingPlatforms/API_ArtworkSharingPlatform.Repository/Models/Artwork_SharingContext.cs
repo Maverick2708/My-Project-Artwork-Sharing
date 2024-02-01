@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Principal;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace API_ArtworkSharingPlatform.Repository.Models
 {
-    public partial class Artwork_SharingContext : DbContext
+    public partial class Artwork_SharingContext : IdentityDbContext<Person>
     {
         public Artwork_SharingContext()
         {
@@ -24,33 +26,31 @@ namespace API_ArtworkSharingPlatform.Repository.Models
         public virtual DbSet<Notification> Notifications { get; set; } = null!;
         public virtual DbSet<Order> Orders { get; set; } = null!;
         public virtual DbSet<OrderDetail> OrderDetails { get; set; } = null!;
-        public virtual DbSet<Permission> Permissions { get; set; } = null!;
         public virtual DbSet<Person> People { get; set; } = null!;
         public virtual DbSet<RateStar> RateStars { get; set; } = null!;
         public virtual DbSet<Report> Reports { get; set; } = null!;
         public virtual DbSet<Request> Requests { get; set; } = null!;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=LAPTOP-7AAE1FUD\\MAVERICK;Initial Catalog=Artwork_Sharing;User ID=sa;Password=12345");
-            }
-        }
+//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//        {
+//            if (!optionsBuilder.IsConfigured)
+//            {
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+//                optionsBuilder.UseSqlServer("Data Source=LAPTOP-7AAE1FUD\\MAVERICK;Initial Catalog=Artwork_Sharing;User ID=sa;Password=12345");
+//            }
+//        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Artwork>(entity =>
             {
+                
                 entity.HasKey(e => e.ArtworkPId)
                     .HasName("PK__Post__551479477F27FEF3");
 
                 entity.ToTable("Artwork");
 
-                entity.Property(e => e.ArtworkPId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ArtworkP_ID");
 
                 entity.Property(e => e.ContentArtwork)
                     .HasMaxLength(300)
@@ -81,11 +81,9 @@ namespace API_ArtworkSharingPlatform.Repository.Models
 
             modelBuilder.Entity<Comment>(entity =>
             {
+                entity.HasKey(e => e.CommentId);
                 entity.ToTable("Comment");
 
-                entity.Property(e => e.CommentId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("Comment_ID");
 
                 entity.Property(e => e.ArtworkPId).HasColumnName("ArtworkP_ID");
 
@@ -112,11 +110,8 @@ namespace API_ArtworkSharingPlatform.Repository.Models
 
             modelBuilder.Entity<Follow>(entity =>
             {
+                entity.HasKey(e => e.FollowId);
                 entity.ToTable("Follow");
-
-                entity.Property(e => e.FollowId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("Follow_ID");
 
                 entity.Property(e => e.DateFollow)
                     .HasColumnType("date")
@@ -134,11 +129,8 @@ namespace API_ArtworkSharingPlatform.Repository.Models
 
             modelBuilder.Entity<Genre>(entity =>
             {
+                entity.HasKey(e => e.GenreId);
                 entity.ToTable("Genre");
-
-                entity.Property(e => e.GenreId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("Genre_ID");
 
                 entity.Property(e => e.Description).HasMaxLength(50);
 
@@ -149,9 +141,7 @@ namespace API_ArtworkSharingPlatform.Repository.Models
 
             modelBuilder.Entity<MoMo>(entity =>
             {
-                entity.HasKey(e => e.PhoneMoMo)
-                    .HasName("PK__MoMo__E0AB6D7A9940248B");
-
+                entity.HasKey(e => e.MomoId);                 
                 entity.ToTable("MoMo");
 
                 entity.Property(e => e.PhoneMoMo)
@@ -167,11 +157,8 @@ namespace API_ArtworkSharingPlatform.Repository.Models
 
             modelBuilder.Entity<Notification>(entity =>
             {
+                entity.HasKey(e => e.NotificationId);
                 entity.ToTable("Notification");
-
-                entity.Property(e => e.NotificationId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("Notification_ID");
 
                 entity.Property(e => e.ContentNoti)
                     .HasMaxLength(250)
@@ -196,10 +183,6 @@ namespace API_ArtworkSharingPlatform.Repository.Models
 
                 entity.ToTable("Order");
 
-                entity.Property(e => e.BillOrderId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("BillOrder_ID");
-
                 entity.Property(e => e.TotalBill).HasColumnName("Total_Bill");
 
                 entity.Property(e => e.UserId).HasColumnName("User_ID");
@@ -212,11 +195,8 @@ namespace API_ArtworkSharingPlatform.Repository.Models
 
             modelBuilder.Entity<OrderDetail>(entity =>
             {
+                entity.HasKey(e => e.OrderDetailId);
                 entity.ToTable("OrderDetail");
-
-                entity.Property(e => e.OrderDetailId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("OrderDetail_ID");
 
                 entity.Property(e => e.ArtworkPId).HasColumnName("ArtworkP_ID");
 
@@ -239,64 +219,14 @@ namespace API_ArtworkSharingPlatform.Repository.Models
                     .HasConstraintName("FK__OrderDeta__BillO__47DBAE45");
             });
 
-            modelBuilder.Entity<Permission>(entity =>
-            {
-                entity.HasKey(e => e.Role)
-                    .HasName("PK__Permissi__DA15413FE9679179");
-
-                entity.ToTable("Permission");
-
-                entity.Property(e => e.Role).ValueGeneratedNever();
-
-                entity.Property(e => e.Permission1)
-                    .HasMaxLength(30)
-                    .IsUnicode(false)
-                    .HasColumnName("Permission");
-            });
-
+            modelBuilder.Entity<Person>().ToTable("Person");
             modelBuilder.Entity<Person>(entity =>
             {
-                entity.HasKey(e => e.UserId)
-                    .HasName("PK__User_Pla__206D91900B048026");
-
                 entity.ToTable("Person");
 
-                entity.Property(e => e.UserId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("User_ID");
-
                 entity.Property(e => e.Address).HasMaxLength(250);
-
-                entity.Property(e => e.Avatar).IsUnicode(false);
-
-                entity.Property(e => e.DateUserRe)
-                    .HasColumnType("date")
-                    .HasColumnName("Date_UserRe");
-
-                entity.Property(e => e.Dob).HasColumnType("date");
-
-                entity.Property(e => e.Email)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.FullName).HasMaxLength(50);
-
-                entity.Property(e => e.Password)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Phone)
-                    .HasMaxLength(12)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Username)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.RoleNavigation)
-                    .WithMany(p => p.People)
-                    .HasForeignKey(d => d.Role)
-                    .HasConstraintName("FK__User_Platf__Role__300424B4");
+                entity.Property(e => e.FullName).HasMaxLength(150);
+                
             });
 
             modelBuilder.Entity<RateStar>(entity =>
@@ -305,10 +235,6 @@ namespace API_ArtworkSharingPlatform.Repository.Models
                     .HasName("PK__RateStar__30BADA523D8F2DF0");
 
                 entity.ToTable("RateStar");
-
-                entity.Property(e => e.RateId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("Rate_ID");
 
                 entity.Property(e => e.ArtworkPId).HasColumnName("ArtworkP_ID");
 
@@ -327,11 +253,8 @@ namespace API_ArtworkSharingPlatform.Repository.Models
 
             modelBuilder.Entity<Report>(entity =>
             {
+                entity.HasKey(e => e.ReportId);
                 entity.ToTable("Report");
-
-                entity.Property(e => e.ReportId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("Report_ID");
 
                 entity.Property(e => e.ArtworkPId).HasColumnName("ArtworkP_ID");
 
@@ -352,11 +275,8 @@ namespace API_ArtworkSharingPlatform.Repository.Models
 
             modelBuilder.Entity<Request>(entity =>
             {
+                entity.HasKey(e => e.RequestId);
                 entity.ToTable("Request");
-
-                entity.Property(e => e.RequestId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("Request_ID");
 
                 entity.Property(e => e.Description).HasMaxLength(250);
 
@@ -368,7 +288,7 @@ namespace API_ArtworkSharingPlatform.Repository.Models
                     .HasConstraintName("FK__Request__User_ID__4E88ABD4");
             });
 
-            OnModelCreatingPartial(modelBuilder);
+            //OnModelCreatingPartial(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
