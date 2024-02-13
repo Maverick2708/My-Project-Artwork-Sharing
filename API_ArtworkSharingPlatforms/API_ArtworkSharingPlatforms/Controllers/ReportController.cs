@@ -35,7 +35,7 @@ namespace API_ArtworkSharingPlatforms.Controllers
             var report = await _reportService.GetAllReport();
             return Ok(report);
         }
-        [HttpPost("UpdateReport")]
+        [HttpPut("UpdateReport")]
         public async Task<IActionResult> UpdateReport(int reportId)
         {
             var report = await _reportService.GetReportById(reportId);
@@ -78,7 +78,7 @@ namespace API_ArtworkSharingPlatforms.Controllers
             return Ok(ArtworkId);
         }
         [HttpGet("GetReportByUserId")]
-        public async Task<IActionResult> GetReportByArtistId(int artistId)
+        public async Task<IActionResult> GetReportByArtistId(string artistId)
         {
             var ArtistId = await _reportService.GetReportByArtistId(artistId);
             if (ArtistId == null)

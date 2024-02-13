@@ -31,11 +31,10 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
         }
         public async Task<ResponeModel> AddArtwork(AddArtwork addArtwork)
         {
-            //try
-            //{
+            try
+            {
                 var artwork = new Artwork
                 {
-                    ArtworkPId = addArtwork.ArtworkPId,
                     ContentArtwork = addArtwork.ContentArtwork,
                     PriceArtwork = addArtwork.PriceArtwork,
                     DatePost = DateTime.Now,
@@ -50,11 +49,11 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
 
                 return new ResponeModel { Status = "Success", Message = "Added artwork successfully", DataObject = artwork };
 
-            //}catch (Exception ex)
-            //{
-            //    Console.WriteLine($"Exception: {ex.Message}");
-            //    return new ResponeModel{ Status ="Error",Message= "An error occurred while adding the artwork" };
-            //}
+            }catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return new ResponeModel{ Status ="Error",Message= "An error occurred while adding the artwork" };
+            }
         }
         public async Task<IEnumerable<Artwork>> GetAllArtwork()
         {

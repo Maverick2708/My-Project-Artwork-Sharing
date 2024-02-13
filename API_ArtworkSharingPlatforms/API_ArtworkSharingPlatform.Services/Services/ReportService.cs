@@ -41,7 +41,7 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _reportRepository.GetReportByArtworkId(artworkId);
         }
-        public async Task<Report> GetReportByArtistId(int artistId)
+        public async Task<Report> GetReportByArtistId(string artistId)
         {
             return await _reportRepository.GetReportByArtistId(artistId);
         }

@@ -50,7 +50,10 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                     {
                         FullName = signUpModel.FullName,
                         Dob = signUpModel.BirthDate,
+                        DateUserRe = DateTime.Now,
+                        Gender = signUpModel.Gender,
                         Status = true,
+                        Address = signUpModel.Address,
                         UserName = signUpModel.AccountEmail,
                         Email = signUpModel.AccountEmail,
                         PhoneNumber = signUpModel.AccountPhone,
