@@ -19,6 +19,9 @@ namespace API_ArtworkSharingPlatforms
             services.AddScoped<IPersonRepository,PersonRepository>();
             services.AddScoped<IPersonService,PersonService>();
 
+            services.AddScoped<IRatestarRepository, RateStarRepository>();
+            services.AddScoped<IRatestarService, RatestarService>();
+
             return services;
         }
     }

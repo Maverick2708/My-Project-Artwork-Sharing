@@ -23,9 +23,8 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             {
                 var report = new Report
                 {
-                    ReportId = addReportModel.ReportId,
                     ArtworkPId = addReportModel.ArtworkPId,
-                    UserId = addReportModel.UserId.ToString(),
+                    UserId = addReportModel.UserId,
                     Description = addReportModel.Description,
                     Status = true
                 };
@@ -92,7 +91,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                  .Where(c => c.FullName.Trim().ToLower().IndexOf(artist.Trim().ToLower()) != -1)
                  .Select(u => u.Id).FirstOrDefaultAsync();
             var reportByArtis = await _context.Reports
-                       .Where(c => c.UserId.ToString() == Artist).ToListAsync();
+                       .Where(c => c.UserId == Artist.ToString()).ToListAsync();
             return reportByArtis;
         }
         public async Task<Report> GetReportByArtworkId(int artworkId)
@@ -101,7 +100,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 .FirstOrDefaultAsync(c => c.ArtworkPId == artworkId);
             return report;
         }
-        public async Task<Report> GetReportByArtistId(int artistId)
+        public async Task<Report> GetReportByArtistId(string artistId)
         {
             var report = await _context.Reports
                 .FirstOrDefaultAsync(c => c.UserId == artistId.ToString());

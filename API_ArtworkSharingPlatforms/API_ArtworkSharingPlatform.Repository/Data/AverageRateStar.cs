@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace API_ArtworkSharingPlatform.Repository.Data
 {
-    public class AddReportModel
+    public class AverageRateStar
     {
         public int? ArtworkPId { get; set; }
-        public string? UserId { get; set; }
-        public string? Description { get; set; }
+        public double? AverageRate { get; set; }
     }
 }

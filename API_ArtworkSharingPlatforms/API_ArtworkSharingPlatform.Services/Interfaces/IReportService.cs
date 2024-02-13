@@ -15,7 +15,7 @@ namespace API_ArtworkSharingPlatform.Services.Interfaces
         public Task<ResponeModel> UpdateReport(int reportId);
         public Task<Report> GetReportById(int reportId);
         public Task<Report> GetReportByArtworkId(int artworkId);
-        public Task<Report> GetReportByArtistId(int artistId);
+        public Task<Report> GetReportByArtistId(string artistId);
         public Task<IEnumerable<Report>> GetReportByArtist(string artist);
     }
 }

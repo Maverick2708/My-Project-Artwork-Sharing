@@ -49,7 +49,7 @@ namespace API_ArtworkSharingPlatforms.Controllers
             }
             return Ok(Genre);
         }
-        [HttpPost("UpdateArtwork")]
+        [HttpPut("UpdateArtwork")]
         public async Task<IActionResult> UpdateArtwork(UpdateArtworkModel updateArtworkModel, int artworkId)
         {
             var artwork = await _artworkservice.GetArtworkById(artworkId);

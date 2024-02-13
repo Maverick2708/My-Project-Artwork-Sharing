@@ -13,6 +13,8 @@ namespace API_ArtworkSharingPlatform.Repository.Data
     {
         public  string AccountPhone { get; set; } = string.Empty;
         public  string FullName { get; set; } = string.Empty;
+        public  bool Gender { get; set; } = false;
+        public string Address { get; set; } = string.Empty;
         
         [Required(ErrorMessage = "Email is required!"), EmailAddress(ErrorMessage = "Please enter valid email!")]
         public  string AccountEmail { get; set; } = string.Empty;
