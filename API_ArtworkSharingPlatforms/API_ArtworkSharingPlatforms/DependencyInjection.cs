@@ -22,6 +22,9 @@ namespace API_ArtworkSharingPlatforms
             services.AddScoped<IRatestarRepository, RateStarRepository>();
             services.AddScoped<IRatestarService, RatestarService>();
 
+            services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<ICommentService, CommentService>();
+
             return services;
         }
     }
