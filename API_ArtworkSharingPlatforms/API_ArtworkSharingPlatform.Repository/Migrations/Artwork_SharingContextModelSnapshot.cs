@@ -130,8 +130,8 @@ namespace API_ArtworkSharingPlatform.Repository.Migrations
                         .HasColumnType("nvarchar(450)")
                         .HasColumnName("User_ID");
 
-                    b.Property<int?>("UserIdFollow")
-                        .HasColumnType("int")
+                    b.Property<string>("UserIdFollow")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("UserID_Follow");
 
                     b.HasKey("FollowId");

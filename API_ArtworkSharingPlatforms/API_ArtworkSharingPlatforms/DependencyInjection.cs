@@ -25,6 +25,8 @@ namespace API_ArtworkSharingPlatforms
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<ICommentService, CommentService>();
 
+            services.AddScoped<IFollowRepository, FollowRepository>();
+            services.AddScoped<IFollowService, FollowService>();
             return services;
         }
     }
