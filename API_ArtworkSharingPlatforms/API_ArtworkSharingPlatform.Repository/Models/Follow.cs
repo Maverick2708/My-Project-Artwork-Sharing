@@ -7,7 +7,7 @@ namespace API_ArtworkSharingPlatform.Repository.Models
     {
         public int FollowId { get; set; }
         public string? UserId { get; set; }
-        public int? UserIdFollow { get; set; }
+        public string? UserIdFollow { get; set; }
         public DateTime? DateFollow { get; set; }
         public bool? Status { get; set; }
 
