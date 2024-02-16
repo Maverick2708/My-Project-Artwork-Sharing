@@ -13,10 +13,12 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
     public class CommentRepository : ICommentRepository
     {
         private readonly Artwork_SharingContext _context;
-
-        public CommentRepository(Artwork_SharingContext context)
+        private readonly Artwork_SharingContext _context2;
+        public CommentRepository(Artwork_SharingContext context, Artwork_SharingContext context2)
         {
             this._context = context;
+            this._context2 = context2;
+
         }
         public async Task<ResponeModel> CreateComment(CreateComment createComment)
         {
@@ -34,8 +36,25 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 _context.Comments.Add(Comment);
                 await _context.SaveChangesAsync();
 
-                return new ResponeModel { Status = "Success", Message = "Created Comment successfully", DataObject = Comment };
+                // create notification
+                var fullName = await _context.People
+                    .Where(c => c.Id == createComment.UserId)
+                    .Select(x => x.FullName).FirstOrDefaultAsync();
+                var userIdReceive = await _context2.Artworks
+                    .Where(c=>c.ArtworkPId==createComment.ArtworkPId)
+                    .Select(c=> c.UserId).FirstOrDefaultAsync();
+                var notification = new Notification
+                {
+                    UserId = createComment.UserId,
+                    ContentNoti = $"{fullName} - commented on the post",
+                    DateNoti = DateTime.Now,
+                    Status = true,
+                    UserIdReceive= userIdReceive,
+                };
+                _context2.Notifications.Add(notification);
+                await _context2.SaveChangesAsync();
 
+                return new ResponeModel { Status = "Success", Message = "Created Comment successfully", DataObject = Comment };
             }
             catch (Exception ex)
             {
@@ -58,6 +77,40 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 };
                 _context.Comments.Add(Interact);
                 await _context.SaveChangesAsync();
+
+                // create notification
+                var fullName = await _context.People
+                    .Where(c => c.Id == createInteract.UserId)
+                    .FirstOrDefaultAsync();
+                var userIdReceive = await _context2.Artworks
+                    .Where(c => c.ArtworkPId == createInteract.ArtworkPId)
+                    .FirstOrDefaultAsync();
+                if (fullName.Id== userIdReceive.UserId) 
+                {
+                    var notification = new Notification
+                    {
+                        UserId = createInteract.UserId,
+                        ContentNoti = "You liked your own post",
+                        DateNoti = DateTime.Now,
+                        Status = true,
+                        UserIdReceive = userIdReceive.UserId,
+                    };
+                    _context2.Notifications.Add(notification);
+                    await _context2.SaveChangesAsync();
+                }
+                else
+                {
+                    var notification = new Notification
+                    {
+                        UserId = createInteract.UserId,
+                        ContentNoti = $"{fullName.FullName} - liked the article",
+                        DateNoti = DateTime.Now,
+                        Status = true,
+                        UserIdReceive = userIdReceive.UserId,
+                    };
+                    _context2.Notifications.Add(notification);
+                    await _context2.SaveChangesAsync();
+                }
 
                 return new ResponeModel { Status = "Success", Message = "Created Interact successfully", DataObject = Interact };
 

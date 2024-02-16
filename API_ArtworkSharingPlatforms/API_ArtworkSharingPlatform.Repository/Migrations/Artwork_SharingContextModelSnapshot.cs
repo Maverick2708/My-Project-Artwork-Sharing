@@ -216,6 +216,9 @@ namespace API_ArtworkSharingPlatform.Repository.Migrations
                         .HasColumnType("nvarchar(450)")
                         .HasColumnName("User_ID");
 
+                    b.Property<string>("UserIdReceive")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("NotificationId");
 
                     b.HasIndex("UserId");
