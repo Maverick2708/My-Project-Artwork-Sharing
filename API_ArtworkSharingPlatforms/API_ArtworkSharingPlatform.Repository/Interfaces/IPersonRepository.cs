@@ -14,5 +14,6 @@ namespace API_ArtworkSharingPlatform.Repository.Interfaces
         public Task<AuthenticationResponseModel> SignInAccountAsync(SignInModel signInModel);
         public Task<PersonModel> GetPersonByEmail(string email);
         public Task<ResponeModel> SignUpAccountAsync(SignUpModel signUpModel);
+        public Task<ResponeModel> UpdateVerifiedPage (string userId);
     }
 }

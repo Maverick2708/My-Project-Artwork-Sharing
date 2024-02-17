@@ -1,5 +1,7 @@
 ﻿using API_ArtworkSharingPlatform.Repository.Data;
+using API_ArtworkSharingPlatform.Repository.Models;
 using API_ArtworkSharingPlatform.Services.Interfaces;
+using API_ArtworkSharingPlatform.Services.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -57,6 +59,17 @@ namespace API_ArtworkSharingPlatforms.Controllers
                 return Ok(result);
             }
             return ValidationProblem(ModelState);
+        }
+
+        [HttpPut("UpdateVerifiedPage")]
+        public async Task<IActionResult> UpdateVerifiedPage(string userId)
+        {
+            var response = await _personService.UpdateVerifiedPage(userId);
+            if (response.Status == "Error")
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
         }
     }
 }

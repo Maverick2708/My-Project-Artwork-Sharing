@@ -111,7 +111,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             }
             else
             {
-                return new ResponeModel { Status = "Error", Message = "Notification not found" };
+                return new ResponeModel { Status = "Error", Message = "Notification not found", DataObject =0 };
             }
         }
         public async Task<ResponeModel> DeleteNoti(int notiId)

@@ -39,5 +39,9 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _personRepository.GetPersonByEmail(email);
         }
+        public async Task<ResponeModel> UpdateVerifiedPage(string userId)
+        {
+            return await _personRepository.UpdateVerifiedPage(userId);
+        }
     }
 }
