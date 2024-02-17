@@ -204,7 +204,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             }
             else
             {
-                return new ResponeModel { Status = "Error", Message = "Interact not found" };
+                return new ResponeModel { Status = "Error", Message = "Interact not found", DataObject =0 };
             }
         }
 
@@ -247,7 +247,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             }
             else
             {
-                return new ResponeModel { Status = "Error", Message = "Interact not found" };
+                return new ResponeModel { Status = "Error", Message = "Interact not found", DataObject = 0 };
             }
         }
         public async Task<ResponeModel> GetUseLikerOrNotLike(string userId, int artworkId)

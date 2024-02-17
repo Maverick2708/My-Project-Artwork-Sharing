@@ -328,6 +328,9 @@ namespace API_ArtworkSharingPlatform.Repository.Migrations
                     b.Property<bool?>("IsConfirm")
                         .HasColumnType("bit");
 
+                    b.Property<bool?>("IsVerifiedPage")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 

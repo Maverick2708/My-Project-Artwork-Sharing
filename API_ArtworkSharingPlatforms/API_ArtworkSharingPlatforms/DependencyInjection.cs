@@ -31,6 +31,9 @@ namespace API_ArtworkSharingPlatforms
             services.AddScoped<INotificationRepository,NotificationRepository>();
             services.AddScoped<INotificationService,NotificationService>();
 
+            services.AddScoped<IRequestRepository, RequestRepository>();
+            services.AddScoped<IRequestService, RequestService>();
+
             return services;
         }
     }

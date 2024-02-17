@@ -3,6 +3,7 @@ using API_ArtworkSharingPlatform.Repository.Interfaces;
 using API_ArtworkSharingPlatform.Repository.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -58,6 +59,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                         Email = signUpModel.AccountEmail,
                         PhoneNumber = signUpModel.AccountPhone,
                         Avatar = signUpModel.Avatar,
+                        IsVerifiedPage = false,
                     };
                     var result = await _userManager.CreateAsync(user, signUpModel.AccountPassword);
                     string errorMessage = null;
@@ -180,6 +182,33 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
 
             return token;
         }
+        public async Task<ResponeModel> UpdateVerifiedPage(string userId)
+        {
+            try
+            {
+                var existingUserId = await _context.People.FirstOrDefaultAsync(a => a.Id == userId && a.IsVerifiedPage == false);
 
+                if (existingUserId == null)
+                {
+                    return new ResponeModel { Status = "Error", Message = "User not found" };
+                }
+
+                existingUserId = HideRequest(existingUserId);
+
+                await _context.SaveChangesAsync();
+
+                return new ResponeModel { Status = "Success", Message = "User updated successfully", DataObject = existingUserId };
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return new ResponeModel { Status = "Error", Message = "An error occurred while update User" };
+            }
+        }
+        private Person HideRequest(Person person)
+        {
+            person.IsVerifiedPage = true;
+            return person;
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace API_ArtworkSharingPlatform.Repository.Models
         public string? RefreshToken { get; set; }
         public DateTime? RefreshTokenExpiryTime { get; set; }
         public bool? Status { get; set; }
+        public bool? IsVerifiedPage { get; set; }
         public bool? IsConfirm { get; set; }
 
         public virtual ICollection<Artwork> Artworks { get; set; }
