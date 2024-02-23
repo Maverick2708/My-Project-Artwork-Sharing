@@ -15,6 +15,7 @@ namespace API_ArtworkSharingPlatform.Repository.Models
 
         public int ArtworkPId { get; set; }
         public string? ContentArtwork { get; set; }
+        public string? Description { get; set; }
         public double? PriceArtwork { get; set; }
         public DateTime? DatePost { get; set; }
         public string? PictureArtwork { get; set; }

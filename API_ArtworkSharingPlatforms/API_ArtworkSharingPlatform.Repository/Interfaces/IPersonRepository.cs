@@ -15,5 +15,8 @@ namespace API_ArtworkSharingPlatform.Repository.Interfaces
         public Task<PersonModel> GetPersonByEmail(string email);
         public Task<ResponeModel> SignUpAccountAsync(SignUpModel signUpModel);
         public Task<ResponeModel> UpdateVerifiedPage (string userId);
+        public Task<ResponeModel> UpdateAccount(UpdateProfileModel updateProfileModel,string userId);
+        public Task<ResponeModel> ChangePasswordAsync(ChangePasswordModel changePassword);
+        public Task<AuthenticationResponseModel> RefreshToken(TokenModel tokenModel);
     }
 }

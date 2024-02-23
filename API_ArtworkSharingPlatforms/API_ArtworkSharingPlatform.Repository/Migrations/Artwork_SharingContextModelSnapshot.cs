@@ -39,6 +39,9 @@ namespace API_ArtworkSharingPlatform.Repository.Migrations
                         .HasColumnType("date")
                         .HasColumnName("Date_Post");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("GenreId")
                         .HasColumnType("int")
                         .HasColumnName("Genre_ID");

@@ -151,7 +151,11 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             }
             else
             {
-                return null;
+                return new AuthenticationResponseModel
+                {
+                    Status = false,
+                    Message = "Invalid login attempt. Please check your email and password."
+                };
             }
         }
         private string GenerateRefreshToken()
@@ -209,6 +213,138 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
         {
             person.IsVerifiedPage = true;
             return person;
+        }
+
+        public async Task<ResponeModel> UpdateAccount(UpdateProfileModel updateProfileModel, string userId)
+        {
+            try
+            {
+                var existingAccount = await _context.People.FirstOrDefaultAsync(a => a.Id == userId);
+
+                if (existingAccount == null)
+                {
+                    return new ResponeModel { Status = "Error", Message = "Account not found" };
+                }
+
+                existingAccount = submitAccountChanges(existingAccount, updateProfileModel);
+
+                await _context.SaveChangesAsync();
+
+                return new ResponeModel { Status = "Success", Message = "Account profile updated successfully", DataObject = existingAccount };
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return new ResponeModel { Status = "Error", Message = "An error occurred while updating the account profile" };
+            }
+        }
+        private Person submitAccountChanges(Person account, UpdateProfileModel updateProfileModel)
+        {
+            account.FullName = updateProfileModel.FullName;
+            account.Dob = updateProfileModel.BirthDate;
+            account.PhoneNumber = updateProfileModel.PhoneNumber;
+            account.Address = updateProfileModel.Address;
+            account.Gender = updateProfileModel.Gender;
+            account.Avatar = updateProfileModel.Avatar;
+            return account;
+        }
+
+        public async Task<ResponeModel> ChangePasswordAsync(ChangePasswordModel changePassword)
+        {
+            var account = await _userManager.FindByEmailAsync(changePassword.Email);
+            if (account == null)
+            {
+                return new ResponeModel
+                {
+                    Status = "Error",
+                    Message = "Can not find your account!"
+                };
+            }
+            var result = await _userManager.ChangePasswordAsync(account, changePassword.CurrentPassword, changePassword.NewPassword);
+            if (!result.Succeeded)
+            {
+                return new ResponeModel
+                {
+                    Status = "Error",
+                    Message = "Cannot change pass"
+                };
+            }
+
+            return new ResponeModel
+            {
+                Status = "Success",
+                Message = "Change password successfully!"
+            };
+        }
+        public async Task<AuthenticationResponseModel> RefreshToken(TokenModel tokenModel)
+        {
+            if (tokenModel is null)
+            {
+                return new AuthenticationResponseModel
+                {
+                    Status = false,
+                    Message = "Request not valid!"
+                };
+            }
+
+            string? accessToken = tokenModel.AccessToken;
+            string? refreshToken = tokenModel.RefreshToken;
+
+            var principal = GetPrincipalFromExpiredToken(accessToken);
+            if (principal == null)
+            {
+                return new AuthenticationResponseModel
+                {
+                    Status = false,
+                    Message = "Invalid access token or refresh token!"
+                };
+            }
+
+            string username = principal.Identity.Name;
+
+            var user = await _userManager.FindByNameAsync(username);
+
+            if (user == null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
+            {
+                return new AuthenticationResponseModel
+                {
+                    Status = false,
+                    Message = "Invalid access token or refresh token!"
+                };
+            }
+
+            var newAccessToken = CreateToken(principal.Claims.ToList());
+            var newRefreshToken = GenerateRefreshToken();
+
+            user.RefreshToken = newRefreshToken;
+            await _userManager.UpdateAsync(user);
+
+            return new AuthenticationResponseModel
+            {
+                Status = true,
+                Message = "Refresh Token successfully!",
+                JwtToken = new JwtSecurityTokenHandler().WriteToken(newAccessToken),
+                Expired = newAccessToken.ValidTo,
+                JwtRefreshToken = newRefreshToken
+            };
+        }
+        private ClaimsPrincipal GetPrincipalFromExpiredToken(string? token)
+        {
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateAudience = false,
+                ValidateIssuer = false,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:SecretKey"])),
+                ValidateLifetime = false
+            };
+            var tokenHandler = new JwtSecurityTokenHandler();
+            SecurityToken securityToken;
+            var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out securityToken);
+            var jwtSecurityToken = securityToken as JwtSecurityToken;
+            if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+                throw new SecurityTokenException("Token unavailabel!");
+            return principal;
         }
     }
 }

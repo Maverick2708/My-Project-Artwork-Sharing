@@ -36,6 +36,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 var artwork = new Artwork
                 {
                     ContentArtwork = addArtwork.ContentArtwork,
+                    Description = addArtwork.Description,
                     PriceArtwork = addArtwork.PriceArtwork,
                     DatePost = DateTime.Now,
                     PictureArtwork = addArtwork.PictureArtwork,

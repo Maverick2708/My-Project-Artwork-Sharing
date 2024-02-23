@@ -71,5 +71,38 @@ namespace API_ArtworkSharingPlatforms.Controllers
             }
             return Ok(response);
         }
+
+        [HttpPut("UpdateAccount")]
+        public async Task<IActionResult> UpdateAccount(UpdateProfileModel updateProfileModel, string userId)
+        {
+            var response = await _personService.UpdateAccount(updateProfileModel,userId);
+            if (response.Status == "Error")
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
+
+        [HttpPost("ChangePasswordAsync")]
+        public async Task<IActionResult> ChangePasswordAsync(ChangePasswordModel changePassword)
+        {
+            var response = await _personService.ChangePasswordAsync(changePassword);
+            if (response.Status == "Error")
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
+
+        [HttpPost("RefreshToken")]
+        public async Task<IActionResult> RefreshToken(TokenModel tokenModel)
+        {
+            var response = await _personService.RefreshToken(tokenModel);
+            if (response.Status.Equals(false))
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
     }
 }
