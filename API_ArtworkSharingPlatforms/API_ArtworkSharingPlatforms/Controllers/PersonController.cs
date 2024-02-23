@@ -104,5 +104,35 @@ namespace API_ArtworkSharingPlatforms.Controllers
             }
             return Ok(response);
         }
+
+        [HttpPost("SignUpSuperAdminAccount")]
+        public async Task<ActionResult> SignUpSuperAdminAccount(SignUpModel signUpModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _personService.SignUpSuperAdminAccount(signUpModel);
+                if (result.Status.Equals("Success"))
+                {
+                    return Ok(result);
+                }
+                return BadRequest(result);
+            }
+            return ValidationProblem(ModelState);
+        }
+
+        [HttpPost("SignUpAdminAccount")]
+        public async Task<ActionResult> SignUpAdminAccount(SignUpModel signUpModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _personService.SignUpAdminAccount(signUpModel);
+                if (result.Status.Equals("Success"))
+                {
+                    return Ok(result);
+                }
+                return BadRequest(result);
+            }
+            return ValidationProblem(ModelState);
+        }
     }
 }

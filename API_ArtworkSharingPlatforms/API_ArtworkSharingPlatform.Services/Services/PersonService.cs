@@ -55,5 +55,13 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _personRepository.RefreshToken(tokenModel);
         }
+        public async Task<ResponeModel> SignUpSuperAdminAccount(SignUpModel signUpModel)
+        {
+            return await _personRepository.SignUpSuperAdminAccount(signUpModel);
+        }
+        public async Task<ResponeModel> SignUpAdminAccount(SignUpModel signUpModel)
+        {
+            return await _personRepository.SignUpAdminAccount(signUpModel);
+        }
     }
 }

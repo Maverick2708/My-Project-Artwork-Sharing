@@ -346,5 +346,110 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 throw new SecurityTokenException("Token unavailabel!");
             return principal;
         }
+
+        public async Task<ResponeModel> SignUpSuperAdminAccount(SignUpModel signUpModel)
+        {
+            try
+            {
+                var exsistAccount = await _userManager.FindByNameAsync(signUpModel.AccountEmail);
+                if (exsistAccount == null)
+                {
+                    var user = new Person
+                    {
+                        FullName = signUpModel.FullName,
+                        Dob = signUpModel.BirthDate,
+                        DateUserRe = DateTime.Now,
+                        Gender = signUpModel.Gender,
+                        Status = true,
+                        Address = signUpModel.Address,
+                        UserName = signUpModel.AccountEmail,
+                        Email = signUpModel.AccountEmail,
+                        PhoneNumber = signUpModel.AccountPhone,
+                        Avatar = signUpModel.Avatar,
+                        IsVerifiedPage = false,
+                    };
+                    var result = await _userManager.CreateAsync(user, signUpModel.AccountPassword);
+                    string errorMessage = null;
+                    if (result.Succeeded)
+                    {
+                        if (!await _roleManager.RoleExistsAsync(RoleModel.SuperAdmin.ToString()))
+                        {
+                            await _roleManager.CreateAsync(new IdentityRole(RoleModel.SuperAdmin.ToString()));
+                        }
+                        if (await _roleManager.RoleExistsAsync(RoleModel.SuperAdmin.ToString()))
+                        {
+                            await _userManager.AddToRoleAsync(user, RoleModel.SuperAdmin.ToString());
+                        }
+
+                        var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                        return new ResponeModel { Status = "Success", Message = "Create account successfull" };
+                    }
+                    foreach (var ex in result.Errors)
+                    {
+                        errorMessage = ex.Description;
+                    }
+                    return new ResponeModel { Status = "Error", Message = errorMessage };
+                }
+                return new ResponeModel { Status = "Hihi", Message = "Account already exist" };
+            }
+            catch (Exception ex)
+            {
+                // Log or print the exception details
+                Console.WriteLine($"Exception: {ex.Message}");
+                return new ResponeModel { Status = "Error", Message = "An error occurred while checking if the account exists." };
+            }
+        }
+        public async Task<ResponeModel> SignUpAdminAccount(SignUpModel signUpModel)
+        {
+            try
+            {
+                var exsistAccount = await _userManager.FindByNameAsync(signUpModel.AccountEmail);
+                if (exsistAccount == null)
+                {
+                    var user = new Person
+                    {
+                        FullName = signUpModel.FullName,
+                        Dob = signUpModel.BirthDate,
+                        DateUserRe = DateTime.Now,
+                        Gender = signUpModel.Gender,
+                        Status = true,
+                        Address = signUpModel.Address,
+                        UserName = signUpModel.AccountEmail,
+                        Email = signUpModel.AccountEmail,
+                        PhoneNumber = signUpModel.AccountPhone,
+                        Avatar = signUpModel.Avatar,
+                        IsVerifiedPage = false,
+                    };
+                    var result = await _userManager.CreateAsync(user, signUpModel.AccountPassword);
+                    string errorMessage = null;
+                    if (result.Succeeded)
+                    {
+                        if (!await _roleManager.RoleExistsAsync(RoleModel.Admin.ToString()))
+                        {
+                            await _roleManager.CreateAsync(new IdentityRole(RoleModel.Admin.ToString()));
+                        }
+                        if (await _roleManager.RoleExistsAsync(RoleModel.Admin.ToString()))
+                        {
+                            await _userManager.AddToRoleAsync(user, RoleModel.Admin.ToString());
+                        }
+
+                        var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                        return new ResponeModel { Status = "Success", Message = "Create account successfull" };
+                    }
+                    foreach (var ex in result.Errors)
+                    {
+                        errorMessage = ex.Description;
+                    }
+                    return new ResponeModel { Status = "Error", Message = errorMessage };
+                }
+                return new ResponeModel { Status = "Hihi", Message = "Account already exist" };
+            }
+            catch (Exception ex)
+            {
+                // Log or print the exception details
+                Console.WriteLine($"Exception: {ex.Message}");
+                return new ResponeModel { Status = "Error", Message = "An error occurred while checking if the account exists." };
+            }
+        }
     }
 }
