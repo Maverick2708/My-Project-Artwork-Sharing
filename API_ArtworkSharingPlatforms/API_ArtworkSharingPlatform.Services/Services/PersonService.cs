@@ -43,5 +43,17 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _personRepository.UpdateVerifiedPage(userId);
         }
+        public async Task<ResponeModel> UpdateAccount(UpdateProfileModel updateProfileModel, string userId)
+        {
+            return await _personRepository.UpdateAccount(updateProfileModel, userId);
+        }
+        public async Task<ResponeModel> ChangePasswordAsync(ChangePasswordModel changePassword)
+        {
+            return await _personRepository.ChangePasswordAsync(changePassword);
+        }
+        public async Task<AuthenticationResponseModel> RefreshToken(TokenModel tokenModel)
+        {
+            return await _personRepository.RefreshToken(tokenModel);
+        }
     }
 }
