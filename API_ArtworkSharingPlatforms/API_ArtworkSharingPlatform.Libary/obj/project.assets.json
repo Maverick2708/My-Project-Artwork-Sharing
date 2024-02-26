@@ -8,24 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\daigi\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\uyent\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\DataGit\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj",
+      "projectUniqueName": "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj",
       "projectName": "API_ArtworkSharingPlatform.Libary",
-      "projectPath": "D:\\DataGit\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj",
-      "packagesPath": "C:\\Users\\daigi\\.nuget\\packages\\",
-      "outputPath": "D:\\DataGit\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\obj\\",
+      "projectPath": "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj",
+      "packagesPath": "C:\\Users\\uyent\\.nuget\\packages\\",
+      "outputPath": "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\daigi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\uyent\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
