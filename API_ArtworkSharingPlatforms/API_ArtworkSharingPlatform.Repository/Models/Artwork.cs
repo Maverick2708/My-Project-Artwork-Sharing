@@ -11,6 +11,7 @@ namespace API_ArtworkSharingPlatform.Repository.Models
             OrderDetails = new HashSet<OrderDetail>();
             RateStars = new HashSet<RateStar>();
             Reports = new HashSet<Report>();
+            ShoppingCarts = new HashSet<ShoppingCart>();
         }
 
         public int ArtworkPId { get; set; }
@@ -30,5 +31,6 @@ namespace API_ArtworkSharingPlatform.Repository.Models
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual ICollection<RateStar> RateStars { get; set; }
         public virtual ICollection<Report> Reports { get; set; }
+        public virtual ICollection<ShoppingCart> ShoppingCarts { get; set; }
     }
 }

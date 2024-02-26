@@ -288,6 +288,29 @@ namespace API_ArtworkSharingPlatform.Repository.Models
                     .HasConstraintName("FK__Request__User_ID__4E88ABD4");
             });
 
+            modelBuilder.Entity<ShoppingCart>(entity =>
+            {
+                entity.HasKey(e => e.ShoppingCartId);
+                entity.ToTable("ShoppingCart");
+
+                entity.Property(e => e.ArtworkPId).HasColumnName("ArtworkP_ID");
+
+                entity.Property(e => e.PictureArtwork).HasColumnName("Picture_Artwork");
+
+                entity.Property(e => e.PriceArtwork).HasColumnName("Price_Artwork");
+
+                entity.Property(e => e.UserId).HasColumnName("User_ID");
+
+                entity.HasOne(d => d.ArtworkP)
+                    .WithMany(p => p.ShoppingCarts)
+                    .HasForeignKey(d => d.ArtworkPId)
+                    .HasConstraintName("FK__ShoppingCart__ArtworkP__08D8E0BE");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.ShoppingCarts)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK__ShoppingCart__User_ID__09CD04F7");
+            });
             //OnModelCreatingPartial(modelBuilder);
         }
 

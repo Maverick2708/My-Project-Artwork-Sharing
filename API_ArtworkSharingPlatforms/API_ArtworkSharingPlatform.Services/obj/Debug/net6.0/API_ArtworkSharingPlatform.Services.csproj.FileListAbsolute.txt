@@ -32,3 +32,20 @@ D:\FPTU\7 - Spring 2024\SWD392\Artwork_Sharing\API_ArtworkSharingPlatforms\API_A
 D:\FPTU\7 - Spring 2024\SWD392\Artwork_Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\obj\Debug\net6.0\refint\API_ArtworkSharingPlatform.Services.dll
 D:\FPTU\7 - Spring 2024\SWD392\Artwork_Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\obj\Debug\net6.0\API_ArtworkSharingPlatform.Services.pdb
 D:\FPTU\7 - Spring 2024\SWD392\Artwork_Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\obj\Debug\net6.0\ref\API_ArtworkSharingPlatform.Services.dll
+D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\bin\Debug\net6.0\API_ArtworkSharingPlatform.Services.deps.json
+D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\bin\Debug\net6.0\API_ArtworkSharingPlatform.Services.dll
+D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\bin\Debug\net6.0\API_ArtworkSharingPlatform.Services.pdb
+D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\bin\Debug\net6.0\API_ArtworkSharingPlatform.Libary.dll
+D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\bin\Debug\net6.0\API_ArtworkSharingPlatform.Repository.dll
+D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\bin\Debug\net6.0\API_ArtworkSharingPlatform.Libary.pdb
+D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\bin\Debug\net6.0\API_ArtworkSharingPlatform.Repository.pdb
+D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\obj\Debug\net6.0\API_ArtworkSharingPlatform.Services.csproj.AssemblyReference.cache
+D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\obj\Debug\net6.0\API_ArtworkSharingPlatform.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\obj\Debug\net6.0\API_ArtworkSharingPlatform.Services.AssemblyInfoInputs.cache
+D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\obj\Debug\net6.0\API_ArtworkSharingPlatform.Services.AssemblyInfo.cs
+D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\obj\Debug\net6.0\API_ArtworkSharingPlatform.Services.csproj.CoreCompileInputs.cache
+D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\obj\Debug\net6.0\API_ArtworkSharingPlatform.Services.csproj.CopyComplete
+D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\obj\Debug\net6.0\API_ArtworkSharingPlatform.Services.dll
+D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\obj\Debug\net6.0\refint\API_ArtworkSharingPlatform.Services.dll
+D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\obj\Debug\net6.0\API_ArtworkSharingPlatform.Services.pdb
+D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Services\obj\Debug\net6.0\ref\API_ArtworkSharingPlatform.Services.dll
