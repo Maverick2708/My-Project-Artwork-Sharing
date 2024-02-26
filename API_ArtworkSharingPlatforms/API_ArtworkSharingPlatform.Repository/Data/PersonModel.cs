@@ -24,6 +24,8 @@ namespace API_ArtworkSharingPlatform.Repository.Data
         [Required(ErrorMessage = "Date of Birth is required!")]
         [Display(Name = "Date of Birth")]
         public DateTime? Dob { get; set; }
+        public string? Avatar { get; set; }
+        public string? BackgroundImg { get; set; }
         public bool? Gender { get; set; }
         public string? Address { get; set; }
 

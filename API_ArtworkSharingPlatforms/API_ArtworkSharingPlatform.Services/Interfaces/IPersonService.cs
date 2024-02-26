@@ -18,5 +18,7 @@ namespace API_ArtworkSharingPlatform.Services.Interfaces
         public Task<ResponeModel> UpdateAccount(UpdateProfileModel updateProfileModel, string userId);
         public Task<ResponeModel> ChangePasswordAsync(ChangePasswordModel changePassword);
         public Task<AuthenticationResponseModel> RefreshToken(TokenModel tokenModel);
+        public Task<ResponeModel> UpdateAvatar(UpdateAvatarModel avatar, string userId);
+        public Task<ResponeModel> UpdateBackGround(UpdateBackGroundModel backGround, string userId);
     }
 }

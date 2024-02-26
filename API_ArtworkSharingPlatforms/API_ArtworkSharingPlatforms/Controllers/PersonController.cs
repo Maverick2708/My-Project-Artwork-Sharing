@@ -134,5 +134,27 @@ namespace API_ArtworkSharingPlatforms.Controllers
             }
             return ValidationProblem(ModelState);
         }
+
+        [HttpPut("UpdateAvatar")]
+        public async Task<IActionResult> UpdateAvatar(UpdateAvatarModel avatar, string userId)
+        {
+            var response = await _personService.UpdateAvatar(avatar,userId);
+            if (response.Status.Equals(false))
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
+
+        [HttpPut("UpdateBackGround")]
+        public async Task<IActionResult> UpdateBackGround(UpdateBackGroundModel backGround, string userId)
+        {
+            var response = await _personService.UpdateBackGround(backGround, userId);
+            if (response.Status.Equals(false))
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
     }
 }
