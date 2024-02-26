@@ -8,7 +8,7 @@ namespace API_ArtworkSharingPlatform.Repository.Data
 {
 	public class UpdateOrder
 	{
-		//public int BillOrderId { get; set; }
+		public int BillOrderId { get; set; }
 		//public string? UserId { get; set; }
 		public double? TotalBill { get; set; }
 	}

@@ -14,8 +14,8 @@ namespace API_ArtworkSharingPlatform.Repository.Interfaces
 		public Task<IEnumerable<Order>> GetArtworkByUser(string UserId);
 		public Task<IEnumerable<Order>> GetOrders();
 		public Task<Order> CreateOrder(Order order);
-		public Task<bool> UpdateOrder(Order order);
 		public Task<bool> DeleteOrder(int billOrderId);
+		//public Task<bool> UpdateOrder(int billOrderId, UpdateOrder order);
 
 	}
 }
