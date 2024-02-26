@@ -17,5 +17,6 @@ namespace API_ArtworkSharingPlatform.Repository.Interfaces
         public Task<ResponeModel> UpdateArtwork (UpdateArtworkModel updateArtworkModel, int artworkId);
         public Task<ResponeModel> AddArtwork(AddArtwork model);
         public Task<ResponeModel> HideOrShowArtworkById( int artworkId);
+        public Task<ResponeModel> SearchContenArtwork(string content);
     }
 }

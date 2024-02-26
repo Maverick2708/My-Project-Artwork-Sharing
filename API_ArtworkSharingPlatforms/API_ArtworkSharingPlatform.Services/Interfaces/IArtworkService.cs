@@ -17,5 +17,6 @@ namespace API_ArtworkSharingPlatform.Services.Interfaces
         public Task<IEnumerable<Artwork>> GetAllArtwork();
         public Task<ResponeModel> AddArtwork(AddArtwork model);
         public Task<ResponeModel> HideOrShowArtworkById(int artworkId);
+        public Task<ResponeModel> SearchContenArtwork(string content);
     }
 }

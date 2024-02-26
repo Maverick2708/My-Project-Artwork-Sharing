@@ -24,6 +24,7 @@ namespace API_ArtworkSharingPlatform.Repository.Models
         public string? Address { get; set; }
         public DateTime? DateUserRe { get; set; }
         public string? Avatar { get; set; }
+        public string? BackgroundImg { get; set; }
         public string? RefreshToken { get; set; }
         public DateTime? RefreshTokenExpiryTime { get; set; }
         public bool? Status { get; set; }

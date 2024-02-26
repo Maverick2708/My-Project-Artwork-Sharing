@@ -89,5 +89,17 @@ namespace API_ArtworkSharingPlatforms.Controllers
 
             return Ok(response);
         }
+
+        [HttpGet("SearchContenArtwork")]
+        public async Task<IActionResult> SearchContenArtwork(string content)
+        {
+            var response = await _artworkservice.SearchContenArtwork(content);
+            if (response.Status == "Error")
+            {
+                return Conflict(response);
+            }
+
+            return Ok(response);
+        }
     }
 }

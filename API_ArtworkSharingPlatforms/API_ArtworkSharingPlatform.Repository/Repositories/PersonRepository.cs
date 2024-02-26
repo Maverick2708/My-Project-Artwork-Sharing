@@ -58,7 +58,8 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                         UserName = signUpModel.AccountEmail,
                         Email = signUpModel.AccountEmail,
                         PhoneNumber = signUpModel.AccountPhone,
-                        Avatar = signUpModel.Avatar,
+                        Avatar = null,
+                        BackgroundImg = null,
                         IsVerifiedPage = false,
                     };
                     var result = await _userManager.CreateAsync(user, signUpModel.AccountPassword);
@@ -365,7 +366,8 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                         UserName = signUpModel.AccountEmail,
                         Email = signUpModel.AccountEmail,
                         PhoneNumber = signUpModel.AccountPhone,
-                        Avatar = signUpModel.Avatar,
+                        Avatar = null,
+                        BackgroundImg=null,
                         IsVerifiedPage = false,
                     };
                     var result = await _userManager.CreateAsync(user, signUpModel.AccountPassword);
@@ -417,7 +419,8 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                         UserName = signUpModel.AccountEmail,
                         Email = signUpModel.AccountEmail,
                         PhoneNumber = signUpModel.AccountPhone,
-                        Avatar = signUpModel.Avatar,
+                        Avatar = null,
+                        BackgroundImg = null,
                         IsVerifiedPage = false,
                     };
                     var result = await _userManager.CreateAsync(user, signUpModel.AccountPassword);
@@ -450,6 +453,64 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 Console.WriteLine($"Exception: {ex.Message}");
                 return new ResponeModel { Status = "Error", Message = "An error occurred while checking if the account exists." };
             }
+        }
+
+        public async Task<ResponeModel> UpdateAvatar(UpdateAvatarModel avatar, string userId)
+        {
+            try
+            {
+                var existingAccount = await _context.People.FirstOrDefaultAsync(a => a.Id == userId);
+
+                if (existingAccount == null)
+                {
+                    return new ResponeModel { Status = "Error", Message = "Account not found" };
+                }
+
+                existingAccount = submitAvatarChanges(existingAccount,avatar);
+
+                await _context.SaveChangesAsync();
+
+                return new ResponeModel { Status = "Success", Message = "Account profile updated successfully", DataObject = existingAccount };
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return new ResponeModel { Status = "Error", Message = "An error occurred while updating the account profile" };
+            }
+        }
+        private Person submitAvatarChanges(Person account, UpdateAvatarModel updateAvatar)
+        {
+            account.Avatar = updateAvatar.Avatar;
+            return account;
+        }
+
+        public async Task<ResponeModel> UpdateBackGround(UpdateBackGroundModel backGround, string userId)
+        {
+            try
+            {
+                var existingAccount = await _context.People.FirstOrDefaultAsync(a => a.Id == userId);
+
+                if (existingAccount == null)
+                {
+                    return new ResponeModel { Status = "Error", Message = "Account not found" };
+                }
+
+                existingAccount = submitBackGroundChanges(existingAccount, backGround);
+
+                await _context.SaveChangesAsync();
+
+                return new ResponeModel { Status = "Success", Message = "Account profile updated successfully", DataObject = existingAccount };
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return new ResponeModel { Status = "Error", Message = "An error occurred while updating the account profile" };
+            }
+        }
+        private Person submitBackGroundChanges(Person account, UpdateBackGroundModel updateBackGround)
+        {
+            account.BackgroundImg = updateBackGround.BackgroundImg;
+            return account;
         }
     }
 }

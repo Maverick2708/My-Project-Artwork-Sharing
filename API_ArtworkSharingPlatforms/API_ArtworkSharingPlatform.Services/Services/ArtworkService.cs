@@ -49,5 +49,9 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _artworkRepository.HideOrShowArtworkById(artworkId);
         }
+        public async Task<ResponeModel> SearchContenArtwork(string content)
+        {
+            return await _artworkRepository.SearchContenArtwork(content);
+        }
     }
 }

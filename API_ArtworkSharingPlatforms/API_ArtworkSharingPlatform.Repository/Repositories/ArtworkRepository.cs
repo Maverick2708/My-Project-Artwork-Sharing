@@ -109,6 +109,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
         private Artwork submitArtworkChanges(Artwork artwork, UpdateArtworkModel updateArtworkModel)
         {
             artwork.ContentArtwork = updateArtworkModel.ContentArtwork;
+            artwork.Description = updateArtworkModel.Description;
             artwork.PriceArtwork = updateArtworkModel.PriceArtwork;
             artwork.PictureArtwork = updateArtworkModel.PictureArtwork;
             artwork.GenreId = updateArtworkModel.GenreId;
@@ -155,6 +156,22 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 artwork.Status = true;
             }
             return artwork;
+        }
+        public async Task<ResponeModel> SearchContenArtwork(string content)
+        {
+            try
+            {
+                var contentArtwork = await _context.Artworks
+                   .Where(c => c.ContentArtwork.Trim().ToLower().IndexOf(content.Trim().ToLower()) != -1)
+                   .ToListAsync();
+
+                return new ResponeModel { Status = "Success", Message = "Artwork found", DataObject = contentArtwork };
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return new ResponeModel { Status = "Error", Message = "Artwork not found" };
+            }
         }
     }
 }

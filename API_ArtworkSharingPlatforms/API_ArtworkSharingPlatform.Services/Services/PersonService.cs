@@ -63,5 +63,13 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _personRepository.SignUpAdminAccount(signUpModel);
         }
+        public async Task<ResponeModel> UpdateAvatar(UpdateAvatarModel avatar, string userId)
+        {
+            return await _personRepository.UpdateAvatar(avatar, userId);
+        }
+        public async Task<ResponeModel> UpdateBackGround(UpdateBackGroundModel backGround, string userId)
+        {
+            return await _personRepository.UpdateBackGround(backGround, userId);
+        }
     }
 }
