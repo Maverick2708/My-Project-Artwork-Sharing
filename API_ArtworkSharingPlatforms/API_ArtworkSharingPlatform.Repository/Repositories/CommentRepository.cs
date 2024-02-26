@@ -268,17 +268,38 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
         }
         public async Task<ResponeModel> GetCommentForPost(int artworkId)
         {
-            var comment = await _context.Comments
-                .Where(c => c.ArtworkPId == artworkId && c.ContentComment != null && c.IsLikePost == false && c.Status==true)
-                .ToListAsync();
-            if (comment.Count > 0)
+            //var comment = await _context.Comments
+            //    .Where(c => c.ArtworkPId == artworkId && c.ContentComment != null && c.IsLikePost == false && c.Status==true)
+            //    .ToListAsync();
+
+            var commentsWithUserInfo = await _context.Comments
+                 .Where(c => c.ArtworkPId == artworkId && c.ContentComment != null && c.IsLikePost == false && c.Status == true)
+                 .Join(
+                       _context.People,
+                       comment => comment.UserId,
+                       person => person.Id,
+                       (comment, person) => new
+                     {
+                         CommentId = comment.CommentId,
+                         ContentComment = comment.ContentComment,
+                         DateSub = comment.DateSub,
+                         UserId = comment.UserId,
+                         ArtworkPId = comment.ArtworkPId,
+                         IsLikePost = comment.IsLikePost,
+                         Status = comment.Status,
+                           // Include additional fields from Person table
+                         accountMail = person.UserName
+                    }
+                      )
+                    .ToListAsync();
+            if (commentsWithUserInfo.Count > 0)
             {
                 
-                return new ResponeModel { Status = "Success", Message = "Comment found", DataObject = comment };
+                return new ResponeModel { Status = "Success", Message = "Comment found", DataObject = commentsWithUserInfo };
             }
             else
             {
-                return new ResponeModel { Status = "Error", Message = "Comment not found", DataObject = comment };
+                return new ResponeModel { Status = "Error", Message = "Comment not found", DataObject = commentsWithUserInfo };
             }
         }
     }
