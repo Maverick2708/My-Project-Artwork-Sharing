@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = API_ArtworkSharingPlatform.Repository
-build_property.ProjectDir = D:\FPTU\7 - Spring 2024\SWD392\Artwork_Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Repository\
+build_property.ProjectDir = D:\DataGit\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Repository\

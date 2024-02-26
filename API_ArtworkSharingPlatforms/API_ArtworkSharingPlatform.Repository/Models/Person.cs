@@ -16,6 +16,7 @@ namespace API_ArtworkSharingPlatform.Repository.Models
             RateStars = new HashSet<RateStar>();
             Reports = new HashSet<Report>();
             Requests = new HashSet<Request>();
+            ShoppingCarts = new HashSet<ShoppingCart>();
         }
 
         public string? FullName { get; set; }
@@ -39,5 +40,6 @@ namespace API_ArtworkSharingPlatform.Repository.Models
         public virtual ICollection<RateStar> RateStars { get; set; }
         public virtual ICollection<Report> Reports { get; set; }
         public virtual ICollection<Request> Requests { get; set; }
+        public virtual ICollection<ShoppingCart> ShoppingCarts { get; set; }
     }
 }

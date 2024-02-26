@@ -4,6 +4,7 @@ using API_ArtworkSharingPlatform.Repository.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_ArtworkSharingPlatform.Repository.Migrations
 {
     [DbContext(typeof(Artwork_SharingContext))]
-    partial class Artwork_SharingContextModelSnapshot : ModelSnapshot
+    [Migration("20240226075714_CreateShoppingcartTable")]
+    partial class CreateShoppingcartTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
