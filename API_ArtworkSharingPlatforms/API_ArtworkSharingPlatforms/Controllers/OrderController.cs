@@ -1,4 +1,6 @@
-﻿using API_ArtworkSharingPlatform.Services.Interfaces;
+﻿using API_ArtworkSharingPlatform.Repository.Data;
+using API_ArtworkSharingPlatform.Services.Interfaces;
+using API_ArtworkSharingPlatform.Services.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,12 +10,74 @@ namespace API_ArtworkSharingPlatforms.Controllers
 	[ApiController]
 	public class OrderController : Controller
 	{
-		private readonly IOrderService _orderservice;
+		private readonly IOrderService _orderService;
 
-		public OrderController(IOrderService orderservice)
+		public OrderController(IOrderService orderService)
 		{
-			_orderservice = orderservice;
+			_orderService = orderService;
+		}
+		// GET: api/order/{billOrderId}
+		[HttpGet("{billOrderId}")]
+		public async Task<IActionResult> GetOrderById(int billOrderId)
+		{
+			try
+			{
+				var order = await _orderService.GetOrderById(billOrderId);
+				if (order == null)
+					return NotFound();
+
+				return Ok(order);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
+			}
 		}
 
+		// POST: api/order
+		[HttpPost]
+		public async Task<IActionResult> CreateOrder(AddOrder addOrder)
+		{
+			var response = await _orderService.AddOrder(addOrder);
+			if (response.Status == "Error")
+			{
+				return Conflict(response);
+			}
+			return Ok(response);
+		}
+
+		// PUT: api/order/{billOrderId}
+		[HttpPut("{billOrderId}")]
+		public async Task<IActionResult> UpdateOrder(int billOrderId, UpdateOrder updateOrder)
+		{
+			try
+			{
+				var response = await _orderService.UpdateOrder(billOrderId, updateOrder);
+				if (response.Status == "Error")
+				{
+					return NotFound(response);
+				}
+				return Ok(response);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
+			}
+		}
+
+		// GET: api/order
+		[HttpGet]
+		public async Task<IActionResult> GetOrders()
+		{
+			try
+			{
+				var orders = await _orderService.GetOrders();
+				return Ok(orders);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
+			}
+		}
 	}
 }
