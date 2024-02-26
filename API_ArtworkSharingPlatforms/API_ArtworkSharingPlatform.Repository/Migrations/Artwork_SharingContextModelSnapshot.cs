@@ -479,6 +479,42 @@ namespace API_ArtworkSharingPlatform.Repository.Migrations
                     b.ToTable("Request", (string)null);
                 });
 
+            modelBuilder.Entity("API_ArtworkSharingPlatform.Repository.Models.ShoppingCart", b =>
+                {
+                    b.Property<int>("ShoppingCartId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ShoppingCartId"), 1L, 1);
+
+                    b.Property<int?>("ArtworkPId")
+                        .HasColumnType("int")
+                        .HasColumnName("ArtworkP_ID");
+
+                    b.Property<string>("PictureArtwork")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Picture_Artwork");
+
+                    b.Property<double?>("PriceArtwork")
+                        .HasColumnType("float")
+                        .HasColumnName("Price_Artwork");
+
+                    b.Property<int?>("Quanity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("User_ID");
+
+                    b.HasKey("ShoppingCartId");
+
+                    b.HasIndex("ArtworkPId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ShoppingCart", (string)null);
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -737,6 +773,23 @@ namespace API_ArtworkSharingPlatform.Repository.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("API_ArtworkSharingPlatform.Repository.Models.ShoppingCart", b =>
+                {
+                    b.HasOne("API_ArtworkSharingPlatform.Repository.Models.Artwork", "ArtworkP")
+                        .WithMany("ShoppingCarts")
+                        .HasForeignKey("ArtworkPId")
+                        .HasConstraintName("FK__ShoppingCart__ArtworkP__08D8E0BE");
+
+                    b.HasOne("API_ArtworkSharingPlatform.Repository.Models.Person", "User")
+                        .WithMany("ShoppingCarts")
+                        .HasForeignKey("UserId")
+                        .HasConstraintName("FK__ShoppingCart__User_ID__09CD04F7");
+
+                    b.Navigation("ArtworkP");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -797,6 +850,8 @@ namespace API_ArtworkSharingPlatform.Repository.Migrations
                     b.Navigation("RateStars");
 
                     b.Navigation("Reports");
+
+                    b.Navigation("ShoppingCarts");
                 });
 
             modelBuilder.Entity("API_ArtworkSharingPlatform.Repository.Models.Genre", b =>
@@ -826,6 +881,8 @@ namespace API_ArtworkSharingPlatform.Repository.Migrations
                     b.Navigation("Reports");
 
                     b.Navigation("Requests");
+
+                    b.Navigation("ShoppingCarts");
                 });
 #pragma warning restore 612, 618
         }
