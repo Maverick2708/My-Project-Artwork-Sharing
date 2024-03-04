@@ -37,7 +37,7 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _artworkRepository.UpdateArtwork(updateArtworkModel, artworkId);
         }
-        public async Task<Artwork> GetArtworkById(int artworkid)
+        public async Task<ResponeModel> GetArtworkById(int artworkid)
         {
             return await _artworkRepository.GetArtworkById(artworkid);
         }
@@ -52,6 +52,14 @@ namespace API_ArtworkSharingPlatform.Services.Services
         public async Task<ResponeModel> SearchContenArtwork(string content)
         {
             return await _artworkRepository.SearchContenArtwork(content);
+        }
+        public async Task<ResponeModel> GetArtworkByUserid(string userID)
+        {
+            return await _artworkRepository.GetArtworkByUserid(userID);
+        }
+        public async Task<ResponeModel> GetAllPostCreateInMonth(int year, int month)
+        {
+            return await _artworkRepository.GetAllPostCreateInMonth(year, month);
         }
     }
 }

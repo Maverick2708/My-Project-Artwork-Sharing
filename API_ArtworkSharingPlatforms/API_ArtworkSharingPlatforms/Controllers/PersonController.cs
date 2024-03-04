@@ -156,5 +156,38 @@ namespace API_ArtworkSharingPlatforms.Controllers
             }
             return Ok(response);
         }
+
+        [HttpGet("GetAllAccountBySuperAdmin")]
+        public async Task<IActionResult> GetAllAccountBySuperAdmin()
+        {
+            var response = await _personService.GetAllAccountBySuperAdmin();
+            if (response.Status.Equals(false))
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
+
+        [HttpGet("GetAllAccountByAdmin")]
+        public async Task<IActionResult> GetAllAccountByAdmin()
+        {
+            var response = await _personService.GetAllAccountByAdmin();
+            if (response.Status.Equals(false))
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
+
+        [HttpGet("GetAllAccountCreateInMonth")]
+        public async Task<IActionResult> GetAllAccountCreateInMonth(int year, int month)
+        {
+            var response = await _personService.GetAllAccountCreateInMonth(year,month);
+            if (response.Status.Equals(false))
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
     }
 }

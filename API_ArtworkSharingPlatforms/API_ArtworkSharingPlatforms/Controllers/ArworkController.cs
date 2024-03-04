@@ -101,5 +101,29 @@ namespace API_ArtworkSharingPlatforms.Controllers
 
             return Ok(response);
         }
+
+        [HttpGet("GetArtworkByUserid")]
+        public async Task<IActionResult> GetArtworkByUserid(string userID)
+        {
+            var response = await _artworkservice.GetArtworkByUserid(userID);
+            if (response.Status == "Error")
+            {
+                return Conflict(response);
+            }
+
+            return Ok(response);
+        }
+
+        [HttpGet("GetAllPostCreateInMonth")]
+        public async Task<IActionResult> GetAllPostCreateInMonth(int year, int month)
+        {
+            var response = await _artworkservice.GetAllPostCreateInMonth(year,month);
+            if (response.Status == "Error")
+            {
+                return Conflict(response);
+            }
+
+            return Ok(response);
+        }
     }
 }

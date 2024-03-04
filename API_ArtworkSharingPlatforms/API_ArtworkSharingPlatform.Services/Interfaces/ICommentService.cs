@@ -11,7 +11,7 @@ namespace API_ArtworkSharingPlatform.Services.Interfaces
     {
         public Task<ResponeModel> CreateComment(CreateComment createComment);
         public Task<ResponeModel> CreateInteract(CreateInteract createInteract);
-        public Task<ResponeModel> LikeOrUnLike(int commentId);
+        public Task<ResponeModel> DisLike(int commentId);
         public Task<ResponeModel> HideOrShowCommentById(int commentId);
         public Task<ResponeModel> CountInteractByArtworkId(int artworkId);
         public Task<ResponeModel> CountCommentByArtworkId(int artworkId);

@@ -28,9 +28,9 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _commentRepository.CreateInteract(createInteract);
         }
-        public async Task<ResponeModel> LikeOrUnLike(int commentId)
+        public async Task<ResponeModel> DisLike(int commentId)
         {
-            return await _commentRepository.LikeOrUnLike(commentId);
+            return await _commentRepository.DisLike(commentId);
         }
         public async Task<ResponeModel> HideOrShowCommentById(int commentId)
         {

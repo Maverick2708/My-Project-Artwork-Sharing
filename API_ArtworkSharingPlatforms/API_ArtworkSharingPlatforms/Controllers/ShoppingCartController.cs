@@ -1,4 +1,5 @@
-﻿using API_ArtworkSharingPlatform.Repository.Models;
+﻿using API_ArtworkSharingPlatform.Repository.Data;
+using API_ArtworkSharingPlatform.Repository.Models;
 using API_ArtworkSharingPlatform.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -50,7 +51,7 @@ namespace API_ArtworkSharingPlatforms.Controllers
 			}
 		}
 		[HttpPost]
-		public async Task<IActionResult> AddToShoppingCart(ShoppingCart shoppingCart)
+		public async Task<IActionResult> AddToShoppingCart(CreateShoppingCartModel shoppingCart)
 		{
 			try
 			{

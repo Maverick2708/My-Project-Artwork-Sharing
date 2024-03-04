@@ -1,4 +1,5 @@
-﻿using API_ArtworkSharingPlatform.Repository.Interfaces;
+﻿using API_ArtworkSharingPlatform.Repository.Data;
+using API_ArtworkSharingPlatform.Repository.Interfaces;
 using API_ArtworkSharingPlatform.Repository.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -31,12 +32,30 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
 				.ToListAsync();
 		}
 
-		public async Task<ShoppingCart> AddToShoppingCart(ShoppingCart shoppingCart)
+		public async Task<ResponeModel> AddToShoppingCart(CreateShoppingCartModel shoppingCart)
 		{
-			_context.ShoppingCarts.Add(shoppingCart);
-			await _context.SaveChangesAsync();
-			return shoppingCart;
-		}
+            try
+            {
+                var ShoppingC = new ShoppingCart
+                {
+                   ArtworkPId = shoppingCart.ArtworkPId,
+				   UserId = shoppingCart.UserId,
+				   Quanity = shoppingCart.Quanity,
+				   PriceArtwork = shoppingCart.PriceArtwork,
+				   PictureArtwork = shoppingCart.PictureArtwork,
+                };
+                _context.ShoppingCarts.Add(ShoppingC);
+                await _context.SaveChangesAsync();
+
+                return new ResponeModel { Status = "Success", Message = "Added shoppingcart successfully", DataObject = ShoppingC };
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return new ResponeModel { Status = "Error", Message = "An error occurred while adding the shoppingcart" };
+            }
+        }
 
 		public async Task<bool> RemoveFromShoppingCart(int shoppingCartId)
 		{

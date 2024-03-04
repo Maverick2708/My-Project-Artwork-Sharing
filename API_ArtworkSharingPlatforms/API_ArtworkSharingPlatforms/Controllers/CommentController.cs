@@ -41,10 +41,10 @@ namespace API_ArtworkSharingPlatforms.Controllers
             return Ok(response);
         }
 
-        [HttpDelete("LikeOrUnLike")]
-        public async Task<IActionResult> LikeOrUnLike(int commentId)
+        [HttpDelete("DisLike")]
+        public async Task<IActionResult> DisLike(int commentId)
         {
-            var response = await _commentService.LikeOrUnLike(commentId);
+            var response = await _commentService.DisLike(commentId);
             if (response.Status == "Error")
             {
                 return Conflict(response);

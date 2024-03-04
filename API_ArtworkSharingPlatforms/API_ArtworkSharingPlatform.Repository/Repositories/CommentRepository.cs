@@ -121,7 +121,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 return new ResponeModel { Status = "Error", Message = "An error occurred while Creating the interact" };
             }
         }
-        public async Task<ResponeModel> LikeOrUnLike(int commentId)
+        public async Task<ResponeModel> DisLike(int commentId)
         {
             try
             {
@@ -254,12 +254,12 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
         {
             var foundInteract = await _context.Comments
                 .Where(c => c.ArtworkPId == artworkId && c.ContentComment == null && c.IsLikePost == true && c.UserId==userId)
-                .ToListAsync();
+                .FirstOrDefaultAsync();
             bool likeOrNotLike = false;
-            if (foundInteract.Count > 0)
+            if (foundInteract != null)
             {
                 likeOrNotLike = true;
-                return new ResponeModel { Status = "Success", Message = "Interact found", DataObject = likeOrNotLike };
+                return new ResponeModel { Status = "Success", Message = "Interact found", DataObject = new { likeOrNotLike = likeOrNotLike, Id = foundInteract.CommentId }  };
             }
             else
             {
@@ -288,7 +288,8 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                          IsLikePost = comment.IsLikePost,
                          Status = comment.Status,
                            // Include additional fields from Person table
-                         accountMail = person.UserName
+                         accountMail = person.UserName,
+                         avatar = person.Avatar,
                     }
                       )
                     .ToListAsync();

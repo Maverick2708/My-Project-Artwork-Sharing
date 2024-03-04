@@ -22,5 +22,8 @@ namespace API_ArtworkSharingPlatform.Repository.Interfaces
         public Task<AuthenticationResponseModel> RefreshToken(TokenModel tokenModel);
         public Task<ResponeModel> UpdateAvatar(UpdateAvatarModel avatar, string userId);
         public Task<ResponeModel> UpdateBackGround(UpdateBackGroundModel backGround, string userId);
+        public Task<ResponeModel> GetAllAccountBySuperAdmin();
+        public Task<ResponeModel> GetAllAccountByAdmin();
+        public Task<ResponeModel> GetAllAccountCreateInMonth(int year, int month);
     }
 }

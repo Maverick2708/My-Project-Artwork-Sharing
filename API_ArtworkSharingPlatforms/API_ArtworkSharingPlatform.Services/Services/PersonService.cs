@@ -71,5 +71,17 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _personRepository.UpdateBackGround(backGround, userId);
         }
+        public async Task<ResponeModel> GetAllAccountBySuperAdmin()
+        {
+            return await _personRepository.GetAllAccountBySuperAdmin();
+        }
+        public async Task<ResponeModel> GetAllAccountByAdmin()
+        {
+            return await _personRepository.GetAllAccountByAdmin();
+        }
+        public async Task<ResponeModel> GetAllAccountCreateInMonth(int year, int month)
+        {
+            return await _personRepository.GetAllAccountCreateInMonth(year, month);
+        }
     }
 }
