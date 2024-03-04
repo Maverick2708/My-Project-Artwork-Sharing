@@ -1,4 +1,5 @@
-﻿using API_ArtworkSharingPlatform.Repository.Interfaces;
+﻿using API_ArtworkSharingPlatform.Repository.Data;
+using API_ArtworkSharingPlatform.Repository.Interfaces;
 using API_ArtworkSharingPlatform.Repository.Models;
 using API_ArtworkSharingPlatform.Services.Interfaces;
 using System;
@@ -17,6 +18,16 @@ namespace API_ArtworkSharingPlatform.Services.Services
 		{
 
 			_orderRepository = orderRepository;
+		}
+
+		public Task<bool> AddOrder(Order order)
+		{
+			throw new NotImplementedException();
+		}
+
+		public Task<ResponeModel> AddOrder(AddOrder addOrder)
+		{
+			throw new NotImplementedException();
 		}
 
 		public async Task<Order> CreateOrder(Order order)
@@ -44,9 +55,14 @@ namespace API_ArtworkSharingPlatform.Services.Services
 			return await _orderRepository.GetOrders();
 		}
 
-		public async Task<bool> UpdateOrder(Order order)
+		public async Task<bool> UpdateOrder(int BillOrderId, UpdateOrder updateOrder)
 		{
-			return await _orderRepository.UpdateOrder(order);
+			return await _orderRepository.UpdateOrder(BillOrderId, updateOrder);
+		}
+
+		public Task<bool> UpdateOrder(Order order)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

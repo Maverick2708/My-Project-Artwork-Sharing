@@ -237,6 +237,9 @@ namespace API_ArtworkSharingPlatform.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BillOrderId"), 1L, 1);
 
+                    b.Property<bool?>("Status")
+                        .HasColumnType("bit");
+
                     b.Property<double?>("TotalBill")
                         .HasColumnType("float")
                         .HasColumnName("Total_Bill");

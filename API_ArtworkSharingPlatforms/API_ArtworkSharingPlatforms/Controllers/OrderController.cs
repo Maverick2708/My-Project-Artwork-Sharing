@@ -53,7 +53,7 @@ namespace API_ArtworkSharingPlatforms.Controllers
 			try
 			{
 				var response = await _orderService.UpdateOrder(billOrderId, updateOrder);
-				if (response.Status == "Error")
+				if (!response)
 				{
 					return NotFound(response);
 				}

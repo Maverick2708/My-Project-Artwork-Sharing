@@ -1,4 +1,5 @@
-﻿using API_ArtworkSharingPlatform.Repository.Interfaces;
+﻿using API_ArtworkSharingPlatform.Repository.Data;
+using API_ArtworkSharingPlatform.Repository.Interfaces;
 using API_ArtworkSharingPlatform.Repository.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -54,15 +55,14 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
 			return await _context.Orders.ToListAsync();
 		}
 
-		public async Task<bool> UpdateOrder(Order order)
+		public async Task<bool> UpdateOrder(int BillOrderId, UpdateOrder updateOrder)
 		{
-			var existingOrder = await _context.Orders.FindAsync(order.BillOrderId);
+			var existingOrder = await _context.Orders.FindAsync(BillOrderId);
 			if (existingOrder == null)
 				return false;
 
 			// Update order properties
-			existingOrder.UserId = order.UserId;
-			existingOrder.TotalBill = order.TotalBill;
+			existingOrder.TotalBill = updateOrder.TotalBill;
 
 			_context.Orders.Update(existingOrder);
 			await _context.SaveChangesAsync();
