@@ -1,4 +1,5 @@
-﻿using API_ArtworkSharingPlatform.Services.Interfaces;
+﻿using API_ArtworkSharingPlatform.Repository.Models;
+using API_ArtworkSharingPlatform.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,6 +43,56 @@ namespace API_ArtworkSharingPlatforms.Controllers
 					return NotFound();
 
 				return Ok(shoppingCarts);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
+			}
+		}
+		[HttpPost]
+		public async Task<IActionResult> AddToShoppingCart(ShoppingCart shoppingCart)
+		{
+			try
+			{
+				var addedCart = await _shoppingCartService.AddToShoppingCart(shoppingCart);
+				return Ok(addedCart);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
+			}
+		}
+
+		[HttpPut("{shoppingCartId}")]
+		public async Task<IActionResult> UpdateShoppingCart(int shoppingCartId, ShoppingCart shoppingCart)
+		{
+			try
+			{
+				if (shoppingCartId != shoppingCart.ShoppingCartId)
+					return BadRequest("ShoppingCartId mismatch");
+
+				var updated = await _shoppingCartService.UpdateShoppingCart(shoppingCart);
+				if (!updated)
+					return NotFound();
+
+				return Ok();
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
+			}
+		}
+
+		[HttpDelete("{shoppingCartId}")]
+		public async Task<IActionResult> RemoveFromShoppingCart(int shoppingCartId)
+		{
+			try
+			{
+				var removed = await _shoppingCartService.RemoveFromShoppingCart(shoppingCartId);
+				if (!removed)
+					return NotFound();
+
+				return Ok();
 			}
 			catch (Exception ex)
 			{
