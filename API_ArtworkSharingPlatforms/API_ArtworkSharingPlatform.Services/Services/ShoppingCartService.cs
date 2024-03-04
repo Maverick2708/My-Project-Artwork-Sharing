@@ -1,4 +1,5 @@
-﻿using API_ArtworkSharingPlatform.Repository.Interfaces;
+﻿using API_ArtworkSharingPlatform.Repository.Data;
+using API_ArtworkSharingPlatform.Repository.Interfaces;
 using API_ArtworkSharingPlatform.Repository.Models;
 using API_ArtworkSharingPlatform.Repository.Repositories;
 using API_ArtworkSharingPlatform.Services.Interfaces;
@@ -29,7 +30,7 @@ namespace API_ArtworkSharingPlatform.Services.Services
 		{
 			return await _shoppingCartRepository.GetShoppingCartByUser(userId);
 		}
-		public async Task<ShoppingCart> AddToShoppingCart(ShoppingCart shoppingCart)
+		public async Task<ResponeModel> AddToShoppingCart(CreateShoppingCartModel shoppingCart)
 		{
 			return await _shoppingCartRepository.AddToShoppingCart(shoppingCart);
 		}

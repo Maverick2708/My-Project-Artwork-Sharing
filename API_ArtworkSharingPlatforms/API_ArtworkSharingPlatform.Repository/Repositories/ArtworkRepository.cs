@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,24 +34,31 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
         {
             try
             {
-                var artwork = new Artwork
+                if (addArtwork.UserId == null || addArtwork.PictureArtwork == null || string.IsNullOrWhiteSpace(addArtwork.PictureArtwork))
                 {
-                    ContentArtwork = addArtwork.ContentArtwork,
-                    Description = addArtwork.Description,
-                    PriceArtwork = addArtwork.PriceArtwork,
-                    DatePost = DateTime.Now,
-                    PictureArtwork = addArtwork.PictureArtwork,
-                    UserId = addArtwork.UserId,
-                    GenreId = addArtwork.GenreId,
-                    Quanity = addArtwork.Quanity,
-                    Status = true
-                };
-                _context.Artworks.Add(artwork);
-                await _context.SaveChangesAsync();
+                    return new ResponeModel { Status = "Error", Message = "UserId and PictureArtwork cannot be null" };
+                }
+                else
+                {
+                    var artwork = new Artwork
+                    {
+                        ContentArtwork = addArtwork.ContentArtwork,
+                        Description = addArtwork.Description,
+                        PriceArtwork = addArtwork.PriceArtwork,
+                        DatePost = DateTime.Now,
+                        PictureArtwork = addArtwork.PictureArtwork,
+                        UserId = addArtwork.UserId,
+                        GenreId = addArtwork.GenreId,
+                        Quanity = addArtwork.Quanity,
+                        Status = true
+                    };
+                    _context.Artworks.Add(artwork);
+                    await _context.SaveChangesAsync();
 
-                return new ResponeModel { Status = "Success", Message = "Added artwork successfully", DataObject = artwork };
-
-            }catch (Exception ex)
+                    return new ResponeModel { Status = "Success", Message = "Added artwork successfully", DataObject = artwork };
+                }
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine($"Exception: {ex.Message}");
                 return new ResponeModel{ Status ="Error",Message= "An error occurred while adding the artwork" };
@@ -116,11 +124,39 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             artwork.Quanity = updateArtworkModel.Quanity;
             return artwork;
         }
-        public async Task<Artwork> GetArtworkById(int artworkid)
+        public async Task<ResponeModel> GetArtworkById(int artworkid)
         {
             var artwork = await _context.Artworks
-                .FirstOrDefaultAsync(c=>c.ArtworkPId == artworkid);
-            return artwork;
+                .Where(c=>c.ArtworkPId == artworkid)
+                .Join(
+                       _context.People,
+                       art => art.UserId,
+                       person => person.Id,
+                       (art, person) => new
+                       {
+                           artworkid = art.ArtworkPId,
+                           contentArtwork = art.ContentArtwork,
+                           description = art.Description,
+                           priceArtwork = art.PriceArtwork,
+                           datePost = art.DatePost,
+                           pictureArtwork = art.PictureArtwork,
+                           genreId = art.GenreId,
+                           userId = art.UserId,
+                           quanity = art.Quanity,
+                           status = art.Status,
+
+                           Avatar = person.Avatar,
+                       }
+                ).FirstOrDefaultAsync();
+            if (artwork !=null)
+            {
+
+                return new ResponeModel { Status = "Success", Message = "Artwork found", DataObject = artwork };
+            }
+            else
+            {
+                return new ResponeModel { Status = "Error", Message = "Artwork not found"};
+            }
         }
 
         public async Task<ResponeModel> HideOrShowArtworkById( int artworkId)
@@ -171,6 +207,51 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             {
                 Console.WriteLine($"Exception: {ex.Message}");
                 return new ResponeModel { Status = "Error", Message = "Artwork not found" };
+            }
+        }
+        public async Task<ResponeModel> GetArtworkByUserid(string userID)
+        {
+            try
+            {
+                var Artwork = await _context.Artworks
+                   .Where(c=> c.UserId == userID)
+                   .ToListAsync();
+                if (Artwork.Count > 0)
+                {
+                    return new ResponeModel { Status = "Success", Message = "Artwork found", DataObject = Artwork };
+                }
+                else if (Artwork.Count <=0)
+                {
+                    return new ResponeModel { Status = "Error", Message = "This user has no posts" };
+                }
+                else
+                {
+                    return new ResponeModel { Status = "Error", Message = "Wrong UserID" };
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return new ResponeModel { Status = "Error", Message = "Artwork not found" };
+            }
+        }
+        public async Task<ResponeModel> GetAllPostCreateInMonth(int year, int month)
+        {
+            var startDate = new DateTime(year, month, 1);
+            var endDate = startDate.AddMonths(1).AddDays(-1);
+
+            var countPost = await _context.Artworks
+                .Where(c => c.DatePost >= startDate && c.DatePost <= endDate)
+                .ToListAsync();
+
+            if (countPost.Count > 0)
+            {
+                int sumPost = countPost.Count();
+                return new ResponeModel { Status = "Success", Message = "Artwork Found ", DataObject = sumPost };
+            }
+            else
+            {
+                return new ResponeModel { Status = "Error", Message = "Not Found ", DataObject = 0 };
             }
         }
     }

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj": {}
+    "D:\\Art_Sharing_1\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj": {}
   },
   "projects": {
-    "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj": {
+    "D:\\Art_Sharing_1\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj",
+        "projectUniqueName": "D:\\Art_Sharing_1\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj",
         "projectName": "API_ArtworkSharingPlatform.Libary",
-        "projectPath": "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj",
-        "packagesPath": "C:\\Users\\uyent\\.nuget\\packages\\",
-        "outputPath": "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\obj\\",
+        "projectPath": "D:\\Art_Sharing_1\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj",
+        "packagesPath": "C:\\Users\\daigi\\.nuget\\packages\\",
+        "outputPath": "D:\\Art_Sharing_1\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\uyent\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\daigi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,6 +38,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -55,21 +64,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj": {
+    "D:\\Art_Sharing_1\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj",
+        "projectUniqueName": "D:\\Art_Sharing_1\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj",
         "projectName": "API_ArtworkSharingPlatform.Repository",
-        "projectPath": "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj",
-        "packagesPath": "C:\\Users\\uyent\\.nuget\\packages\\",
-        "outputPath": "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\obj\\",
+        "projectPath": "D:\\Art_Sharing_1\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj",
+        "packagesPath": "C:\\Users\\daigi\\.nuget\\packages\\",
+        "outputPath": "D:\\Art_Sharing_1\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\uyent\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\daigi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -89,6 +102,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -156,21 +174,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj": {
+    "D:\\Art_Sharing_1\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj",
+        "projectUniqueName": "D:\\Art_Sharing_1\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj",
         "projectName": "API_ArtworkSharingPlatform.Services",
-        "projectPath": "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj",
-        "packagesPath": "C:\\Users\\uyent\\.nuget\\packages\\",
-        "outputPath": "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\obj\\",
+        "projectPath": "D:\\Art_Sharing_1\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj",
+        "packagesPath": "C:\\Users\\daigi\\.nuget\\packages\\",
+        "outputPath": "D:\\Art_Sharing_1\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\uyent\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\daigi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -184,11 +206,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj": {
-                "projectPath": "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj"
+              "D:\\Art_Sharing_1\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj": {
+                "projectPath": "D:\\Art_Sharing_1\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj"
               },
-              "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj": {
-                "projectPath": "D:\\FPTU\\7 - Spring 2024\\SWD392\\Artwork_Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj"
+              "D:\\Art_Sharing_1\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj": {
+                "projectPath": "D:\\Art_Sharing_1\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj"
               }
             }
           }
@@ -197,6 +219,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -218,7 +245,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

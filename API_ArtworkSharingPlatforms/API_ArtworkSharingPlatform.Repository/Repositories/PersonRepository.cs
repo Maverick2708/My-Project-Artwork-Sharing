@@ -2,6 +2,7 @@
 using API_ArtworkSharingPlatform.Repository.Interfaces;
 using API_ArtworkSharingPlatform.Repository.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -511,6 +512,66 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
         {
             account.BackgroundImg = updateBackGround.BackgroundImg;
             return account;
+        }
+        public async Task<ResponeModel> GetAllAccountBySuperAdmin()
+        {
+            try
+            {
+                // Assume your user model has a property for roles
+                var accounts = await _userManager.Users.ToListAsync();
+
+                // Filter out accounts with SuperAdmin role
+                var nonSuperAdminAccounts = accounts.Where(u => !_userManager.IsInRoleAsync(u,"SuperAdmin").Result).ToList();
+
+                // Perform any additional processing or transformation if needed
+
+                return new ResponeModel { Status = "Success", Message = "Account Found",DataObject= nonSuperAdminAccounts };
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it as needed
+                return new ResponeModel { Status = "Error", Message = "An error occurred while find the account " };
+            }
+        }
+        public async Task<ResponeModel> GetAllAccountByAdmin()
+        {
+            try
+            {
+                // Assume your user model has a property for roles
+                var accounts = await _userManager.Users.ToListAsync();
+
+                // Filter out accounts with SuperAdmin role
+                var nonSuperAdminAccounts = accounts.Where(u => !_userManager.IsInRoleAsync(u, "Admin").Result 
+                && !_userManager.IsInRoleAsync(u, "SuperAdmin").Result).ToList();
+
+                // Perform any additional processing or transformation if needed
+
+                return new ResponeModel { Status = "Success", Message = "Account Found", DataObject = nonSuperAdminAccounts };
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it as needed
+                return new ResponeModel { Status = "Error", Message = "An error occurred while find the account " };
+            }
+        }
+        public async Task<ResponeModel> GetAllAccountCreateInMonth(int year, int month)
+        {
+            var startDate = new DateTime(year, month, 1);
+            var endDate = startDate.AddMonths(1).AddDays(-1);
+
+            var countAccount = await _context.People
+                .Where(c => c.DateUserRe >= startDate && c.DateUserRe <= endDate)
+                .ToListAsync();
+
+            if (countAccount.Count > 0)
+            {
+                int sumAccount = countAccount.Count();
+                return new ResponeModel { Status = "Success", Message = "Account Found ", DataObject = sumAccount };
+            }
+            else
+            {
+                return new ResponeModel { Status = "Error", Message = "Not Found ", DataObject = 0 };
+            }
         }
     }
 }

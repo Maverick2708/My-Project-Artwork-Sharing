@@ -13,10 +13,12 @@ namespace API_ArtworkSharingPlatform.Services.Interfaces
         public Task<IEnumerable<Artwork>> GetArtworkByArtist(string artist);
         public Task<IEnumerable<Artwork>> GetArtworkByGenre(string genre);
         public Task<ResponeModel> UpdateArtwork(UpdateArtworkModel updateArtworkModel, int artworkId);
-        public Task<Artwork> GetArtworkById(int artworkid);
+        public Task<ResponeModel> GetArtworkById(int artworkid);
         public Task<IEnumerable<Artwork>> GetAllArtwork();
         public Task<ResponeModel> AddArtwork(AddArtwork model);
         public Task<ResponeModel> HideOrShowArtworkById(int artworkId);
         public Task<ResponeModel> SearchContenArtwork(string content);
+        public Task<ResponeModel> GetArtworkByUserid(string userID);
+        public Task<ResponeModel> GetAllPostCreateInMonth(int year, int month);
     }
 }
