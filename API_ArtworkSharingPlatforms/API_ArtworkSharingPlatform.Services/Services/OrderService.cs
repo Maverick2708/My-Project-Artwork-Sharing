@@ -55,14 +55,14 @@ namespace API_ArtworkSharingPlatform.Services.Services
 			return await _orderRepository.GetOrders();
 		}
 
+		public async Task<bool> UpdateOrder(int BillOrderId, UpdateOrder updateOrder)
+		{
+			return await _orderRepository.UpdateOrder(BillOrderId, updateOrder);
+		}
+
 		public Task<bool> UpdateOrder(Order order)
 		{
 			throw new NotImplementedException();
 		}
-
-		//public async Task<bool> UpdateOrder(int BillOrderId, UpdateOrder updateOrder)
-		//{
-		//	return await _orderRepository.UpdateOrder(BillOrderId, updateOrder);
-		//}
 	}
 }

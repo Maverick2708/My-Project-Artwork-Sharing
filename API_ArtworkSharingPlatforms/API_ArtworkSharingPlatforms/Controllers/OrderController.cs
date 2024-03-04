@@ -46,24 +46,24 @@ namespace API_ArtworkSharingPlatforms.Controllers
 			return Ok(response);
 		}
 
-		//// PUT: api/order/{billOrderId}
-		//[HttpPut("{billOrderId}")]
-		//public async Task<IActionResult> UpdateOrder(int billOrderId, UpdateOrder updateOrder)
-		//{
-		//	try
-		//	{
-		//		var response = await _orderService.UpdateOrder(billOrderId, updateOrder);
-		//		if (response.Status == "Error")
-		//		{
-		//			return NotFound(response);
-		//		}
-		//		return Ok(response);
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
-		//	}
-		//}
+		// PUT: api/order/{billOrderId}
+		[HttpPut("{billOrderId}")]
+		public async Task<IActionResult> UpdateOrder(int billOrderId, UpdateOrder updateOrder)
+		{
+			try
+			{
+				var response = await _orderService.UpdateOrder(billOrderId, updateOrder);
+				if (!response)
+				{
+					return NotFound(response);
+				}
+				return Ok(response);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
+			}
+		}
 
 		// GET: api/order
 		[HttpGet]
