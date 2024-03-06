@@ -55,9 +55,9 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
 			return await _context.Orders.ToListAsync();
 		}
 
-		public async Task<bool> UpdateOrder(int BillOrderId, UpdateOrder updateOrder)
+		public async Task<bool> UpdateOrder(int billOrderId, UpdateOrder updateOrder)
 		{
-			var existingOrder = await _context.Orders.FindAsync(BillOrderId);
+			var existingOrder = await _context.Orders.FindAsync(billOrderId);
 			if (existingOrder == null)
 				return false;
 
@@ -67,6 +67,47 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
 			_context.Orders.Update(existingOrder);
 			await _context.SaveChangesAsync();
 			return true;
+		}
+
+		public async Task<bool> AddOrder(Order order)
+		{
+			try
+			{
+				await _context.Orders.AddAsync(order);
+				await _context.SaveChangesAsync();
+				return true;
+			}
+			catch (Exception)
+			{
+				return false;
+			}
+		}
+
+		public async Task<ResponeModel> AddOrder(AddOrder addOrder)
+		{
+			try
+			{
+				// Convert addOrder to Order entity
+				var order = new Order
+				{
+					// Populate order properties from addOrder
+				};
+
+				await _context.Orders.AddAsync(order);
+				await _context.SaveChangesAsync();
+
+				return new ResponeModel
+				{
+					// Populate ResponeModel properties
+				};
+			}
+			catch (Exception ex)
+			{
+				return new ResponeModel
+				{
+					// Populate ResponeModel properties with error message
+				};
+			}
 		}
 	}
 }
