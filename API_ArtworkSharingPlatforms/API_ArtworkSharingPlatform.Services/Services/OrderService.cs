@@ -16,18 +16,14 @@ namespace API_ArtworkSharingPlatform.Services.Services
 
 		public OrderService(IOrderRepository orderRepository)
 		{
-
 			_orderRepository = orderRepository;
 		}
 
-		public Task<bool> AddOrder(Order order)
-		{
-			throw new NotImplementedException();
-		}
+		public async Task<bool> AddOrder(Order order) => await _orderRepository.AddOrder(order);
 
-		public Task<ResponeModel> AddOrder(AddOrder addOrder)
+		public async Task<ResponeModel> AddOrder(AddOrder addOrder)
 		{
-			throw new NotImplementedException();
+			return await _orderRepository.AddOrder(addOrder: addOrder);
 		}
 
 		public async Task<Order> CreateOrder(Order order)
@@ -37,17 +33,17 @@ namespace API_ArtworkSharingPlatform.Services.Services
 
 		public async Task<bool> DeleteOrder(int billOrderId)
 		{
-			return await (_orderRepository.DeleteOrder(billOrderId));
+			return await _orderRepository.DeleteOrder(billOrderId);
 		}
 
-		public async Task<IEnumerable<Order>> GetArtworkByUser(string UserId)
+		public async Task<IEnumerable<Order>> GetArtworkByUser(string userId)
 		{
-			return await _orderRepository.GetArtworkByUser(UserId);
+			return await _orderRepository.GetArtworkByUser(userId);
 		}
 
-		public async Task<Order> GetOrderById(int BillOrderId)
+		public async Task<Order> GetOrderById(int billOrderId)
 		{
-			return await _orderRepository.GetOrderById(BillOrderId);
+			return await _orderRepository.GetOrderById(billOrderId);
 		}
 
 		public async Task<IEnumerable<Order>> GetOrders()
@@ -55,14 +51,9 @@ namespace API_ArtworkSharingPlatform.Services.Services
 			return await _orderRepository.GetOrders();
 		}
 
-		public async Task<bool> UpdateOrder(int BillOrderId, UpdateOrder updateOrder)
+		public async Task<bool> UpdateOrder(int billOrderId, UpdateOrder updateOrder)
 		{
-			return await _orderRepository.UpdateOrder(BillOrderId, updateOrder);
-		}
-
-		public Task<bool> UpdateOrder(Order order)
-		{
-			throw new NotImplementedException();
+			return await _orderRepository.UpdateOrder(billOrderId, updateOrder);
 		}
 	}
 }

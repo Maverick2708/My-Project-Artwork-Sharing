@@ -16,6 +16,7 @@ namespace API_ArtworkSharingPlatform.Repository.Interfaces
 		public Task<Order> CreateOrder(Order order);
 		public Task<bool> DeleteOrder(int billOrderId);
 		public Task<bool> UpdateOrder(int billOrderId, UpdateOrder order);
-
+		Task<bool> AddOrder(Order order);
+		Task<ResponeModel> AddOrder(AddOrder addOrder);
 	}
 }
