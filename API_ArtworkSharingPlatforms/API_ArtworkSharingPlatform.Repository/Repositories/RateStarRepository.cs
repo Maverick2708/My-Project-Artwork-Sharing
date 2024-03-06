@@ -64,6 +64,10 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 double Average = sum/ AverageStar.Count;
                 return new ResponeModel { Status = "Success", Message = "Rate found", DataObject = Average };
             }
+            else if (AverageStar.Count <=0)
+            {
+                return new ResponeModel { Status = "Success", Message = "Rate found", DataObject = 0 };
+            }
             else
             {
                 return new ResponeModel { Status = "Error", Message = "Rate not found" };
