@@ -202,9 +202,13 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 int SumLike = ArtworkId.Count();
                 return new ResponeModel { Status = "Success", Message = "Interact found", DataObject = SumLike };
             }
+            else if (ArtworkId.Count <=0)
+            {
+                return new ResponeModel { Status = "Success", Message = "Interact not found", DataObject =0 };
+            }
             else
             {
-                return new ResponeModel { Status = "Error", Message = "Interact not found", DataObject =0 };
+                return new ResponeModel { Status = "Error", Message = "Something Wrong", DataObject = 0 };
             }
         }
 
@@ -253,17 +257,23 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
         public async Task<ResponeModel> GetUseLikerOrNotLike(string userId, int artworkId)
         {
             var foundInteract = await _context.Comments
-                .Where(c => c.ArtworkPId == artworkId && c.ContentComment == null && c.IsLikePost == true && c.UserId==userId)
-                .FirstOrDefaultAsync();
-            bool likeOrNotLike = false;
+                      .Where(c => c.ArtworkPId == artworkId && c.ContentComment == null && c.IsLikePost == true && c.UserId == userId)
+                      .FirstOrDefaultAsync();
+             bool likeOrNotLike = false;
+
             if (foundInteract != null)
             {
                 likeOrNotLike = true;
-                return new ResponeModel { Status = "Success", Message = "Interact found", DataObject = new { likeOrNotLike = likeOrNotLike, Id = foundInteract.CommentId }  };
+                return new ResponeModel { Status = "Success", Message = "Interact found", DataObject = new { likeOrNotLike = likeOrNotLike, Id = foundInteract.CommentId } };
+            }
+            else if (foundInteract == null) 
+            {
+                // Trường hợp foundInteract bằng null cũng trả về mã trạng thái 200
+                return new ResponeModel { Status = "Success", Message = "Interact not found", DataObject = new { likeOrNotLike = likeOrNotLike } };
             }
             else
             {
-                return new ResponeModel { Status = "Error", Message = "Interact not found", DataObject = likeOrNotLike };
+                return new ResponeModel { Status = "Error", Message = "Something Wrong", DataObject = new { likeOrNotLike = likeOrNotLike } };
             }
         }
         public async Task<ResponeModel> GetCommentForPost(int artworkId)

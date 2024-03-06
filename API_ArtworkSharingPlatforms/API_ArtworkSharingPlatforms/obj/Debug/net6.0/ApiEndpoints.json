@@ -519,6 +519,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.OrderController",
+    "Method": "DeleteOrder",
+    "RelativePath": "api/Order/{billOrderId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "billOrderId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API_ArtworkSharingPlatforms.Controllers.PersonController",
     "Method": "ChangePasswordAsync",
     "RelativePath": "api/Person/ChangePasswordAsync",
