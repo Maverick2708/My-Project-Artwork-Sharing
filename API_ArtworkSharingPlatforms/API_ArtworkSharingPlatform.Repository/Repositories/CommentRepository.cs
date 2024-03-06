@@ -308,9 +308,13 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 
                 return new ResponeModel { Status = "Success", Message = "Comment found", DataObject = commentsWithUserInfo };
             }
+            else if (commentsWithUserInfo.Count <= 0)
+            {
+                return new ResponeModel { Status = "Success", Message = "Comment not found", DataObject = commentsWithUserInfo };
+            }
             else
             {
-                return new ResponeModel { Status = "Error", Message = "Comment not found", DataObject = commentsWithUserInfo };
+                return new ResponeModel { Status = "Error", Message = "Something Wrong" };
             }
         }
     }
