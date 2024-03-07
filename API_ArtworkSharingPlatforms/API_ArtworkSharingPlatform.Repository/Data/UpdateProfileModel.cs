@@ -21,6 +21,6 @@ namespace API_ArtworkSharingPlatform.Repository.Data
 
         public string? Address { get; set; }
         public bool? Gender { get; set; }
-        public string? Avatar { get; set; }
+       // public string? Avatar { get; set; }
     }
 }

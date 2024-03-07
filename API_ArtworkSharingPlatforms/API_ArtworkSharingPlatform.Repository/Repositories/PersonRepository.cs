@@ -247,7 +247,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             account.PhoneNumber = updateProfileModel.PhoneNumber;
             account.Address = updateProfileModel.Address;
             account.Gender = updateProfileModel.Gender;
-            account.Avatar = updateProfileModel.Avatar;
+            //account.Avatar = updateProfileModel.Avatar;
             return account;
         }
 
