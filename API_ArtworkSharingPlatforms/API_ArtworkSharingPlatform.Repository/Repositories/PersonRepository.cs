@@ -573,5 +573,58 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 return new ResponeModel { Status = "Error", Message = "Not Found ", DataObject = 0 };
             }
         }
+
+        public async Task<ResponeModel> UpdateUserRole(string userId, string selectedRole)
+        {
+            try
+            {
+                var existingUser = await _userManager.FindByIdAsync(userId);
+
+                if (existingUser == null)
+                {
+                    return new ResponeModel { Status = "Error", Message = "User not found" };
+                }
+
+                // Check if the user is a SuperAdmin
+                var isSuperAdmin = await _userManager.IsInRoleAsync(existingUser, RoleModel.SuperAdmin.ToString());
+
+                if (isSuperAdmin)
+                {
+                    return new ResponeModel { Status = "Info", Message = "SuperAdmin cannot be changed to other roles" };
+                }
+
+                // Check if the selected role is valid
+                if (!Enum.TryParse<RoleModel>(selectedRole, out var roleModel))
+                {
+                    return new ResponeModel { Status = "Error", Message = "Invalid role selection" };
+                }
+
+                // Check if the selected role is the same as the user's current role
+                if (await _userManager.IsInRoleAsync(existingUser, roleModel.ToString()))
+                {
+                    return new ResponeModel { Status = "Info", Message = $"User is already in the {roleModel} role" };
+                }
+
+                // Remove the user from all existing roles
+                var existingRoles = await _userManager.GetRolesAsync(existingUser);
+                await _userManager.RemoveFromRolesAsync(existingUser, existingRoles);
+
+                // Check if the selected role exists, if not, create it
+                if (!await _roleManager.RoleExistsAsync(roleModel.ToString()))
+                {
+                    await _roleManager.CreateAsync(new IdentityRole(roleModel.ToString()));
+                }
+
+                // Add the user to the selected role
+                await _userManager.AddToRoleAsync(existingUser, roleModel.ToString());
+
+                return new ResponeModel { Status = "Success", Message = $"User role updated to {roleModel} successfully", DataObject = existingUser };
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return new ResponeModel { Status = "Error", Message = "An error occurred while updating user role" };
+            }
+        }
     }
 }

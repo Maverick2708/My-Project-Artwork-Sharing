@@ -189,5 +189,16 @@ namespace API_ArtworkSharingPlatforms.Controllers
             }
             return Ok(response);
         }
+
+        [HttpPut("UpdateUserRole")]
+        public async Task<IActionResult> UpdateUserRole(string userId, string selectedRole)
+        {
+            var response = await _personService.UpdateUserRole(userId, selectedRole);
+            if (response.Status.Equals(false))
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
     }
 }
