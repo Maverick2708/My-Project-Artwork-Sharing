@@ -762,6 +762,27 @@
   },
   {
     "ContainingType": "API_ArtworkSharingPlatforms.Controllers.PersonController",
+    "Method": "UpdateUserRole",
+    "RelativePath": "api/Person/UpdateUserRole",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "selectedRole",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.PersonController",
     "Method": "UpdateVerifiedPage",
     "RelativePath": "api/Person/UpdateVerifiedPage",
     "HttpMethod": "PUT",
