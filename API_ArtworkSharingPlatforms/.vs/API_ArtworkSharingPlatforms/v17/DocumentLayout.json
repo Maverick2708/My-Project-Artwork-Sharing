@@ -9,6 +9,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{677E345E-8F87-422F-A40A-F2F40C60E403}|API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms.csproj|d:\\art_sharing_2\\my-project-artwork-sharing\\api_artworksharingplatforms\\api_artworksharingplatforms\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{677E345E-8F87-422F-A40A-F2F40C60E403}|API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms.csproj|solutionrelative:api_artworksharingplatforms\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F134829-C124-4B8B-B773-1A403F6ED2B4}|API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj|d:\\art_sharing_2\\my-project-artwork-sharing\\api_artworksharingplatforms\\api_artworksharingplatform.repository\\repositories\\personrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F134829-C124-4B8B-B773-1A403F6ED2B4}|API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj|solutionrelative:api_artworksharingplatform.repository\\repositories\\personrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,15 +46,28 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PersonRepository.cs",
+              "DocumentMoniker": "D:\\Art_Sharing_2\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\Repositories\\PersonRepository.cs",
+              "RelativeDocumentMoniker": "API_ArtworkSharingPlatform.Repository\\Repositories\\PersonRepository.cs",
+              "ToolTip": "D:\\Art_Sharing_2\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\Repositories\\PersonRepository.cs",
+              "RelativeToolTip": "API_ArtworkSharingPlatform.Repository\\Repositories\\PersonRepository.cs",
+              "ViewState": "AQIAAIsAAAAAAAAAAAAqwJcAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T06:06:55.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "D:\\Art_Sharing_2\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\appsettings.Development.json",
               "RelativeDocumentMoniker": "API_ArtworkSharingPlatforms\\appsettings.Development.json",
               "ToolTip": "D:\\Art_Sharing_2\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\appsettings.Development.json",
               "RelativeToolTip": "API_ArtworkSharingPlatforms\\appsettings.Development.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAfAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-03-08T07:52:35.884Z",
+              "WhenOpened": "2024-03-09T06:04:48.012Z",
               "EditorCaption": ""
             },
             {
@@ -61,9 +78,9 @@
               "RelativeDocumentMoniker": "API_ArtworkSharingPlatforms\\appsettings.json",
               "ToolTip": "D:\\Art_Sharing_2\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\appsettings.json",
               "RelativeToolTip": "API_ArtworkSharingPlatforms\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAWAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-03-08T07:52:25.732Z",
+              "WhenOpened": "2024-03-09T06:04:33.699Z",
               "EditorCaption": ""
             }
           ]
