@@ -36,24 +36,39 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
 		{
             try
             {
-                var ShoppingC = new ShoppingCart
+                // Check if the item already exists in the shopping cart
+                var existingItem = _context.ShoppingCarts
+                    .FirstOrDefault(item => item.ArtworkPId == shoppingCart.ArtworkPId && item.UserId == shoppingCart.UserId);
+
+                if (existingItem != null)
                 {
-                   ArtworkPId = shoppingCart.ArtworkPId,
-				   UserId = shoppingCart.UserId,
-				   Quanity = shoppingCart.Quanity,
-				   PriceArtwork = shoppingCart.PriceArtwork,
-				   PictureArtwork = shoppingCart.PictureArtwork,
-                };
-                _context.ShoppingCarts.Add(ShoppingC);
+                    // Item already exists, update quantity, and price
+                    existingItem.Quanity += shoppingCart.Quanity;
+                    existingItem.PriceArtwork += shoppingCart.PriceArtwork; // You may want to adjust this based on your business logic
+                }
+                else
+                {
+                    // Item does not exist, add a new item to the shopping cart
+                    var newShoppingC = new ShoppingCart
+                    {
+                        ArtworkPId = shoppingCart.ArtworkPId,
+                        UserId = shoppingCart.UserId,
+                        Quanity = shoppingCart.Quanity,
+                        PriceArtwork = shoppingCart.PriceArtwork,
+                        PictureArtwork = shoppingCart.PictureArtwork,
+                    };
+
+                    _context.ShoppingCarts.Add(newShoppingC);
+                }
+
                 await _context.SaveChangesAsync();
 
-                return new ResponeModel { Status = "Success", Message = "Added shoppingcart successfully", DataObject = ShoppingC };
-
+                return new ResponeModel { Status = "Success", Message = "Added shopping cart item successfully", DataObject = existingItem };
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Exception: {ex.Message}");
-                return new ResponeModel { Status = "Error", Message = "An error occurred while adding the shoppingcart" };
+                return new ResponeModel { Status = "Error", Message = "An error occurred while adding the shopping cart item" };
             }
         }
 

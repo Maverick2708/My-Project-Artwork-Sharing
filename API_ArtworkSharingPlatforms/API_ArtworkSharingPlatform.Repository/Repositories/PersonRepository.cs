@@ -104,7 +104,10 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             if (result.Succeeded)
             {
                 var user = await _userManager.FindByNameAsync(signInModel.AccountEmail);
-                if (user != null )
+
+                var person = await _context.People.FirstOrDefaultAsync(p=> p.UserName == signInModel.AccountEmail && p.Status == true);
+
+                if (user != null && person != null )
                 {
                     var authClaims = new List<Claim>
                     {
@@ -148,7 +151,11 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 }
                 else
                 {
-                    return null;
+                    return new AuthenticationResponseModel
+                    {
+                        Status = false,
+                        Message = "Account is inactive. Please contact support."
+                    };
                 }
             }
             else
