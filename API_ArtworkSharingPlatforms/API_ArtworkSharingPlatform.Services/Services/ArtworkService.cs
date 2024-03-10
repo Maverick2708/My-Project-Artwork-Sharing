@@ -61,5 +61,9 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _artworkRepository.GetAllPostCreateInMonth(year, month);
         }
+        public async Task<ResponeModel> GetArtistByArtworkId(int artworkid)
+        {
+            return await _artworkRepository.GetArtistByArtworkId((int)artworkid);
+        }
     }
 }
