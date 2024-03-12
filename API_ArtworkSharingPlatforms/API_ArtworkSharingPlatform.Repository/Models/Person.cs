@@ -31,6 +31,8 @@ namespace API_ArtworkSharingPlatform.Repository.Models
         public bool? Status { get; set; }
         public bool? IsVerifiedPage { get; set; }
         public bool? IsConfirm { get; set; }
+        //public string VerificationCode { get; set; }
+        //public DateTime? VerificationCodeExpiryTime { get; set; }
 
         public virtual ICollection<Artwork> Artworks { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }

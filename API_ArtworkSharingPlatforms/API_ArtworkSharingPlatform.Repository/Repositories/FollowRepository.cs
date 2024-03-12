@@ -90,7 +90,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             }
             else
             {
-                return new ResponeModel { Status = "Error", Message = "Follow not found", DataObject = followOrUnfollow };
+                return new ResponeModel { Status = "Success", Message = "Follow not found", DataObject = followOrUnfollow };
             }
         }
     }

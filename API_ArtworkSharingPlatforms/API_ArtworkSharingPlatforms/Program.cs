@@ -53,6 +53,7 @@ builder.Services.AddSwaggerGen(opt =>
 });
 
 
+
 builder.Services
     .AddIdentity<Person, IdentityRole>()
     .AddEntityFrameworkStores<Artwork_SharingContext>()

@@ -40,7 +40,9 @@ namespace API_ArtworkSharingPlatforms
 			services.AddScoped<IShoppingCartRepository,ShoppingCartRepository>();
 			services.AddScoped<IShoppingCartService,ShoppingCartService>();
 
-			return services;
+          
+
+            return services;
 		}
 	}
 }

@@ -4,6 +4,7 @@ using API_ArtworkSharingPlatform.Repository.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -11,11 +12,15 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using MailKit.Net.Smtp;
+using MimeKit;
 
 namespace API_ArtworkSharingPlatform.Repository.Repositories
 {
@@ -27,12 +32,15 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<Person> signInManager;
         private readonly IMapper _mapper;
+        private readonly IConfiguration _configuration;
+        
         public PersonRepository(Artwork_SharingContext context,
                                 UserManager<Person> userManager, 
                                 RoleManager<IdentityRole> roleManager,
                                 IConfiguration Configuration,
                                SignInManager<Person> SignInManager,
-                               IMapper mapper)
+                               IMapper mapper,
+                               IConfiguration configuration)
         {
             this._context = context;
             this._userManager = userManager;
@@ -40,6 +48,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             this.signInManager = SignInManager;
             this.configuration = Configuration;
             this._mapper = mapper;
+            _configuration = configuration;
         }
         public async Task<ResponeModel> SignUpAccountAsync(SignUpModel signUpModel)
         {
@@ -527,12 +536,32 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 // Assume your user model has a property for roles
                 var accounts = await _userManager.Users.ToListAsync();
 
-                // Filter out accounts with SuperAdmin role
-                var nonSuperAdminAccounts = accounts.Where(u => !_userManager.IsInRoleAsync(u,"SuperAdmin").Result).ToList();
+                var nonSuperAdminAccounts = accounts.Where(u =>
+                    !_userManager.IsInRoleAsync(u, "SuperAdmin").Result
+                      ).ToList();
+                // Transform the user data to include roles
+                var usersWithRoles = new List<object>();
 
-                // Perform any additional processing or transformation if needed
+                foreach (var user in nonSuperAdminAccounts)
+                {
+                    var roles = await _userManager.GetRolesAsync(user);
 
-                return new ResponeModel { Status = "Success", Message = "Account Found",DataObject= nonSuperAdminAccounts };
+                    usersWithRoles.Add(new
+                    {
+                        user.Id,
+                        user.UserName,
+                        user.Email,
+                        user.Address,
+                        user.Gender,
+                        user.PhoneNumber,
+                        user.Dob,
+                        user.FullName,
+                        user.DateUserRe,
+                        Roles = roles
+                    });
+                }
+
+                return new ResponeModel { Status = "Success", Message = "Accounts Found", DataObject = usersWithRoles };
             }
             catch (Exception ex)
             {
@@ -551,9 +580,29 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 var nonSuperAdminAccounts = accounts.Where(u => !_userManager.IsInRoleAsync(u, "Admin").Result 
                 && !_userManager.IsInRoleAsync(u, "SuperAdmin").Result).ToList();
 
+                var usersWithRoles = new List<object>();
+
+                foreach (var user in nonSuperAdminAccounts)
+                {
+                    var roles = await _userManager.GetRolesAsync(user);
+
+                    usersWithRoles.Add(new
+                    {
+                        user.Id,
+                        user.UserName,
+                        user.Email,
+                        user.Address,
+                        user.Gender,
+                        user.PhoneNumber,
+                        user.Dob,
+                        user.FullName,
+                        user.DateUserRe,
+                        Roles = roles
+                    });
+                }
                 // Perform any additional processing or transformation if needed
 
-                return new ResponeModel { Status = "Success", Message = "Account Found", DataObject = nonSuperAdminAccounts };
+                return new ResponeModel { Status = "Success", Message = "Account Found", DataObject = usersWithRoles };
             }
             catch (Exception ex)
             {
@@ -631,6 +680,97 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             {
                 Console.WriteLine($"Exception: {ex.Message}");
                 return new ResponeModel { Status = "Error", Message = "An error occurred while updating user role" };
+            }
+        }
+
+        public async Task<ResponeModel> ForgetPasswordAsync(string email)
+        {
+            try
+            {
+                var user = await _userManager.FindByEmailAsync(email);
+
+                if (user == null )
+                {
+                    // Không tìm thấy tài khoản hoặc email chưa được xác thực
+                    return new ResponeModel { Status = "Error", Message = "Invalid email or email not confirmed" };
+                }
+
+                // Tạo mã xác thực ngẫu nhiên (ví dụ: 5 số)
+               // var code = new Random().Next(10000, 99999).ToString();
+                var code = await _userManager.GenerateUserTokenAsync(user, _userManager.Options.Tokens.PasswordResetTokenProvider, "ResetPassword");
+                // Gửi email xác thực
+                await SendResetPasswordEmailAsync(user, code);
+
+                return new ResponeModel { Status = "Success", Message = "Reset password email sent successfully" };
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return new ResponeModel { Status = "Error", Message = "An error occurred while processing the request" };
+            }
+        }
+       
+
+        private async Task SendResetPasswordEmailAsync(Person user, string code)
+        {
+            var emailSettings = configuration.GetSection("EmailSettings");
+
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress(emailSettings["SenderName"], emailSettings["SenderEmail"]));
+            message.To.Add(new MailboxAddress(user.Email, user.Email));
+            message.Subject = emailSettings["ResetPasswordSubject"];
+
+            // Nội dung email
+            var bodyBuilder = new BodyBuilder();
+            bodyBuilder.TextBody = $"Your verification code is: {code}";
+
+            message.Body = bodyBuilder.ToMessageBody();
+
+            // Gửi email
+            using (var client = new MailKit.Net.Smtp.SmtpClient())
+            {
+                await client.ConnectAsync(emailSettings["SmtpServer"], Convert.ToInt32(emailSettings["SmtpPort"]), false);
+                await client.AuthenticateAsync(emailSettings["SmtpUsername"], emailSettings["SmtpPassword"]);
+                await client.SendAsync(message);
+                await client.DisconnectAsync(true);
+            }
+        }
+
+        public async Task<ResponeModel> ConfirmResetPasswordAsync(string email, string code, string newPassword)
+        {
+            try
+            {
+                var user = await _userManager.FindByEmailAsync(email);
+
+                if (user == null)
+                {
+                    return new ResponeModel { Status = "Error", Message = "User not found" };
+                }
+
+                // Kiểm tra xác thực mã sử dụng DataProtectionTokenProvider
+                var isCodeValid = await _userManager.VerifyUserTokenAsync(user, _userManager.Options.Tokens.PasswordResetTokenProvider, "ResetPassword", code);
+
+                if (!isCodeValid)
+                {
+                    return new ResponeModel { Status = "Error", Message = "Invalid verification code" };
+                }
+
+                // Xác nhận mã thành công, thay đổi mật khẩu
+                var resetPasswordResult = await _userManager.ResetPasswordAsync(user, code, newPassword);
+
+                if (resetPasswordResult.Succeeded)
+                {
+                    return new ResponeModel { Status = "Success", Message = "Password reset successfully" };
+                }
+                else
+                {
+                    return new ResponeModel { Status = "Error", Message = "Failed to reset password" };
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return new ResponeModel { Status = "Error", Message = "An error occurred while processing the request" };
             }
         }
     }

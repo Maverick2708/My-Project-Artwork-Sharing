@@ -568,6 +568,32 @@
   },
   {
     "ContainingType": "API_ArtworkSharingPlatforms.Controllers.PersonController",
+    "Method": "ConfirmResetPasswordAsync",
+    "RelativePath": "api/Person/ConfirmResetPasswordAsync",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "newPassword",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.PersonController",
     "Method": "GetPersonByEmail",
     "RelativePath": "api/Person/email",
     "HttpMethod": "GET",
@@ -591,6 +617,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.PersonController",
+    "Method": "ForgetPasswordAsync",
+    "RelativePath": "api/Person/ForgetPasswordAsync",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "API_ArtworkSharingPlatform.Repository.Data.ForgotPasswordRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "API_ArtworkSharingPlatforms.Controllers.PersonController",

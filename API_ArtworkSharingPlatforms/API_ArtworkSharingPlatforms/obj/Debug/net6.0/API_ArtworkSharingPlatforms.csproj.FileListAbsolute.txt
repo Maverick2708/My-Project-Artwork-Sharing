@@ -1335,3 +1335,11 @@ D:\Art_Sharing_2\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_Artw
 D:\Art_Sharing_2\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatforms\obj\Debug\net6.0\API_ArtworkSharingPlatforms.pdb
 D:\Art_Sharing_2\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatforms\obj\Debug\net6.0\API_ArtworkSharingPlatforms.genruntimeconfig.cache
 D:\Art_Sharing_2\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatforms\obj\Debug\net6.0\ref\API_ArtworkSharingPlatforms.dll
+D:\Art_Sharing_2\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatforms\bin\Debug\net6.0\BouncyCastle.Cryptography.dll
+D:\Art_Sharing_2\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatforms\bin\Debug\net6.0\MailKit.dll
+D:\Art_Sharing_2\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatforms\bin\Debug\net6.0\MimeKit.dll
+D:\Art_Sharing_2\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatforms\bin\Debug\net6.0\System.Formats.Asn1.dll
+D:\Art_Sharing_2\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatforms\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
+D:\Art_Sharing_2\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatforms\bin\Debug\net6.0\System.Text.Encoding.CodePages.dll
+D:\Art_Sharing_2\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatforms\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+D:\Art_Sharing_2\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatforms\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll

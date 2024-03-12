@@ -87,5 +87,13 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _personRepository.UpdateUserRole(userId,selectedRole);
         }
+        public async Task<ResponeModel> ForgetPasswordAsync(string email)
+        {
+            return await _personRepository.ForgetPasswordAsync(email);
+        }
+        public async Task<ResponeModel> ConfirmResetPasswordAsync(string email, string code, string newPassword)
+        {
+            return await _personRepository.ConfirmResetPasswordAsync(email, code, newPassword);
+        }
     }
 }
