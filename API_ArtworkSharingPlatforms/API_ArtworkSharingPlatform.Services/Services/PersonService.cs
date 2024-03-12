@@ -96,6 +96,9 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _personRepository.ConfirmResetPasswordAsync(email, code, newPassword);
         }
-
+        public async Task<ResponeModel> BanAccount(string userId)
+        {
+            return await _personRepository.BanAccount(userId);
+        }
     }
 }

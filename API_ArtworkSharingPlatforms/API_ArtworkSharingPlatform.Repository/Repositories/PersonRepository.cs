@@ -590,6 +590,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                         user.Dob,
                         user.FullName,
                         user.DateUserRe,
+                        user.Status,
                         Roles = roles
                     });
                 }
@@ -768,5 +769,33 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             }
         }
 
+        public async Task<ResponeModel> BanAccount(string userId)
+        {
+            try
+            {
+                var existingAccount = await _context.People.FirstOrDefaultAsync(a => a.Id == userId);
+
+                if (existingAccount == null)
+                {
+                    return new ResponeModel { Status = "Error", Message = "Account not found" };
+                }
+
+                existingAccount = UpdateStatusAccount(existingAccount);
+
+                await _context.SaveChangesAsync();
+
+                return new ResponeModel { Status = "Success", Message = "Account updated successfully", DataObject = existingAccount };
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return new ResponeModel { Status = "Error", Message = "An error occurred while updated Account" };
+            }
+        }
+        private Person UpdateStatusAccount(Person person)
+        {
+            person.Status = false;
+            return person;
+        }
     }
 }

@@ -25,10 +25,9 @@ namespace API_ArtworkSharingPlatform.Repository.Interfaces
         public Task<ResponeModel> GetAllAccountBySuperAdmin();
         public Task<ResponeModel> GetAllAccountByAdmin();
         public Task<ResponeModel> GetAllAccountCreateInMonth(int year, int month);
-
         public Task<ResponeModel> UpdateUserRole(string userId, string selectedRole);
         public Task<ResponeModel> ForgetPasswordAsync(string email);
         public  Task<ResponeModel> ConfirmResetPasswordAsync(string email, string code, string newPassword);
-
+        public Task<ResponeModel> BanAccount(string userId);
     }
 }

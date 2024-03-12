@@ -27,6 +27,6 @@ namespace API_ArtworkSharingPlatform.Services.Interfaces
         public Task<ResponeModel> UpdateUserRole(string userId, string selectedRole);
         public Task<ResponeModel> ForgetPasswordAsync(string email);
         public Task<ResponeModel> ConfirmResetPasswordAsync(string email, string code, string newPassword);
-
+        public Task<ResponeModel> BanAccount(string userId);
     }
 }
