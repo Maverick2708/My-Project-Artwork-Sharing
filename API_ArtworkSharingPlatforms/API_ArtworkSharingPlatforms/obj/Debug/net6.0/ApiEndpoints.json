@@ -48,22 +48,6 @@
   },
   {
     "ContainingType": "API_ArtworkSharingPlatforms.Controllers.ArworkController",
-    "Method": "GetArtistByArtworkId",
-    "RelativePath": "api/Arwork/GetArtistByArtworkId",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "artworkid",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.ArworkController",
     "Method": "GetArtworkByArtist",
     "RelativePath": "api/Arwork/GetArtworkByArtist",
     "HttpMethod": "GET",

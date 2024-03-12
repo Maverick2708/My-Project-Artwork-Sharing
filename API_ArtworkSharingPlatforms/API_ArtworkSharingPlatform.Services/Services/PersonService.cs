@@ -83,6 +83,7 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _personRepository.GetAllAccountCreateInMonth(year, month);
         }
+
         public async Task<ResponeModel> UpdateUserRole(string userId, string selectedRole)
         {
             return await _personRepository.UpdateUserRole(userId,selectedRole);
@@ -95,5 +96,6 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _personRepository.ConfirmResetPasswordAsync(email, code, newPassword);
         }
+
     }
 }

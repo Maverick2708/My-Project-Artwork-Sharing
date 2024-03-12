@@ -113,10 +113,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             if (result.Succeeded)
             {
                 var user = await _userManager.FindByNameAsync(signInModel.AccountEmail);
-
-                var person = await _context.People.FirstOrDefaultAsync(p=> p.UserName == signInModel.AccountEmail && p.Status == true);
-
-                if (user != null && person != null )
+                if (user != null )
                 {
                     var authClaims = new List<Claim>
                     {
@@ -160,11 +157,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 }
                 else
                 {
-                    return new AuthenticationResponseModel
-                    {
-                        Status = false,
-                        Message = "Account is inactive. Please contact support."
-                    };
+                    return null;
                 }
             }
             else
@@ -263,7 +256,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             account.PhoneNumber = updateProfileModel.PhoneNumber;
             account.Address = updateProfileModel.Address;
             account.Gender = updateProfileModel.Gender;
-            //account.Avatar = updateProfileModel.Avatar;
+            account.Avatar = updateProfileModel.Avatar;
             return account;
         }
 
@@ -630,6 +623,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             }
         }
 
+
         public async Task<ResponeModel> UpdateUserRole(string userId, string selectedRole)
         {
             try
@@ -773,5 +767,6 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 return new ResponeModel { Status = "Error", Message = "An error occurred while processing the request" };
             }
         }
+
     }
 }

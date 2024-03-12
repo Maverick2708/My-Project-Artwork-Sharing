@@ -254,39 +254,5 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 return new ResponeModel { Status = "Error", Message = "Not Found ", DataObject = 0 };
             }
         }
-        public async Task<ResponeModel> GetArtistByArtworkId(int artworkid)
-        {
-            try
-            {
-                var artworkID = await _context.Artworks.Where(c=> c.ArtworkPId == artworkid).FirstOrDefaultAsync();
-                if (artworkID != null)
-                {
-                    var InforArtist = await _context.People.Where(c => c.Id == artworkID.UserId)
-                        .Select(c=> new
-                        {
-                            c.Avatar,
-                            c.FullName,
-                            c.IsVerifiedPage,
-                        }).FirstOrDefaultAsync();
-                    if (InforArtist != null)
-                    {
-                        return new ResponeModel { Status = "Success", Message = "ArtworkID not found" ,DataObject= InforArtist };
-                    }
-                    else
-                    {
-                        return new ResponeModel { Status = "Error", Message = "ArtworkID not found" };
-                    }
-                }
-                else
-                {
-                    return new ResponeModel { Status = "Error", Message = "ArtworkID not found" };
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Exception: {ex.Message}");
-                return new ResponeModel { Status = "Error", Message = "Artist not found" };
-            }
-        }
     }
 }

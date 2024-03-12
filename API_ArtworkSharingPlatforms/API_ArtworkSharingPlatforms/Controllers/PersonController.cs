@@ -190,6 +190,7 @@ namespace API_ArtworkSharingPlatforms.Controllers
             return Ok(response);
         }
 
+
         [HttpPut("UpdateUserRole")]
         public async Task<IActionResult> UpdateUserRole(string userId, string selectedRole)
         {
@@ -225,5 +226,6 @@ namespace API_ArtworkSharingPlatforms.Controllers
             }
             return Ok(response);
         }
+
     }
 }
