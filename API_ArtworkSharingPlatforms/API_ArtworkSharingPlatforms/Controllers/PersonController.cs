@@ -5,6 +5,7 @@ using API_ArtworkSharingPlatform.Services.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
 
 namespace API_ArtworkSharingPlatforms.Controllers
 {
@@ -190,10 +191,47 @@ namespace API_ArtworkSharingPlatforms.Controllers
             return Ok(response);
         }
 
+
         [HttpPut("UpdateUserRole")]
         public async Task<IActionResult> UpdateUserRole(string userId, string selectedRole)
         {
             var response = await _personService.UpdateUserRole(userId, selectedRole);
+            if (response.Status.Equals(false))
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
+
+        [HttpPost("ForgetPasswordAsync")]
+        public async Task<IActionResult> ForgetPasswordAsync([FromBody] ForgotPasswordRequestModel model)
+        {
+            var result = await _personService.ForgetPasswordAsync(model.Email);
+            if (result.Status == "Success")
+            {
+                return Ok(new { Message = result.Message });
+            }
+            else
+            {
+                return BadRequest(new { Message = result.Message });
+            }
+        }
+
+        [HttpPost("ConfirmResetPasswordAsync")]
+        public async Task<IActionResult> ConfirmResetPasswordAsync(string email, string code, string newPassword)
+        {
+            var response = await _personService.ConfirmResetPasswordAsync(email, code,newPassword);
+            if (response.Status.Equals(false))
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
+
+        [HttpGet("BanAccount")]
+        public async Task<IActionResult> BanAccount(string userId)
+        {
+            var response = await _personService.BanAccount(userId);
             if (response.Status.Equals(false))
             {
                 return Conflict(response);
