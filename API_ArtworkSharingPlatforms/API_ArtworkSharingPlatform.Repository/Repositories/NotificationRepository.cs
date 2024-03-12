@@ -87,6 +87,23 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
         {
             var foundNoti = await _context.Notifications
                .Where(c => c.UserIdReceive == userId && c.Status == true)
+               .Join(
+                          _context.People,
+                          Noti => Noti.UserId,
+                          person => person.Id,
+                          (Noti, Person) => new
+                          {
+                                NotificationId = Noti.NotificationId,
+                                userID = Noti.UserId,
+                                ContentNoti = Noti.ContentNoti,
+                                DateNoti = Noti.DateNoti,
+                                UserIdReceive = Noti.UserIdReceive,
+                                Status = Noti.Status,
+
+                                avatar = Person.Avatar,
+                                FullName = Person.FullName,
+                          }
+                )
                .ToListAsync();
             //bool followOrUnfollow = false;
             if (foundNoti.Count > 0)
@@ -103,7 +120,25 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
         public async Task<ResponeModel> CountNotiByUserRe(string userId)
         {
             var NotiByuser = await _context.Notifications
-                .Where(c => c.UserIdReceive == userId && c.Status==true).ToListAsync();
+                .Where(c => c.UserIdReceive == userId && c.Status==true)
+                .Join(
+                       _context.People,
+                       Noti => Noti.UserId,
+                       person => person.Id,
+                       (Noti, Person) => new
+                       {
+                           NotificationId = Noti.NotificationId,
+                           userID = Noti.UserId,
+                           ContentNoti = Noti.ContentNoti,
+                           DateNoti = Noti.DateNoti,
+                           UserIdReceive = Noti.UserIdReceive,
+                           Status = Noti.Status,    
+
+                           avatar = Person.Avatar,
+                           FullName = Person.FullName,
+                       }
+                )
+                .ToListAsync();
             if (NotiByuser.Count > 0)
             {
                 int SumNoti = NotiByuser.Count();

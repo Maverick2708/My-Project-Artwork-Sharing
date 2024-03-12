@@ -5,6 +5,7 @@ using API_ArtworkSharingPlatform.Services.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
 
 namespace API_ArtworkSharingPlatforms.Controllers
 {
@@ -227,5 +228,15 @@ namespace API_ArtworkSharingPlatforms.Controllers
             return Ok(response);
         }
 
+        [HttpGet("BanAccount")]
+        public async Task<IActionResult> BanAccount(string userId)
+        {
+            var response = await _personService.BanAccount(userId);
+            if (response.Status.Equals(false))
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
     }
 }
