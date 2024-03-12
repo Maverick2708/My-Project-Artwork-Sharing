@@ -190,6 +190,7 @@ namespace API_ArtworkSharingPlatforms.Controllers
             return Ok(response);
         }
 
+
         [HttpPut("UpdateUserRole")]
         public async Task<IActionResult> UpdateUserRole(string userId, string selectedRole)
         {
@@ -200,5 +201,31 @@ namespace API_ArtworkSharingPlatforms.Controllers
             }
             return Ok(response);
         }
+
+        [HttpPost("ForgetPasswordAsync")]
+        public async Task<IActionResult> ForgetPasswordAsync([FromBody] ForgotPasswordRequestModel model)
+        {
+            var result = await _personService.ForgetPasswordAsync(model.Email);
+            if (result.Status == "Success")
+            {
+                return Ok(new { Message = result.Message });
+            }
+            else
+            {
+                return BadRequest(new { Message = result.Message });
+            }
+        }
+
+        [HttpPost("ConfirmResetPasswordAsync")]
+        public async Task<IActionResult> ConfirmResetPasswordAsync(string email, string code, string newPassword)
+        {
+            var response = await _personService.ConfirmResetPasswordAsync(email, code,newPassword);
+            if (response.Status.Equals(false))
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
+
     }
 }

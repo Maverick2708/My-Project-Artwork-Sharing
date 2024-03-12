@@ -28,6 +28,6 @@ namespace API_ArtworkSharingPlatform.Repository.Data
         public string? BackgroundImg { get; set; }
         public bool? Gender { get; set; }
         public string? Address { get; set; }
-        public bool? IsVerifiedPage { get; set; }
+
     }
 }

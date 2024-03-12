@@ -125,17 +125,5 @@ namespace API_ArtworkSharingPlatforms.Controllers
 
             return Ok(response);
         }
-
-        [HttpGet("GetArtistByArtworkId")]
-        public async Task<IActionResult> GetArtistByArtworkId(int artworkid)
-        {
-            var response = await _artworkservice.GetArtistByArtworkId(artworkid);
-            if (response.Status == "Error")
-            {
-                return Conflict(response);
-            }
-
-            return Ok(response);
-        }
     }
 }

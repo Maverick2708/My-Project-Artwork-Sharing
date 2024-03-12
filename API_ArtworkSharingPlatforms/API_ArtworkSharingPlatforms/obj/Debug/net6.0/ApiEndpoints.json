@@ -48,22 +48,6 @@
   },
   {
     "ContainingType": "API_ArtworkSharingPlatforms.Controllers.ArworkController",
-    "Method": "GetArtistByArtworkId",
-    "RelativePath": "api/Arwork/GetArtistByArtworkId",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "artworkid",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.ArworkController",
     "Method": "GetArtworkByArtist",
     "RelativePath": "api/Arwork/GetArtworkByArtist",
     "HttpMethod": "GET",
@@ -568,6 +552,32 @@
   },
   {
     "ContainingType": "API_ArtworkSharingPlatforms.Controllers.PersonController",
+    "Method": "ConfirmResetPasswordAsync",
+    "RelativePath": "api/Person/ConfirmResetPasswordAsync",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "newPassword",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.PersonController",
     "Method": "GetPersonByEmail",
     "RelativePath": "api/Person/email",
     "HttpMethod": "GET",
@@ -591,6 +601,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.PersonController",
+    "Method": "ForgetPasswordAsync",
+    "RelativePath": "api/Person/ForgetPasswordAsync",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "API_ArtworkSharingPlatform.Repository.Data.ForgotPasswordRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "API_ArtworkSharingPlatforms.Controllers.PersonController",

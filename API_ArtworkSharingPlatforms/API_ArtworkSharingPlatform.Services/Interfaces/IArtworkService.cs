@@ -20,6 +20,5 @@ namespace API_ArtworkSharingPlatform.Services.Interfaces
         public Task<ResponeModel> SearchContenArtwork(string content);
         public Task<ResponeModel> GetArtworkByUserid(string userID);
         public Task<ResponeModel> GetAllPostCreateInMonth(int year, int month);
-        public Task<ResponeModel> GetArtistByArtworkId(int artworkid);
     }
 }
