@@ -83,9 +83,22 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _personRepository.GetAllAccountCreateInMonth(year, month);
         }
+
         public async Task<ResponeModel> UpdateUserRole(string userId, string selectedRole)
         {
             return await _personRepository.UpdateUserRole(userId,selectedRole);
+        }
+        public async Task<ResponeModel> ForgetPasswordAsync(string email)
+        {
+            return await _personRepository.ForgetPasswordAsync(email);
+        }
+        public async Task<ResponeModel> ConfirmResetPasswordAsync(string email, string code, string newPassword)
+        {
+            return await _personRepository.ConfirmResetPasswordAsync(email, code, newPassword);
+        }
+        public async Task<ResponeModel> BanAccount(string userId)
+        {
+            return await _personRepository.BanAccount(userId);
         }
     }
 }

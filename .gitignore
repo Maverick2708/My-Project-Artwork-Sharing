@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/API_ArtworkSharingPlatforms/.vs/API_ArtworkSharingPlatforms/FileContentIndex
+<<<<<<< HEAD
+=======
+=======
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudio,dotnetcore
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,dotnetcore
 
@@ -413,3 +425,5 @@ FodyWeavers.xsd
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,dotnetcore
 CoverageReport/
+>>>>>>> 2c6ab7fc182ca7463f77bdefa537d2c7cd0035d3
+>>>>>>> main
