@@ -48,6 +48,22 @@
   },
   {
     "ContainingType": "API_ArtworkSharingPlatforms.Controllers.ArworkController",
+    "Method": "GetArtistByArtworkId",
+    "RelativePath": "api/Arwork/GetArtistByArtworkId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "artworkid",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.ArworkController",
     "Method": "GetArtworkByArtist",
     "RelativePath": "api/Arwork/GetArtworkByArtist",
     "HttpMethod": "GET",
@@ -530,6 +546,80 @@
         "Name": "billOrderId",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.OrderController",
+    "Method": "ChangeStatusOrderDetail",
+    "RelativePath": "api/Order/ChangeStatusOrderDetail",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderDetailID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserID",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.OrderController",
+    "Method": "CreateOrderV2",
+    "RelativePath": "api/Order/CreateOrderV2",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userid",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "createOrderModel",
+        "Type": "API_ArtworkSharingPlatform.Repository.Data.CreateOrderModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.OrderController",
+    "Method": "GetOrderByUserId",
+    "RelativePath": "api/Order/GetOrderByUserId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userid",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.OrderController",
+    "Method": "GetOrdersByUserIdRe",
+    "RelativePath": "api/Order/GetOrdersByUserIdRe",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userid",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

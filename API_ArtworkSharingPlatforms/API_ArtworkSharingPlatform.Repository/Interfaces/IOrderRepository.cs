@@ -1,5 +1,6 @@
 ﻿using API_ArtworkSharingPlatform.Repository.Data;
 using API_ArtworkSharingPlatform.Repository.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,9 @@ namespace API_ArtworkSharingPlatform.Repository.Interfaces
 		public Task<bool> UpdateOrder(int billOrderId, UpdateOrder order);
 		Task<bool> AddOrder(Order order);
 		Task<ResponeModel> AddOrder(AddOrder addOrder);
-	}
+		public Task<ResponeModel> CreateOrderV2(string userid, [FromBody] CreateOrderModel createOrderModel);
+		public Task<ResponeModel> GetOrderByUserId(string userid);
+		public Task<ResponeModel> GetOrdersByUserIdRe(string userid);
+        public Task<ResponeModel> ChangeStatusOrderDetail(int orderDetailID,string UserID);
+    }
 }

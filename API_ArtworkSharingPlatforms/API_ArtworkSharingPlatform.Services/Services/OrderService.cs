@@ -2,6 +2,7 @@
 using API_ArtworkSharingPlatform.Repository.Interfaces;
 using API_ArtworkSharingPlatform.Repository.Models;
 using API_ArtworkSharingPlatform.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,5 +56,21 @@ namespace API_ArtworkSharingPlatform.Services.Services
 		{
 			return await _orderRepository.UpdateOrder(billOrderId, updateOrder);
 		}
-	}
+        public async Task<ResponeModel> CreateOrderV2(string userid, [FromBody] CreateOrderModel createOrderModel)
+        {
+			return await _orderRepository.CreateOrderV2(userid, createOrderModel);
+		}
+        public async Task<ResponeModel> GetOrderByUserId(string userid)
+		{
+			return await _orderRepository.GetOrderByUserId(userid);
+		}
+        public async Task<ResponeModel> GetOrdersByUserIdRe(string userid)
+		{
+			return await _orderRepository.GetOrdersByUserIdRe(userid);
+		}
+        public async Task<ResponeModel> ChangeStatusOrderDetail(int orderDetailID, string UserID)
+		{
+			return await _orderRepository.ChangeStatusOrderDetail(orderDetailID, UserID);
+		}
+    }
 }

@@ -105,5 +105,50 @@ namespace API_ArtworkSharingPlatforms.Controllers
 				return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
 			}
 		}
-	}
+
+
+        [HttpPost("CreateOrderV2")]
+        public async Task<IActionResult> CreateOrderV2(string userid, [FromBody] CreateOrderModel createOrderModel)
+        {
+            var response = await _orderService.CreateOrderV2(userid,createOrderModel);
+            if (response.Status == "Error")
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
+
+        [HttpGet("GetOrderByUserId")]
+        public async Task<IActionResult> GetOrderByUserId(string userid)
+		{
+            var response = await _orderService.GetOrderByUserId(userid);
+            if (response.Status == "Error")
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
+
+        [HttpGet("GetOrdersByUserIdRe")]
+        public async Task<IActionResult> GetOrdersByUserIdRe(string userid)
+		{
+            var response = await _orderService.GetOrdersByUserIdRe(userid);
+            if (response.Status == "Error")
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
+
+        [HttpPut("ChangeStatusOrderDetail")]
+        public async Task<IActionResult> ChangeStatusOrderDetail(int orderDetailID, string UserID)
+		{
+            var response = await _orderService.ChangeStatusOrderDetail(orderDetailID, UserID);
+            if (response.Status == "Error")
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
+    }
 }
