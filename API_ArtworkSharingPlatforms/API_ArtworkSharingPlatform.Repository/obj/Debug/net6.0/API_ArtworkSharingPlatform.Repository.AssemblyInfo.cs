@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("API_ArtworkSharingPlatform.Repository")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bddba454785a1fabc4f4bfcef5256d7ad7e04b4a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+37d5036407e95b9cec15bc6003e7b003b799af7d")]
 [assembly: System.Reflection.AssemblyProductAttribute("API_ArtworkSharingPlatform.Repository")]
 [assembly: System.Reflection.AssemblyTitleAttribute("API_ArtworkSharingPlatform.Repository")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
