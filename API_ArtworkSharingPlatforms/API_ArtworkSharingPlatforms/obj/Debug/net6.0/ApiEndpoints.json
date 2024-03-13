@@ -847,6 +847,22 @@
   },
   {
     "ContainingType": "API_ArtworkSharingPlatforms.Controllers.PersonController",
+    "Method": "UnBanAccount",
+    "RelativePath": "api/Person/UnBanAccount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.PersonController",
     "Method": "UpdateAccount",
     "RelativePath": "api/Person/UpdateAccount",
     "HttpMethod": "PUT",
@@ -1186,6 +1202,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.RequestController",
+    "Method": "GetAllRequestByUserID",
+    "RelativePath": "api/Request/GetAllRequestByUserID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userID",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

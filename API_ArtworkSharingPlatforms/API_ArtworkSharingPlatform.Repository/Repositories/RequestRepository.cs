@@ -50,7 +50,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
         public async Task<ResponeModel> GetAllRequest()
         {
             var getRequest = await _context.Requests.ToListAsync();
-            if (getRequest != null)
+            if (getRequest.Count >0)
             {
                 return new ResponeModel { Status = "Success", Message = "Found Request", DataObject = getRequest };
             }
@@ -103,8 +103,8 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
 
         public async Task<ResponeModel> GetAllRequestByUserID(string userID)
         {
-            var getRequest = await _context.Requests.Where(c=> c.UserId== userID).ToListAsync();
-            if (getRequest != null)
+            var getRequest = await _context.Requests.Where(c=> c.UserId == userID).ToListAsync();
+            if (getRequest.Count > 0)
             {
                 return new ResponeModel { Status = "Success", Message = "Found Request", DataObject = getRequest };
             }
