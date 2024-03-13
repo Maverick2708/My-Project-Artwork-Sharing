@@ -549,6 +549,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                         user.Dob,
                         user.FullName,
                         user.DateUserRe,
+                        user.Status,
                         Roles = roles
                     });
                 }
