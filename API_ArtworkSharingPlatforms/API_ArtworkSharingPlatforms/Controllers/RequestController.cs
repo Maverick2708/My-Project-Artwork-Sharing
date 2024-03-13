@@ -59,5 +59,16 @@ namespace API_ArtworkSharingPlatforms.Controllers
             }
             return Ok(response);
         }
+
+        [HttpGet("GetAllRequestByUserID")]
+        public async Task<IActionResult> GetAllRequestByUserID(string userID)
+        {
+            var response = await _requestService.GetAllRequestByUserID(userID);
+            if (response.Status == "Error")
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
     }
 }

@@ -238,5 +238,16 @@ namespace API_ArtworkSharingPlatforms.Controllers
             }
             return Ok(response);
         }
+
+        [HttpGet("UnBanAccount")]
+        public async Task<IActionResult> UnBanAccount(string userId)
+        {
+            var response = await _personService.UnBanAccount(userId);
+            if (response.Status.Equals(false))
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
     }
 }
