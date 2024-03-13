@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "k2GTvubs2LwYhht9SXretfydbc6UlY+Lh05T/deiihizMCHQkm2iIOCVqfYxNrqiqgQpBQ4u5MkIIF8RLQfu7g==",
+  "dgSpecHash": "5AgBZj4OFc1iZjXUHG86P3RnU+0zB/T7xOFqYiZgg9JLO/3BE8+7XHAWM0tEeYn5+gCR3IMb+rN/F/69S/dIKg==",
   "success": true,
-  "projectFilePath": "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj",
+  "projectFilePath": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\daigi\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\daigi\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

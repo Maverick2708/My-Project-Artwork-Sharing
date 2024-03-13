@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms.csproj": {}
+    "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms.csproj": {}
   },
   "projects": {
-    "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj": {
+    "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj",
+        "projectUniqueName": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj",
         "projectName": "API_ArtworkSharingPlatform.Libary",
-        "projectPath": "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj",
+        "projectPath": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj",
         "packagesPath": "C:\\Users\\daigi\\.nuget\\packages\\",
-        "outputPath": "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\obj\\",
+        "outputPath": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -68,14 +68,14 @@
         }
       }
     },
-    "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj": {
+    "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj",
+        "projectUniqueName": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj",
         "projectName": "API_ArtworkSharingPlatform.Repository",
-        "projectPath": "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj",
+        "projectPath": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj",
         "packagesPath": "C:\\Users\\daigi\\.nuget\\packages\\",
-        "outputPath": "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\obj\\",
+        "outputPath": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -182,14 +182,14 @@
         }
       }
     },
-    "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj": {
+    "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj",
+        "projectUniqueName": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj",
         "projectName": "API_ArtworkSharingPlatform.Services",
-        "projectPath": "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj",
+        "projectPath": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj",
         "packagesPath": "C:\\Users\\daigi\\.nuget\\packages\\",
-        "outputPath": "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\obj\\",
+        "outputPath": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -210,11 +210,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj": {
-                "projectPath": "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj"
+              "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj": {
+                "projectPath": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Libary\\API_ArtworkSharingPlatform.Libary.csproj"
               },
-              "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj": {
-                "projectPath": "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj"
+              "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj": {
+                "projectPath": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj"
               }
             }
           }
@@ -253,14 +253,14 @@
         }
       }
     },
-    "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms.csproj": {
+    "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms.csproj",
+        "projectUniqueName": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms.csproj",
         "projectName": "API_ArtworkSharingPlatforms",
-        "projectPath": "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms.csproj",
+        "projectPath": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms.csproj",
         "packagesPath": "C:\\Users\\daigi\\.nuget\\packages\\",
-        "outputPath": "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\obj\\",
+        "outputPath": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -281,8 +281,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj": {
-                "projectPath": "D:\\Art_Sharing_4\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj"
+              "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj": {
+                "projectPath": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj"
               }
             }
           }
