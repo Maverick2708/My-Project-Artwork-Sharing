@@ -34,7 +34,10 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
         {
             try
             {
-                if (addArtwork.UserId == null || addArtwork.PictureArtwork == null || string.IsNullOrWhiteSpace(addArtwork.PictureArtwork))
+               // var priceString = addArtwork.PriceArtwork.ToString();
+                if (addArtwork.UserId == null 
+                    || addArtwork.PictureArtwork == null 
+                    || string.IsNullOrWhiteSpace(addArtwork.PictureArtwork) )
                 {
                     return new ResponeModel { Status = "Error", Message = "UserId and PictureArtwork cannot be null" };
                 }

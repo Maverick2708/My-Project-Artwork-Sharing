@@ -13,5 +13,6 @@ namespace API_ArtworkSharingPlatform.Repository.Interfaces
         public Task<ResponeModel> GetAllRequest();
         public Task<ResponeModel> CountRequest();
         public Task<ResponeModel> UpdateStatusRequest(int requestId);
+        public Task<ResponeModel> GetAllRequestByUserID(string userID);
     }
 }

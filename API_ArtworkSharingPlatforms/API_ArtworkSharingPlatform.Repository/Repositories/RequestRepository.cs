@@ -100,5 +100,18 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             request.Status = false;
             return request;
         }
+
+        public async Task<ResponeModel> GetAllRequestByUserID(string userID)
+        {
+            var getRequest = await _context.Requests.Where(c=> c.UserId== userID).ToListAsync();
+            if (getRequest != null)
+            {
+                return new ResponeModel { Status = "Success", Message = "Found Request", DataObject = getRequest };
+            }
+            else
+            {
+                return new ResponeModel { Status = "Success", Message = "Request not found" };
+            }
+        }
     }
 }

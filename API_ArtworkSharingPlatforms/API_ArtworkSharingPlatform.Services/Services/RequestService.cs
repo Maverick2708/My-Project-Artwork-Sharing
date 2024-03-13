@@ -33,5 +33,9 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _requestRepository.UpdateStatusRequest(requestId);
         }
+        public async Task<ResponeModel> GetAllRequestByUserID(string userID)
+        {
+            return await _requestRepository.GetAllRequestByUserID(userID);
+        }
     }
 }
