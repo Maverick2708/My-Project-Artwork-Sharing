@@ -363,6 +363,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                         {
                             o.BillOrderId,
                             o.TotalBill,
+                            o.UserId,
                             od.OrderDetailId,
                             od.DateOrder,
                             od.PriceOrder,
