@@ -348,5 +348,47 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             orderDetail.Status = false;
             return orderDetail;
         }
+
+        public async Task<ResponeModel> GetAllOrder()
+        {
+            try
+            {
+                var orderDetails = await _context.Orders
+                    .Select(o => new
+                    {
+
+                        OrderDetails = o.OrderDetails
+                        .Where(od => od.Status == true)
+                        .Select(od => new
+                        {
+                            o.BillOrderId,
+                            o.TotalBill,
+                            od.OrderDetailId,
+                            od.DateOrder,
+                            od.PriceOrder,
+                            od.ArtworkPId,
+                            od.Quanity,
+                            od.Address,
+                            od.Phone,
+                            od.FullName,
+                            od.Status // Include the Status field from OrderDetails
+                        }).ToList()
+                    })
+                    .ToListAsync();
+                if (orderDetails.Count >0)
+                {
+                    return new ResponeModel { Status = "Success", Message = "Found Order", DataObject = orderDetails };
+                }
+                else
+                {
+                    return new ResponeModel { Status = "Success", Message = "Not Found Order", DataObject = orderDetails };
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return new ResponeModel { Status = "Error", Message = "An error occurred while fetching orders" };
+            }
+        }
     }
 }

@@ -594,6 +594,16 @@
   },
   {
     "ContainingType": "API_ArtworkSharingPlatforms.Controllers.OrderController",
+    "Method": "GetAllOrder",
+    "RelativePath": "api/Order/GetAllOrder",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.OrderController",
     "Method": "GetOrderByUserId",
     "RelativePath": "api/Order/GetOrderByUserId",
     "HttpMethod": "GET",

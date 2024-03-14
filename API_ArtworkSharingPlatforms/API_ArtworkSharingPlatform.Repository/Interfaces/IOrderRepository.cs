@@ -23,5 +23,6 @@ namespace API_ArtworkSharingPlatform.Repository.Interfaces
 		public Task<ResponeModel> GetOrderByUserId(string userid);
 		public Task<ResponeModel> GetOrdersByUserIdRe(string userid);
         public Task<ResponeModel> ChangeStatusOrderDetail(int orderDetailID,string UserID);
+        public Task<ResponeModel> GetAllOrder();
     }
 }
