@@ -408,6 +408,53 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.GenreController",
+    "Method": "CreateGenre",
+    "RelativePath": "api/Genre/CreateGenre",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createGenreModel",
+        "Type": "API_ArtworkSharingPlatform.Repository.Data.CreateGenreModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.GenreController",
+    "Method": "GetALLGenre",
+    "RelativePath": "api/Genre/GetALLGenre",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.GenreController",
+    "Method": "UpdateGenre",
+    "RelativePath": "api/Genre/UpdateGenre",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createGenreModel",
+        "Type": "API_ArtworkSharingPlatform.Repository.Data.CreateGenreModel",
+        "IsRequired": true
+      },
+      {
+        "Name": "genreID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API_ArtworkSharingPlatforms.Controllers.NotificationController",
     "Method": "CountNotiByUserRe",
     "RelativePath": "api/Notification/CountNotiByUserRe",
