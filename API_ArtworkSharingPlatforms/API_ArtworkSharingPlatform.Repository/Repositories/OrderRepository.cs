@@ -151,6 +151,15 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
 
                         // Add each OrderDetail to the DbContext
                         _context.OrderDetails.Add(orderDetail);
+
+
+                        var artwork = await _context.Artworks.FirstOrDefaultAsync(a => a.ArtworkPId == orderDetailModel.ArtworkPId);
+                        if (artwork != null)
+                        {
+                            // Subtract the ordered quantity from the current quantity of the product
+                            artwork.Quanity -= orderDetailModel.Quanity;
+                            _context.Artworks.Update(artwork);
+                        }
                     }
                     var notification = new Notification
                     {
@@ -193,7 +202,31 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
 						}
 						await _context.SaveChangesAsync();
 					}
-					
+                    var getShoppingCartID = await _context.ShoppingCarts.Where(c => c.UserId == userid)
+                                      .Join(
+                                          _context.OrderDetails,
+                                          artworkId => artworkId.ArtworkPId,
+                                          artworkOrder => artworkOrder.ArtworkPId,
+                                          (artworkId, artworkOrder) => new
+                                          {
+                                              ShoppingCartID = artworkId.ShoppingCartId
+                                          }
+                                          )
+                                          .Distinct()
+                                          .ToListAsync();
+                    if (getShoppingCartID.Count > 0)
+                    {
+                        var shoppingCartIdsToRemove = getShoppingCartID.Select(item => item.ShoppingCartID).ToList();
+
+                        // Tìm và xóa các ShoppingCart tương ứng
+                        var shoppingCartsToRemove = await _context.ShoppingCarts.Where(c => shoppingCartIdsToRemove.Contains(c.ShoppingCartId)).ToListAsync();
+                        if (shoppingCartsToRemove.Count > 0)
+                        {
+                            _context.ShoppingCarts.RemoveRange(shoppingCartsToRemove);
+                            await _context.SaveChangesAsync();
+                        }
+                    }
+
                     return new ResponeModel { Status = "Success", Message = "Added order successfully", DataObject = order };
                 }
             }
