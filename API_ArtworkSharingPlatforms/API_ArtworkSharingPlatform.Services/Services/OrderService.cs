@@ -72,5 +72,9 @@ namespace API_ArtworkSharingPlatform.Services.Services
 		{
 			return await _orderRepository.ChangeStatusOrderDetail(orderDetailID, UserID);
 		}
+        public async Task<ResponeModel> GetAllOrder()
+		{
+			return await _orderRepository.GetAllOrder();
+		}
     }
 }

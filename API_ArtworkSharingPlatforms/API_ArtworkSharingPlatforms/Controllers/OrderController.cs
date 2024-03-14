@@ -150,5 +150,16 @@ namespace API_ArtworkSharingPlatforms.Controllers
             }
             return Ok(response);
         }
+
+        [HttpGet("GetAllOrder")]
+        public async Task<IActionResult> GetAllOrder()
+		{
+            var response = await _orderService.GetAllOrder();
+            if (response.Status == "Error")
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
     }
 }
