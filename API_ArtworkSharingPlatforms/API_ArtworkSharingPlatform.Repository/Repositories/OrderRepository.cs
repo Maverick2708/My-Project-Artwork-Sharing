@@ -356,14 +356,14 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 var orderDetails = await _context.Orders
                     .Select(o => new
                     {
-
+                        o.BillOrderId,
+                        o.UserId,
+                        o.TotalBill,
+                        o.Status,
                         OrderDetails = o.OrderDetails
                         .Where(od => od.Status == true)
                         .Select(od => new
                         {
-                            o.BillOrderId,
-                            o.TotalBill,
-                            o.UserId,
                             od.OrderDetailId,
                             od.DateOrder,
                             od.PriceOrder,
