@@ -3,24 +3,20 @@
   "WorkspaceRootPath": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{677E345E-8F87-422F-A40A-F2F40C60E403}|API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms.csproj|d:\\art_sharing_5\\my-project-artwork-sharing\\api_artworksharingplatforms\\api_artworksharingplatforms\\controllers\\genrecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{677E345E-8F87-422F-A40A-F2F40C60E403}|API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms.csproj|solutionrelative:api_artworksharingplatforms\\controllers\\genrecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5F134829-C124-4B8B-B773-1A403F6ED2B4}|API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj|d:\\art_sharing_5\\my-project-artwork-sharing\\api_artworksharingplatforms\\api_artworksharingplatform.repository\\repositories\\shoppingcartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F134829-C124-4B8B-B773-1A403F6ED2B4}|API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj|solutionrelative:api_artworksharingplatform.repository\\repositories\\shoppingcartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5F134829-C124-4B8B-B773-1A403F6ED2B4}|API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj|d:\\art_sharing_5\\my-project-artwork-sharing\\api_artworksharingplatforms\\api_artworksharingplatform.repository\\interfaces\\igenrerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5F134829-C124-4B8B-B773-1A403F6ED2B4}|API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj|solutionrelative:api_artworksharingplatform.repository\\interfaces\\igenrerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5F134829-C124-4B8B-B773-1A403F6ED2B4}|API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj|d:\\art_sharing_5\\my-project-artwork-sharing\\api_artworksharingplatforms\\api_artworksharingplatform.repository\\repositories\\commentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F134829-C124-4B8B-B773-1A403F6ED2B4}|API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj|solutionrelative:api_artworksharingplatform.repository\\repositories\\commentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5F134829-C124-4B8B-B773-1A403F6ED2B4}|API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj|d:\\art_sharing_5\\my-project-artwork-sharing\\api_artworksharingplatforms\\api_artworksharingplatform.repository\\repositories\\genrerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5F134829-C124-4B8B-B773-1A403F6ED2B4}|API_ArtworkSharingPlatform.Repository\\API_ArtworkSharingPlatform.Repository.csproj|solutionrelative:api_artworksharingplatform.repository\\repositories\\genrerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{677E345E-8F87-422F-A40A-F2F40C60E403}|API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms.csproj|d:\\art_sharing_5\\my-project-artwork-sharing\\api_artworksharingplatforms\\api_artworksharingplatforms\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{677E345E-8F87-422F-A40A-F2F40C60E403}|API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms.csproj|solutionrelative:api_artworksharingplatforms\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05BF0A20-685F-4DAF-896F-54A0D0BBBED0}|API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj|d:\\art_sharing_5\\my-project-artwork-sharing\\api_artworksharingplatforms\\api_artworksharingplatform.services\\interfaces\\igenreservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05BF0A20-685F-4DAF-896F-54A0D0BBBED0}|API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj|solutionrelative:api_artworksharingplatform.services\\interfaces\\igenreservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05BF0A20-685F-4DAF-896F-54A0D0BBBED0}|API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj|d:\\art_sharing_5\\my-project-artwork-sharing\\api_artworksharingplatforms\\api_artworksharingplatform.services\\services\\genreservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05BF0A20-685F-4DAF-896F-54A0D0BBBED0}|API_ArtworkSharingPlatform.Services\\API_ArtworkSharingPlatform.Services.csproj|solutionrelative:api_artworksharingplatform.services\\services\\genreservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{677E345E-8F87-422F-A40A-F2F40C60E403}|API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms.csproj|d:\\art_sharing_5\\my-project-artwork-sharing\\api_artworksharingplatforms\\api_artworksharingplatforms\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{677E345E-8F87-422F-A40A-F2F40C60E403}|API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms.csproj|solutionrelative:api_artworksharingplatforms\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CommentRepository.cs",
+              "DocumentMoniker": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\Repositories\\CommentRepository.cs",
+              "RelativeDocumentMoniker": "API_ArtworkSharingPlatform.Repository\\Repositories\\CommentRepository.cs",
+              "ToolTip": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\Repositories\\CommentRepository.cs",
+              "RelativeToolTip": "API_ArtworkSharingPlatform.Repository\\Repositories\\CommentRepository.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAYwDQAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-15T09:23:16.062Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GenreController.cs",
-              "DocumentMoniker": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\Controllers\\GenreController.cs",
-              "RelativeDocumentMoniker": "API_ArtworkSharingPlatforms\\Controllers\\GenreController.cs",
-              "ToolTip": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\Controllers\\GenreController.cs",
-              "RelativeToolTip": "API_ArtworkSharingPlatforms\\Controllers\\GenreController.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAgwCkAAAAAAAAA",
+              "Title": "ShoppingCartRepository.cs",
+              "DocumentMoniker": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\Repositories\\ShoppingCartRepository.cs",
+              "RelativeDocumentMoniker": "API_ArtworkSharingPlatform.Repository\\Repositories\\ShoppingCartRepository.cs",
+              "ToolTip": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\Repositories\\ShoppingCartRepository.cs*",
+              "RelativeToolTip": "API_ArtworkSharingPlatform.Repository\\Repositories\\ShoppingCartRepository.cs*",
+              "ViewState": "AQIAADEAAAAAAAAAAAAkwD4AAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-14T12:34:12.747Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GenreService.cs",
-              "DocumentMoniker": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\Services\\GenreService.cs",
-              "RelativeDocumentMoniker": "API_ArtworkSharingPlatform.Services\\Services\\GenreService.cs",
-              "ToolTip": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\Services\\GenreService.cs",
-              "RelativeToolTip": "API_ArtworkSharingPlatform.Services\\Services\\GenreService.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAQwBMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-14T11:47:45.509Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IGenreService.cs",
-              "DocumentMoniker": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\Interfaces\\IGenreService.cs",
-              "RelativeDocumentMoniker": "API_ArtworkSharingPlatform.Services\\Interfaces\\IGenreService.cs",
-              "ToolTip": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Services\\Interfaces\\IGenreService.cs",
-              "RelativeToolTip": "API_ArtworkSharingPlatform.Services\\Interfaces\\IGenreService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-14T11:47:17.624Z",
+              "WhenOpened": "2024-03-15T09:22:12.186Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "GenreRepository.cs",
-              "DocumentMoniker": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\Repositories\\GenreRepository.cs",
-              "RelativeDocumentMoniker": "API_ArtworkSharingPlatform.Repository\\Repositories\\GenreRepository.cs",
-              "ToolTip": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\Repositories\\GenreRepository.cs",
-              "RelativeToolTip": "API_ArtworkSharingPlatform.Repository\\Repositories\\GenreRepository.cs",
-              "ViewState": "AQIAAEcAAAAAAAAAAAAcwEoAAABWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-14T11:46:46.042Z",
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "API_ArtworkSharingPlatforms\\appsettings.Development.json",
+              "ToolTip": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\appsettings.Development.json",
+              "RelativeToolTip": "API_ArtworkSharingPlatforms\\appsettings.Development.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-14T12:37:08.128Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IGenreRepository.cs",
-              "DocumentMoniker": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\Interfaces\\IGenreRepository.cs",
-              "RelativeDocumentMoniker": "API_ArtworkSharingPlatform.Repository\\Interfaces\\IGenreRepository.cs",
-              "ToolTip": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatform.Repository\\Interfaces\\IGenreRepository.cs",
-              "RelativeToolTip": "API_ArtworkSharingPlatform.Repository\\Interfaces\\IGenreRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-14T11:46:30.432Z",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\appsettings.json",
+              "RelativeDocumentMoniker": "API_ArtworkSharingPlatforms\\appsettings.json",
+              "ToolTip": "D:\\Art_Sharing_5\\My-Project-Artwork-Sharing\\API_ArtworkSharingPlatforms\\API_ArtworkSharingPlatforms\\appsettings.json",
+              "RelativeToolTip": "API_ArtworkSharingPlatforms\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-14T12:36:54.733Z",
               "EditorCaption": ""
             }
           ]

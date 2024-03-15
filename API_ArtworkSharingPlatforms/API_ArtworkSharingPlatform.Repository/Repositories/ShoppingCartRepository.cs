@@ -60,7 +60,15 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
 
                     _context.ShoppingCarts.Add(newShoppingC);
                 }
-
+                var notification = new Notification
+                {
+                    UserId = shoppingCart.UserId,
+                    ContentNoti = "The item has been added to the cart",
+                    DateNoti = DateTime.Now,
+                    Status = true,
+                    UserIdReceive = shoppingCart.UserId,
+                };
+				_context.Notifications.Add(notification);
                 await _context.SaveChangesAsync();
 
                 return new ResponeModel { Status = "Success", Message = "Added shopping cart item successfully", DataObject = existingItem };
