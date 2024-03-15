@@ -30,5 +30,6 @@ namespace API_ArtworkSharingPlatform.Repository.Interfaces
         public  Task<ResponeModel> ConfirmResetPasswordAsync(string email, string code, string newPassword);
         public Task<ResponeModel> BanAccount(string userId);
         public Task<ResponeModel> UnBanAccount(string userId);
+        public Task<ResponeModel> UpdateIsConfirm(string userId);
     }
 }

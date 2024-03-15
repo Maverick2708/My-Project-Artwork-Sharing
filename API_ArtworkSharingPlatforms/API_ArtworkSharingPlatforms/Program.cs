@@ -2,6 +2,7 @@ using API_ArtworkSharingPlatform.Repository.Helpers;
 using API_ArtworkSharingPlatform.Repository.Models;
 using API_ArtworkSharingPlatforms;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -9,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using System.Security.Principal;
 using System.Text;
 using System.Text.Json.Serialization;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,10 +49,11 @@ builder.Services.AddSwaggerGen(opt =>
                 }
             },
             new string[]{}
-           // Array.Empty<string>()
+            // Array.Empty<string>()
         }
     });
 });
+
 
 
 

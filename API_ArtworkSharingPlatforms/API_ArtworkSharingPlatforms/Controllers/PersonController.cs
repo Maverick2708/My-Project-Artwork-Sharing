@@ -249,5 +249,17 @@ namespace API_ArtworkSharingPlatforms.Controllers
             }
             return Ok(response);
         }
+
+        [HttpGet("UpdateIsConfirm")]
+        public async Task<IActionResult> UpdateIsConfirm(string userId)
+        {
+            var response = await _personService.UpdateIsConfirm(userId);
+            if (response.Status.Equals(false))
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+
+        }
     }
 }
