@@ -104,5 +104,9 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             return await _personRepository.UnBanAccount(userId);
         }
+        public async Task<ResponeModel> UpdateIsConfirm(string userId)
+        {
+            return await _personRepository.UpdateIsConfirm(userId);
+        }
     }
 }

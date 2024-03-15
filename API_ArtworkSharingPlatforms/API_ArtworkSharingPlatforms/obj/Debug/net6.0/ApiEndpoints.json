@@ -983,6 +983,22 @@
   },
   {
     "ContainingType": "API_ArtworkSharingPlatforms.Controllers.PersonController",
+    "Method": "UpdateIsConfirm",
+    "RelativePath": "api/Person/UpdateIsConfirm",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.PersonController",
     "Method": "UpdateUserRole",
     "RelativePath": "api/Person/UpdateUserRole",
     "HttpMethod": "PUT",
