@@ -707,12 +707,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 return new ResponeModel { Status = "Error", Message = "An error occurred while processing the request" };
             }
         }
-        public async Task<string> GenerateRandomCodeAsync()
-        {
-            Random random = new Random();
-            int code = random.Next(10000, 99999); // Tạo mã ngẫu nhiên từ 10000 đến 99999
-            return code.ToString();
-        }
+
 
         private async Task SendResetPasswordEmailAsync(Person user, string code)
         {
@@ -724,9 +719,28 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             message.Subject = emailSettings["ResetPasswordSubject"];
 
             // Nội dung email
-            var bodyBuilder = new BodyBuilder();
-            bodyBuilder.TextBody = $"Your verification code is: {code}";
+            var confirmationLink = $"{emailSettings["ConfirmationLink"]}?code={code}&email={user.Email}";
 
+            var bodyBuilder = new BodyBuilder();
+            bodyBuilder.HtmlBody = $@"
+    <p>Dear {user.Email},</p>
+    <p>You have requested to reset your password. Click the button below to confirm and reset your password:</p>
+    <a href='{confirmationLink}'>
+        <button style='background-color: #4CAF50; /* Green */
+                       border: none;
+                       color: white;
+                       padding: 15px 32px;
+                       text-align: center;
+                       text-decoration: none;
+                       display: inline-block;
+                       font-size: 16px;
+                       margin: 4px 2px;
+                       cursor: pointer;'>
+            Confirm and Reset Password
+        </button>
+    </a>
+    <p>If you didn't request this, you can ignore this email.</p>
+";
             message.Body = bodyBuilder.ToMessageBody();
 
             // Gửi email
