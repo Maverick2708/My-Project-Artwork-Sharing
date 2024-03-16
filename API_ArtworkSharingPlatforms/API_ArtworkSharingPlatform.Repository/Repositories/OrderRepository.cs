@@ -243,11 +243,11 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             try
             {
                 var orderDetails = await _context.Orders
-                    .Where(o => o.UserId == userid && o.Status==true)
-                    .Include(o => o.OrderDetails.Where(od=>od.Status==true))
+                    .Where(o => o.UserId == userid && o.Status == true)
+                    .Include(o => o.OrderDetails.Where(od => od.Status == true))
+                    
                     .Select(o => new
                     {
-                        
                         OrderDetails = o.OrderDetails
                         .Where(od=>od.Status== true)
                         .Select(od => new
@@ -262,8 +262,10 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                             od.Address,
                             od.Phone,
                             od.FullName,
-                            od.Status // Include the Status field from OrderDetails
-                        }).ToList()
+                            od.Status, // Include the Status field from OrderDetails
+                            Artwork = _context.Artworks
+                                      .FirstOrDefault(a => a.ArtworkPId == od.ArtworkPId)
+                         }).ToList()
                     })
                     
                     .ToListAsync();
@@ -272,6 +274,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 {
                     return new ResponeModel { Status = "Error", Message = "No orders found for the given UserID" };
                 }
+                
 
                 return new ResponeModel { Status = "Success", Message = "Fetched orders successfully", DataObject = orderDetails };
             }
