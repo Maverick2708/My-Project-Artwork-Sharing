@@ -104,8 +104,8 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                     }
                     return new ResponeModel { Status = "Error", Message = errorMessage };
                 }
-                //return new ResponeModel { Status = "Hihi", Message = "Account already exist" }; /* ??? vui lắm hay sao mà Hihi, by tampvm*/
-                return new ResponeModel { Status = "Error", Message = "Account already exist" };
+                return new ResponeModel { Status = "Hihi", Message = "Account already exist" }; /* ??? vui lắm hay sao mà Hihi, by tampvm*/
+                //return new ResponeModel { Status = "Error", Message = "Account already exist" };
             }
             catch (Exception ex)
             {

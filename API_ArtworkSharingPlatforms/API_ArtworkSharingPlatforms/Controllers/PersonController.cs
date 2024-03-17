@@ -68,7 +68,9 @@ namespace API_ArtworkSharingPlatforms.Controllers
                 var result = await _personService.SignInAccountAsync(signInModel);
                 if (result.Status.Equals(false))
                 {
-                    return Unauthorized();
+                    //return Unauthorized();
+                    ModelState.AddModelError(string.Empty, result.Message);
+                    return ValidationProblem(ModelState);
                 }
                 return Ok(result);
             }
