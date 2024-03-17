@@ -217,8 +217,28 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
 
         public async Task<AuthenticationResponseModel> SignInAccountAsync(SignInModel signInModel)
         {
-            var result = await signInManager.PasswordSignInAsync(signInModel.AccountEmail, signInModel.AccountPassword, false, false);
             var account = await _userManager.FindByNameAsync(signInModel.AccountEmail);
+
+            if (account == null)
+            {
+                return new AuthenticationResponseModel
+                {
+                    Status = false,
+                    Message = "Invalid login attempt. Please check your email and password."
+                };
+            }
+
+            if (!account.EmailConfirmed)
+            {
+                return new AuthenticationResponseModel
+                {
+                    Status = false,
+                    Message = "Your email has not been verified. Please verify your email before logging in."
+                };
+            }
+
+
+            var result = await signInManager.PasswordSignInAsync(signInModel.AccountEmail, signInModel.AccountPassword, false, false);
 
             if (result.Succeeded)
             {
