@@ -34,6 +34,19 @@ namespace API_ArtworkSharingPlatforms.Controllers
             }
             return ValidationProblem(ModelState);
         }
+
+        [HttpPost("ConfirmEmailAsync")]
+        public async Task<IActionResult> ConfirmEmailAsync(string email, string token)
+        {
+            var response = await _personService.ConfirmEmailAsync(email, token);
+            if (response.Status.Equals(false))
+            {
+                return Conflict(response);
+            }
+            return Ok(response);
+        }
+
+
         [HttpGet("email")]
         public async Task<ActionResult<PersonModel>> GetPersonByEmail(string email)
         {

@@ -16,10 +16,17 @@ namespace API_ArtworkSharingPlatform.Services.Services
         {
             _personRepository = personRepository;
         }
+
         public async Task<ResponeModel> SignUpAccountAsync(SignUpModel signUpModel)
         {
             return await _personRepository.SignUpAccountAsync(signUpModel);
         }
+
+        public async Task<ResponeModel> ConfirmEmailAsync(string email, string token)
+        {
+            return await _personRepository.ConfirmEmailAsync(email, token);
+        }
+
         public async Task<AuthenticationResponseModel> SignInAccountAsync(SignInModel signInModel)
         {
             var result = await _personRepository.GetPersonByEmail(signInModel.AccountEmail);

@@ -21,6 +21,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MailKit.Net.Smtp;
 using MimeKit;
+using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
 
 namespace API_ArtworkSharingPlatform.Repository.Repositories
 {
@@ -74,7 +75,9 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                         IsConfirm = false,
                     };
                     var result = await _userManager.CreateAsync(user, signUpModel.AccountPassword);
-                    string errorMessage = null;
+
+                    string errorMessage = "Failed to register. Please check your input and try again.";
+
                     if (result.Succeeded)
                     {
                         if (!await _roleManager.RoleExistsAsync(RoleModel.Audience.ToString()))
@@ -86,8 +89,14 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                             await _userManager.AddToRoleAsync(user, RoleModel.Audience.ToString());
                         }
 
+                        // Generate email confirmation token
                         var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                        return new ResponeModel { Status = "Success", Message = "Create account successfull" };
+
+                        // Send confirmation email
+                        await SendConfirmationEmailAsync(user, token);
+
+
+                        return new ResponeModel { Status = "Success", Message = "Registration successful. Please check your email to confirm your account." };
                     }
                     foreach (var ex in result.Errors)
                     {
@@ -95,7 +104,8 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                     }
                     return new ResponeModel { Status = "Error", Message = errorMessage };
                 }
-                return new ResponeModel { Status = "Hihi", Message = "Account already exist" };
+                //return new ResponeModel { Status = "Hihi", Message = "Account already exist" }; /* ??? vui lắm hay sao mà Hihi, by tampvm*/
+                return new ResponeModel { Status = "Error", Message = "Account already exist" };
             }
             catch (Exception ex)
             {
@@ -105,6 +115,105 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             }
            
         }
+
+        private async Task SendConfirmationEmailAsync(Person user, string code)
+        {
+            var emailSettings = configuration.GetSection("EmailSettings");
+
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress(emailSettings["SenderName"], emailSettings["SenderEmail"]));
+            message.To.Add(new MailboxAddress(user.Email, user.Email));
+            message.Subject = emailSettings["ConfirmEmailSubject"];
+
+            // Nội dung email
+            var confirmationLink = $"{emailSettings["LoginLink"]}?code={code}&email={user.Email}";
+
+            var bodyBuilder = new BodyBuilder();
+            bodyBuilder.HtmlBody = $@"
+            <!DOCTYPE html>
+            <html lang=""en"">
+
+            <head>
+                <meta charset=""UTF-8"">
+                <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+            </head>
+
+            <body>
+                <div id=""wrapper"" style=""display: flex; align-items: center; justify-content: center; margin: 0px auto; max-width:600px;"">
+                    <div class=""form"" style=""width: 600px; max-height: 450px; border: 1px solid black; border-radius: 10px;"">
+                        <div class=""header"" style=""border: 1px solid gray; border-radius: 10px; background-color: #E65555;"">
+                            <div class=""logo"" style=""height: 90px; width: 200px; background-color: none; margin: 10px auto; border-radius: 10px; display: flex; align-items: center; justify-content: center;"">
+                                <img src=""https://static-00.iconduck.com/assets.00/pinterest-icon-497x512-g88cs2uz.png"" alt=""Logo"" srcset="""" style=""width: 100px; height: 100%; margin: 0 auto;"">
+                            </div>
+                            <div class=""text"" style=""text-align: center;"">
+                                <h1 style=""color: white"">Chào mừng bạn đến với ASM</h1>
+                                <div class=""link"" style=""width: 150px; height: 30px; background-color: aliceblue; border-radius: 5px; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; border: 1px solid black;"">
+                                    <a href='{confirmationLink}' style=""text-decoration: none; margin: 5px auto 0; color: black;"">
+                                        Xác thực tài khoản
+                                     </a>                          
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class=""footer"" style=""display: flex; align-items: center; justify-content: center;"">
+                            <div class=""footercontent"" style=""width: 480px; text-align: center; margin: 0px auto;"">
+                                <div class=""span1"" style=""margin-top: 10px; margin-bottom: 10px;"">
+                                    <span>Copyright © 2024 ASP, Allrights reserved.</span>
+                                </div>
+                                <div><b>Địa chỉ của chúng tôi:</b></div>
+                                <div class=""span2"" style=""margin-top: 10px;"">
+                                    <span>C11-01, số 473 Man Thiện, Thủ Đức, KDT Geleximco Lê Trọng Tấn, Phường Dương Nội, Quận Hà Đông, Hà Nội</span></div>
+                                <div class=""span3"" style=""margin-top: 10px;"">
+                                    <span>Email: minhtam250102@gmail.com</span>
+                                </div>
+                                <div class=""span4"" style=""margin-top: 10px;""><span>Hotline: 0979500611</span></div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+               </body>
+            </html>";
+            message.Body = bodyBuilder.ToMessageBody();
+
+            // Gửi email
+            using (var client = new MailKit.Net.Smtp.SmtpClient())
+            {
+                await client.ConnectAsync(emailSettings["SmtpServer"], Convert.ToInt32(emailSettings["SmtpPort"]), false);
+                await client.AuthenticateAsync(emailSettings["SmtpUsername"], emailSettings["SmtpPassword"]);
+                await client.SendAsync(message);
+                await client.DisconnectAsync(true);
+            }
+        }
+
+        public async Task<ResponeModel> ConfirmEmailAsync(string email, string token)
+        {
+            try
+            {
+                var user = await _userManager.FindByEmailAsync(email);
+
+                if (user == null)
+                {
+                    return new ResponeModel { Status = "Error", Message = "User not found" };
+                }
+
+                var result = await _userManager.ConfirmEmailAsync(user, token);
+
+                if (result.Succeeded)
+                {
+                    return new ResponeModel { Status = "Success", Message = "Account confirmed successfully" };
+                }
+                else
+                {
+                    return new ResponeModel { Status = "Error", Message = "Failed to confirm account" };
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                return new ResponeModel { Status = "Error", Message = "An error occurred while processing the request" };
+            }
+        }
+
 
         public async Task<AuthenticationResponseModel> SignInAccountAsync(SignInModel signInModel)
         {
