@@ -69,7 +69,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
         }
         public async Task<IEnumerable<Artwork>> GetAllArtwork()
         {
-            return await _context.Artworks.ToListAsync();
+            return await _context.Artworks.OrderByDescending(o=>o.DatePost).ToListAsync();
         }
         public async Task<IEnumerable<Artwork>> GetArtworkByArtist(string artist)
         {
@@ -270,6 +270,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                             c.Avatar,
                             c.FullName,
                             c.IsVerifiedPage,
+                            c.Id
                         }).FirstOrDefaultAsync();
                     if (InforArtist != null)
                     {

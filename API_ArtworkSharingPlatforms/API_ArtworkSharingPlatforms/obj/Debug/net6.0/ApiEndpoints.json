@@ -715,6 +715,27 @@
   },
   {
     "ContainingType": "API_ArtworkSharingPlatforms.Controllers.PersonController",
+    "Method": "ConfirmEmailAsync",
+    "RelativePath": "api/Person/ConfirmEmailAsync",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ArtworkSharingPlatforms.Controllers.PersonController",
     "Method": "ConfirmResetPasswordAsync",
     "RelativePath": "api/Person/ConfirmResetPasswordAsync",
     "HttpMethod": "POST",
