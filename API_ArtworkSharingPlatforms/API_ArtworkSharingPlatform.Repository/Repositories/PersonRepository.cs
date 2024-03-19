@@ -92,6 +92,11 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                         // Generate email confirmation token
                         var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
+                        //mã hóa token thành một chuỗi an toàn phù hợp với quy tắc URL
+                        token = Uri.EscapeDataString(token);
+
+                        //Console.WriteLine(token);
+
                         // Send confirmation email
                         await SendConfirmationEmailAsync(user, token);
 
@@ -139,19 +144,23 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
             </head>
 
             <body>
-                <div id=""wrapper"" style=""display: flex; align-items: center; justify-content: center; margin: 0px auto; max-width:600px;"">
-                    <div class=""form"" style=""width: 600px; max-height: 450px; border: 1px solid black; border-radius: 10px;"">
-                        <div class=""header"" style=""border: 1px solid gray; border-radius: 10px; background-color: #E65555;"">
-                            <div class=""logo"" style=""height: 90px; width: 200px; background-color: none; margin: 10px auto; border-radius: 10px; display: flex; align-items: center; justify-content: center;"">
+                <div id=""wrapper"" style=""display: flex; align-items: center; justify-content: center; margin: 0px auto; max-width:600px; border-radius: 10px; background-color: #f1f1f1"">
+                    <div class=""form"" style=""width: 600px; max-height: 450px; border-radius: 10px;"">
+                        <div class=""header"" style="" border-radius: 10px; background-color: #E65555;"">
+                            <div class=""logo"" style=""height: 90px; width: 200px; background-color: none; margin: 0px auto; border-radius: 10px; display: flex; align-items: center; justify-content: center;"">
                                 <img src=""https://static-00.iconduck.com/assets.00/pinterest-icon-497x512-g88cs2uz.png"" alt=""Logo"" srcset="""" style=""width: 100px; height: 100%; margin: 0 auto;"">
                             </div>
                             <div class=""text"" style=""text-align: center;"">
-                                <h1 style=""color: white"">Chào mừng bạn đến với ASM</h1>
-                                <div class=""link"" style=""width: 150px; height: 30px; background-color: aliceblue; border-radius: 5px; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; border: 1px solid black;"">
+                                <h1 style=""color: white"">Chào mừng bạn đến với ASP</h1>
+                                <div class=""link"" style=""width: 150px; height: 30px; background-color: aliceblue; border-radius: 5px; margin: 3px auto; display: flex; align-items: center; justify-content: center; border: 1px solid black;"">
                                     <a href='{confirmationLink}' style=""text-decoration: none; margin: 5px auto 0; color: black;"">
                                         Xác thực tài khoản
                                      </a>                          
                                 </div>
+                                <div style=""margin: 5px auto;"">
+                                    <span >(Chúng tôi cần xác thực địa chỉ email của bạn để kích hoạt tài khoản)</span>
+                                </div>
+                                
                             </div>
                         </div>
 
@@ -164,7 +173,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                                 <div class=""span2"" style=""margin-top: 10px;"">
                                     <span>C11-01, số 473 Man Thiện, Thủ Đức, KDT Geleximco Lê Trọng Tấn, Phường Dương Nội, Quận Hà Đông, Hà Nội</span></div>
                                 <div class=""span3"" style=""margin-top: 10px;"">
-                                    <span>Email: minhtam250102@gmail.com</span>
+                                    <span>Email: artworksharing@gmail.com</span>
                                 </div>
                                 <div class=""span4"" style=""margin-top: 10px;""><span>Hotline: 0979500611</span></div>
                             </div>
@@ -195,6 +204,8 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 {
                     return new ResponeModel { Status = "Error", Message = "User not found" };
                 }
+                //token = Uri.UnescapeDataString(token);
+                //Console.WriteLine($"Token from frontend: {token}");
 
                 var result = await _userManager.ConfirmEmailAsync(user, token);
 
@@ -204,6 +215,26 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 }
                 else
                 {
+                    if (user.EmailConfirmed)
+                    {
+                        return new ResponeModel { Status = "Error", Message = "Email is already confirmed" };
+                    }
+
+
+                    // Check if token is invalid or expired
+                    foreach (var error in result.Errors)
+                    {
+                        if (error.Code == "InvalidToken")
+                        {
+                            return new ResponeModel { Status = "Error", Message = "Invalid or expired token" };
+                        }
+                        else if (error.Code == "ExpiredToken")
+                        {
+                            return new ResponeModel { Status = "Error", Message = "expired token" };
+                        }
+                    }
+
+                    // If no specific error found, return general error message
                     return new ResponeModel { Status = "Error", Message = "Failed to confirm account" };
                 }
             }
@@ -868,7 +899,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                                 <img src=""https://static-00.iconduck.com/assets.00/pinterest-icon-497x512-g88cs2uz.png"" alt=""Logo"" srcset="""" style=""width: 100px; height: 100%; margin: 0 auto;"">
                             </div>
                             <div class=""text"" style=""text-align: center;"">
-                                <h1 style=""color: white"">Chào mừng bạn đến với ASM</h1>
+                                <h1 style=""color: white"">Chào mừng bạn đến với ASP</h1>
                                 <div class=""link"" style=""width: 150px; height: 30px; background-color: aliceblue; border-radius: 5px; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; border: 1px solid black;"">
                                     <a href='{confirmationLink}' style=""text-decoration: none; margin: 5px auto 0; color: black;"">Thay đổi mật khẩu
         
