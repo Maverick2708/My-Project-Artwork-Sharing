@@ -118,3 +118,15 @@ D:\Art_work_6\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_Artwork
 D:\Art_work_6\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\refint\API_ArtworkSharingPlatform.Libary.dll
 D:\Art_work_6\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\API_ArtworkSharingPlatform.Libary.pdb
 D:\Art_work_6\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\ref\API_ArtworkSharingPlatform.Libary.dll
+D:\Test\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\bin\Debug\net6.0\API_ArtworkSharingPlatform.Libary.deps.json
+D:\Test\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\bin\Debug\net6.0\API_ArtworkSharingPlatform.Libary.dll
+D:\Test\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\bin\Debug\net6.0\API_ArtworkSharingPlatform.Libary.pdb
+D:\Test\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\API_ArtworkSharingPlatform.Libary.GeneratedMSBuildEditorConfig.editorconfig
+D:\Test\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\API_ArtworkSharingPlatform.Libary.AssemblyInfoInputs.cache
+D:\Test\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\API_ArtworkSharingPlatform.Libary.AssemblyInfo.cs
+D:\Test\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\API_ArtworkSharingPlatform.Libary.csproj.CoreCompileInputs.cache
+D:\Test\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\API_ArtworkSharingPlatform.Libary.sourcelink.json
+D:\Test\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\API_ArtworkSharingPlatform.Libary.dll
+D:\Test\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\refint\API_ArtworkSharingPlatform.Libary.dll
+D:\Test\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\API_ArtworkSharingPlatform.Libary.pdb
+D:\Test\My-Project-Artwork-Sharing\API_ArtworkSharingPlatforms\API_ArtworkSharingPlatform.Libary\obj\Debug\net6.0\ref\API_ArtworkSharingPlatform.Libary.dll
