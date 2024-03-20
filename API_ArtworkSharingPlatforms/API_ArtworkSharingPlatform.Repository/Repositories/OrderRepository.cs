@@ -305,6 +305,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                             userId = OrderID.UserId,
                             TotalBill = OrderID.TotalBill,
                             OrderDetail = orderId, // Include order details in the result
+                            PictureArtwork = _context.Artworks.FirstOrDefault(a => a.ArtworkPId == orderId.ArtworkPId).PictureArtwork,
                             StatusOrderDetail = orderId.Status,
                             StatusOrder = OrderID.Status,
                             PersonInfo = _context.People.FirstOrDefault(p => p.Id == OrderID.UserId)
@@ -332,7 +333,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                             g.OrderDetail.Phone,
                             g.OrderDetail.FullName,
                             g.OrderDetail.Status,
-                           
+                            PictureArtwork = g.PictureArtwork,
                             // Include PersonInfo for each order detail
                             PersonInfo = g.PersonInfo
                         }).ToList(),
