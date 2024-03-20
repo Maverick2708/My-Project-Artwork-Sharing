@@ -55,8 +55,8 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                     return new ResponeModel { Status = "Error", Message = "Artwork not found" };
                 }
 
-               // existingReport = UpdateStatusReport(existingReport);
-                _context.Reports.Remove(existingReport);
+                existingReport = UpdateStatusReport(existingReport);
+               // _context.Reports.Remove(existingReport);
                 await _context.SaveChangesAsync();
 
                 return new ResponeModel { Status = "Success", Message = "Report updated successfully", DataObject = existingReport };

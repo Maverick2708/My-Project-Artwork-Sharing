@@ -83,8 +83,8 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                     return new ResponeModel { Status = "Error", Message = "Request not found" };
                 }
 
-                existingRequest = HideRequest(existingRequest);
-
+                // existingRequest = HideRequest(existingRequest);
+                _context.Requests.Remove(existingRequest);
                 await _context.SaveChangesAsync();
 
                 return new ResponeModel { Status = "Success", Message = "Request deleted successfully", DataObject = existingRequest };
