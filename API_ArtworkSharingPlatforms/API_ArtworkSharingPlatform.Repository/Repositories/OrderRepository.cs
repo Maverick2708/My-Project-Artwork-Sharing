@@ -264,8 +264,10 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                             od.FullName,
                             od.Status, // Include the Status field from OrderDetails
                             Artwork = _context.Artworks
-                                      .FirstOrDefault(a => a.ArtworkPId == od.ArtworkPId)
-                         }).ToList()
+                                      .FirstOrDefault(a => a.ArtworkPId == od.ArtworkPId),
+                            Person = _context.People
+                                      .FirstOrDefault(c => c.Id == userid),
+                        }).ToList()
                     })
                     
                     .ToListAsync();
@@ -305,6 +307,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                             OrderDetail = orderId, // Include order details in the result
                             StatusOrderDetail = orderId.Status,
                             StatusOrder = OrderID.Status,
+                            PersonInfo = _context.People.FirstOrDefault(p => p.Id == OrderID.UserId)
                         }
                     )
                     .Where(od=>od.StatusOrderDetail==true)
@@ -319,7 +322,21 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                         orderID = grouped.Key.OrderID,
                         userId = grouped.Key.userId,
                         totalBill = grouped.Key.TotalBill,
-                        orderDetail = grouped.Select(g => g.OrderDetail).ToList()
+                        orderDetail = grouped.Select(g => new {
+                            g.OrderDetail.BillOrderId,
+                            g.OrderDetail.DateOrder,
+                            g.OrderDetail.PriceOrder,
+                            g.OrderDetail.ArtworkPId,
+                            g.OrderDetail.Quanity,
+                            g.OrderDetail.Address,
+                            g.OrderDetail.Phone,
+                            g.OrderDetail.FullName,
+                            g.OrderDetail.Status,
+                           
+                            // Include PersonInfo for each order detail
+                            PersonInfo = g.PersonInfo
+                        }).ToList(),
+                        
                     })
                     .ToListAsync();
 
