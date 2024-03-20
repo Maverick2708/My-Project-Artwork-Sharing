@@ -40,26 +40,57 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 var existingItem = _context.ShoppingCarts
                     .FirstOrDefault(item => item.ArtworkPId == shoppingCart.ArtworkPId && item.UserId == shoppingCart.UserId);
 
-                if (existingItem != null)
+                // Get the artwork to check available quantity
+                var artwork = _context.Artworks.FirstOrDefault(a => a.ArtworkPId == shoppingCart.ArtworkPId);
+
+                if (artwork != null)
                 {
-                    // Item already exists, update quantity, and price
-                    existingItem.Quanity += shoppingCart.Quanity;
-                    existingItem.PriceArtwork += shoppingCart.PriceArtwork; // You may want to adjust this based on your business logic
+                    var otherUserOrder = _context.ShoppingCarts.Any(item => item.ArtworkPId == shoppingCart.ArtworkPId && item.UserId != shoppingCart.UserId && item.Quanity == artwork.Quanity);
+
+                    if (otherUserOrder)
+                    {
+                        return new ResponeModel { Status = "Error", Message = "The artwork is already fully ordered by another user" };
+                    }
+                    if (existingItem != null)
+                    {
+                        // Item already exists, update quantity, and price
+                        if (existingItem.Quanity + shoppingCart.Quanity <= artwork.Quanity)
+                        {
+                            existingItem.Quanity += shoppingCart.Quanity;
+                            existingItem.PriceArtwork += shoppingCart.PriceArtwork; // You may want to adjust this based on your business logic
+                        }
+                        else
+                        {
+                            return new ResponeModel { Status = "Error", Message = "Adding quantity exceeds available artwork quantity" };
+                        }
+                    }
+                    else
+                    {
+                        // Item does not exist, add a new item to the shopping cart
+                        if (shoppingCart.Quanity <= artwork.Quanity)
+                        {
+                            var newShoppingC = new ShoppingCart
+                            {
+                                ArtworkPId = shoppingCart.ArtworkPId,
+                                UserId = shoppingCart.UserId,
+                                Quanity = shoppingCart.Quanity,
+                                PriceArtwork = shoppingCart.PriceArtwork,
+                                PictureArtwork = shoppingCart.PictureArtwork,
+                            };
+
+                            _context.ShoppingCarts.Add(newShoppingC);
+                        }
+                        else
+                        {
+                            return new ResponeModel { Status = "Error", Message = "Adding quantity exceeds available artwork quantity" };
+                        }
+                    }
                 }
                 else
                 {
-                    // Item does not exist, add a new item to the shopping cart
-                    var newShoppingC = new ShoppingCart
-                    {
-                        ArtworkPId = shoppingCart.ArtworkPId,
-                        UserId = shoppingCart.UserId,
-                        Quanity = shoppingCart.Quanity,
-                        PriceArtwork = shoppingCart.PriceArtwork,
-                        PictureArtwork = shoppingCart.PictureArtwork,
-                    };
-
-                    _context.ShoppingCarts.Add(newShoppingC);
+                    return new ResponeModel { Status = "Error", Message = "Artwork not found" };
                 }
+
                 var notification = new Notification
                 {
                     UserId = shoppingCart.UserId,
@@ -68,7 +99,8 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                     Status = true,
                     UserIdReceive = shoppingCart.UserId,
                 };
-				_context.Notifications.Add(notification);
+
+                _context.Notifications.Add(notification);
                 await _context.SaveChangesAsync();
 
                 return new ResponeModel { Status = "Success", Message = "Added shopping cart item successfully", DataObject = existingItem };
