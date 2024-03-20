@@ -858,6 +858,9 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                 // Tạo mã xác thực ngẫu nhiên (ví dụ: 5 số)
                // var code = await GenerateRandomCodeAsync();
                 var code = await _userManager.GenerateUserTokenAsync(user, _userManager.Options.Tokens.PasswordResetTokenProvider, "ResetPassword");
+                
+                code = Uri.EscapeDataString(code);
+                
                 // Gửi email xác thực
                 await SendResetPasswordEmailAsync(user, code);
 
@@ -903,10 +906,10 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                             <div class=""text"" style=""text-align: center;"">
                                 <h1 style=""color: white"">Chào mừng bạn đến với ASP</h1>
                                 <div class=""link"" style=""width: 150px; height: 30px; background-color: aliceblue; border-radius: 5px; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; border: 1px solid black;"">
-                                    <a href='{confirmationLink}' style=""text-decoration: none; margin: 5px auto 0; color: black;"">Thay đổi mật khẩu
-        
-    </a>
-                                
+                                    <a href='{confirmationLink}' style=""text-decoration: none; margin: 5px auto 0; color: black;"">Thay đổi mật khẩu</a>                                               
+                                </div>
+                                <div style=""margin: 5px auto;"">
+                                    <span >(Chúng tôi cần xác thực địa chỉ email của bạn để thay đổi mật khẩu)</span>
                                 </div>
                             </div>
                         </div>
@@ -920,7 +923,7 @@ namespace API_ArtworkSharingPlatform.Repository.Repositories
                                 <div class=""span2"" style=""margin-top: 10px;"">
                                     <span>C11-01, số 473 Man Thiện, Thủ Đức, KDT Geleximco Lê Trọng Tấn, Phường Dương Nội, Quận Hà Đông, Hà Nội</span></div>
                                 <div class=""span3"" style=""margin-top: 10px;"">
-                                    <span>Email: minhtam250102@gmail.com</span>
+                                    <span>Email: artworksharing@gmail.com</span>
                                 </div>
                                 <div class=""span4"" style=""margin-top: 10px;""><span>Hotline: 0979500611</span></div>
                             </div>
